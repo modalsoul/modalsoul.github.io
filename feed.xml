@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>modal_soul debriefing</title>
+    <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
+    <link>http://modalsoul.github.io/</link>
+    <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 14 Apr 2016 13:13:58 +0900</pubDate>
+    <lastBuildDate>Thu, 14 Apr 2016 13:13:58 +0900</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Q02:数列の四則演算|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q02:数列の四則演算。&lt;/p&gt;
+
+&lt;p&gt;Q: 1000~9999で、数字の各桁の間に四則演算の演算子を最低１つは入れて計算し、元の数の桁を逆から並べた数字と同じになるものを求める。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]])&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;+&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;-&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;*&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;recur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asDigit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comb&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Either&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;, &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;comb&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;+&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;-&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;*&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)::&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Nil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;comb&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9999&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatMap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;withFilter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Option&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#calc&lt;/code&gt;は引数に数値もしくは演算子のリストを受け取り、計算結果を返す。&lt;/p&gt;
+
+&lt;p&gt;ex.)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;n&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(+),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#gen&lt;/code&gt;は引数に数値を受け取り、その数値の各桁と演算子のバリエーションの配列を返す。&lt;/p&gt;
+
+&lt;p&gt;ex.)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;n&quot;&gt;gen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(+),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(-),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(*),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Wed, 23 Mar 2016 23:59:59 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/03/23/math-puzzle-02.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/03/23/math-puzzle-02.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
+    
+      <item>
+        <title>Q01:10進数で回文|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;Kindleのセールで&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;を買ったから、ぼちぼちやってく。Q01:10進数で回文。&lt;/p&gt;
+
+&lt;p&gt;Q: 10進数、2進数、8進数のいずれで表現しても回文数となる数のうち、10進数の10以上で最小の値を求める。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nextNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toBinaryString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toBinaryString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toOctalString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decimal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toOctalString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Tue, 22 Mar 2016 23:58:40 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/03/22/math-puzzle-01.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/03/22/math-puzzle-01.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
+    
+      <item>
+        <title>elixirで素数判定</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;概要&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;/programing/2013/10/09/scala-prime-number/&quot;&gt;前回Scalaで実装したもの&lt;/a&gt;と同じく、1&amp;lt;= X &amp;lt;=10^9 の範囲の自然数Xを渡されたとき、Xが素数か否かを判定します。&lt;/p&gt;
+
+&lt;p&gt;こちらも同様に判定には、試し割り法を使いました。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;コード&lt;/h2&gt;
+&lt;p&gt;↓のようになりました&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/modalsoul/6970624.js&quot;&gt;
+&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;解説&lt;/h2&gt;
+&lt;p&gt;def isPrimeがメイン関数です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;与えられた数値numが、1 or 偶数ならfalseを返す。&lt;/li&gt;
+  &lt;li&gt;↑以外の場合、3から数値numの平方根までのリストを生成して、sieveをコールする。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;前回Scalaでは試し割りをループで実行しましたが、elixirでは再帰で実行しています。&lt;/p&gt;
+
+&lt;p&gt;というか、elixirではErlangと同じく条件ループがもとからありません。&lt;/p&gt;
+
+&lt;p&gt;同じようにリストの生成も、Scalaでは (x to y)の形式で行えましたが、elixirでは def makeListを再帰して生成しています。
+Scalaと同じようにリストを生成するような便利な関数があるのかもしれませんが、見つけられなかったので。。&lt;/p&gt;
+
+&lt;p&gt;def seiveのコールでは、第１引数のリストが空でない場合、def seive(［h｜t］, num)、第１引数のリストが空の場合、def seive(［］, _)にマッチします。&lt;/p&gt;
+
+&lt;p&gt;def seive([h｜t], num) では、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;リストの先頭の値hで数値numで割り切れる場合、素数ではないのでfalseを返し、&lt;/li&gt;
+  &lt;li&gt;割り切れない場合、先頭以外のリストtと数値numを再度seiveに渡します。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最終的に、リスト末尾まで試し割りし、割り切れなかった場合、def seive(［］, _)にマッチし、trueが帰ります。&lt;/p&gt;
+
+&lt;p&gt;Scalaで書いたものと比較して、関数が増えていますが、中の処理自体はよりさっぱりした感じになりました。
+まだelixir慣れしていないので、もっと良い書き方ができるのだろうとは思いますが、今回はこんなところで。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2013 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2013/10/14/elixir-prime-number.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2013/10/14/elixir-prime-number.html</guid>
+        
+        <category>elixir</category>
+        
+        <category>素数</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
+    
+      <item>
+        <title>Scalaで素数判定【追記アリ】</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;概要&lt;/h2&gt;
+&lt;p&gt;今回は、1&amp;lt;= X &amp;lt;=10^9 の範囲の自然数Xを渡されたとき、Xが素数か否かを判定します。&lt;/p&gt;
+
+&lt;p&gt;判定には、試し割り法を使いました。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;コード&lt;/h2&gt;
+&lt;p&gt;↓のようになりました&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/modalsoul/6902340.js&quot;&gt;
+&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;解説&lt;/h2&gt;
+&lt;p&gt;処理のおおまかな流れは以下のような感じ&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;対象の数字Xを受け取る&lt;/li&gt;
+  &lt;li&gt;Xが１か偶数だったら、素数ではない&lt;/li&gt;
+  &lt;li&gt;3からXの平方根までのリストを作る&lt;/li&gt;
+  &lt;li&gt;リストから偶数を除去&lt;/li&gt;
+  &lt;li&gt;リストの先頭から順に、Xがその数で割り切れるかどうかを調べる&lt;/li&gt;
+  &lt;li&gt;割り切れたら、素数ではない&lt;/li&gt;
+  &lt;li&gt;割り切れずに、リストの末尾まで到達したら、素数&lt;/li&gt;
+  &lt;li&gt;結果を表示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(x to y).filter().foreach() の形式で書きたかったのでこんな設計になりました。
+なんとなくScalaっぽくてこの書き方が好きなので&lt;/p&gt;
+
+&lt;p&gt;foreachの中の処理で割り切れた場合、明示的なreturnでループを抜けています&lt;/p&gt;
+
+&lt;p&gt;対象の数が大きくなると生成されるリストも大きくなり、ループが長くなるので
+filterの条件を増やして(ex. 3, 5, 7, 11,,,)リストが短くなるようにしてみたりもしたんですが、
+早くなりませんでした、というか若干遅くなった。。。&lt;/p&gt;
+
+&lt;p&gt;filterを追加することでループの回数を減らすことの損益分岐点は、思ったより低かったようです。無念&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;追記&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/gakuzzzz&quot;&gt;@gakuzzzz&lt;/a&gt;さんにコメントいただき、コードを改良しました。&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+    &lt;p&gt;
+        &lt;a href=&quot;https://twitter.com/modal_soul&quot;&gt;@modal_soul&lt;/a&gt; (3L to sqrt(num).toLong by 2) とかすると filter が必要なくなって速くなりそうですね。
+    &lt;/p&gt;&amp;mdash; がくぞ (@gakuzzzz)
+    &lt;a href=&quot;https://twitter.com/gakuzzzz/statuses/387965601525669888&quot;&gt;October 9, 2013&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;
+&lt;/script&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;コード・その２&lt;/h3&gt;
+&lt;script src=&quot;https://gist.github.com/modalsoul/6918594.js&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;(x to y by 2)とすることで、2刻みでリストを生成するので、最初に生成されるリストが短くできる&amp;amp;filterが省略できるわけですね。&lt;/p&gt;
+
+&lt;p&gt;Before:140ms, After:130ms だいたい10msほど速くなりました。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;コード・その３&lt;/h3&gt;
+&lt;script src=&quot;https://gist.github.com/modalsoul/6918797.js&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;returnを使うと例外で遅くなるのでは？という話もあったので、forallを使うパターンも試してみました。
+結果は↑とほぼ同じ結果になりました。
+forallがbooleanを返すので、returnのためのtrue/falseがなくなったので、コードはだいぶ綺麗になった気がします。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Oct 2013 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2013/10/09/scala-prime-number.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2013/10/09/scala-prime-number.html</guid>
+        
+        <category>Scala</category>
+        
+        <category>素数</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
+    
+      <item>
+        <title>Sublime text2でjshintプラグインを使う</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;インストール手順&lt;/h2&gt;
+&lt;p&gt;基本的にSublime-JSHintのGithubのREADMEの通りです。
+以下の手順はMacの場合のものです。&lt;/p&gt;
+
+&lt;h3 id=&quot;nodejs&quot;&gt;node.jsのインストール&lt;/h3&gt;
+&lt;p&gt;JSHintを実行する為に、Sublime Textとは別に&lt;a href=&quot;http://nodejs.org/#download&quot;&gt;node.js&lt;/a&gt;がインストールされている必要があるようです。&lt;/p&gt;
+
+&lt;h3 id=&quot;sublime-jshint&quot;&gt;Sublime-JSHintのインストール&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://sublime.wbond.net/installation&quot;&gt;Sublime Text package manager&lt;/a&gt;を使った方法と、マニュアルでのインストール方法がありますが、今回はpackage managerを使ってインストールしました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cmd+Shift+P&lt;/li&gt;
+  &lt;li&gt;install と入力し、 Package Control: Install Package を選択&lt;/li&gt;
+  &lt;li&gt;js gutter と入力し、 JSHint Gutter を選択&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;動作確認&lt;/h3&gt;
+&lt;p&gt;適当なJavaScriptファイルをSublime Textで開き、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cmd+Shift+P&lt;/li&gt;
+  &lt;li&gt;JSHintを選択&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これでラインナンバーの左側にJSHintの警告マークがでればOKですが、手元の環境では以下のようなエラーが出てしまいました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/20130909/sublime-error-popup.png&quot; alt=&quot;Sublime-JSHint error popup&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nodepath&quot;&gt;node_pathの設定&lt;/h3&gt;
+&lt;p&gt;上記のエラーはnode.jsのパス設定がうまくいっていないためのエラーのようです。
+GithubのREADMEでもこういった現象が起きることが書かれていました。&lt;a href=&quot;https://github.com/victorporof/Sublime-JSHint#oh-noez-command-not-found&quot;&gt;Oh noez, command not found!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;READMEの記述にしたがいnode_pathを設定します&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cmd+Shift+P&lt;/li&gt;
+  &lt;li&gt;jshint と入力し、Set node Path を選択&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JSHint.sublime-settingsが開き、デフォルトの設定は以下のようになっています。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Simply&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;using&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`node`&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;without&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;specifying&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;sometimes&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;doesn&#39;t&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;https://github.com/victorporof/Sublime-JSHint#oh-noez-command-not-found&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;http://nodejs.org/#download&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;node_path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/usr/local/bin/node&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Automatically&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;lint&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;edit&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(Sublime&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;only).&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lint_on_edit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Automatically&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;lint&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;saved.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;lint_on_save&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上の”node_path”がnode.jsのパス、真ん中の”lint_on_edit”は編集時の自動lintの設定、下が保存時の自動lintの設定。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、私の環境ではnode.jsのインストールパスは上記のデフォルトパスと同じになっていました。
+設定からすると動くはずの用に思えます。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;リンク元のパスを設定&lt;/h3&gt;
+&lt;p&gt;“sublime node.js not found”でググってみたところ、Sublime-HTMLPrettifyに参考になりそうなissueがありました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/victorporof/Sublime-HTMLPrettify/issues/53&quot;&gt;Node.js was not found when it is there&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;このissueのコメントを漁っていくと、&lt;a href=&quot;https://github.com/victorporof/Sublime-HTMLPrettify/issues/53#issuecomment-24030863&quot;&gt;それっぽいコメント&lt;/a&gt;がありました&lt;/p&gt;
+
+&lt;p&gt;このコメントによると、
+/usr/local/bin/node のリンク元　/usr/local/Cellar/node/0.10.15/bin/node と設定したらうまくいった、らしい&lt;/p&gt;
+
+&lt;p&gt;これを参考に、ls -l /usr/local/bin/node の結果を、JSHint.sublime-settingsのnode_pathに設定し、再起動したらJSHintが動きました。&lt;/p&gt;
+
+&lt;p&gt;とりあえずめでたしめでたし&lt;/p&gt;
+
+&lt;p&gt;ただ、このissueのコメントだと同じくMacでも/usr/local/bin/nodeで動いたケースもあるようなので、詳細は不明ですね。。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 09 Sep 2013 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/environment/2013/09/09/sublime-text-jshint.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/environment/2013/09/09/sublime-text-jshint.html</guid>
+        
+        <category>SublimeText</category>
+        
+        <category>jshint</category>
+        
+        <category>JavaScript</category>
+        
+        
+        <category>environment</category>
+        
+      </item>
+    
+      <item>
+        <title>Github-pagesでPage　build failureにハマった件。またはLiquid　Exception：　invalid　byte　sequence　in　UTF-8になった件。</title>
+        <description>&lt;h2 id=&quot;github&quot;&gt;Githubからの通知の確認&lt;/h2&gt;
+&lt;p&gt;Github-pagesのリポジトリへpushすると以下のような文面のメールが届きます。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Subject: Page build failure
+
+The page build failed with the following error:
+
+page build failed
+
+For information on troubleshooting Jekyll see https://help.github.com/articles/using-jekyll-with-pages#troubleshooting
+If you have any questions please contact GitHub Support.
+
+support@github.com
+https://github.com/contact
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通知してくれるのはいいんですが、情報量が少ない。。せめてビルド時のエラーログなりを送ってほしい。。。&lt;/p&gt;
+
+&lt;h2 id=&quot;github-1&quot;&gt;Githubのヘルプページの確認&lt;/h2&gt;
+&lt;p&gt;ひとまず、メールに記載されていたURLのページを確認します。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://capture.heartrails.com/128x128?https://help.github.com/articles/using-jekyll-with-pages#troubleshooting&quot; alt=&quot;Troubleshooting｜Using Jekyll with Pages｜GitHub Help&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Troubleshootingに記載されている要旨は、「ローカルでビルドして、パースエラーを見つけなさい」とのこと。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;ローカル環境でビルド&lt;/h3&gt;
+&lt;p&gt;GitHubで使っているJekyllとその依存関係のバージョンについては、&lt;a href=&quot;https://github.com/github/pages-gem/blob/master/github-pages.gemspec#L16&quot;&gt;the same versions of Jekyll and other dependencies that we use&lt;/a&gt;に記載されていて、この時点では以下のバージョンになっていた。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  s.rubygems_version      = &quot;1.8.0&quot;
+  s.required_ruby_version = &quot;~&amp;gt; 1.9.3&quot;
+  ~~~
+  # Jekyll and related dependency versions as used by GitHub Pages. 
+  # For more information see:
+  # https://help.github.com/articles/using-jekyll-with-pages
+
+  s.add_dependency(&quot;RedCloth&quot;,   &quot;= 4.2.9&quot;)
+  s.add_dependency(&quot;jekyll&quot;,     &quot;= 1.1.2&quot;)
+  s.add_dependency(&quot;kramdown&quot;,   &quot;= 1.0.2&quot;)
+  s.add_dependency(&quot;liquid&quot;,     &quot;= 2.5.1&quot;)
+  s.add_dependency(&quot;maruku&quot;,     &quot;= 0.6.1&quot;)
+  s.add_dependency(&quot;rdiscount&quot;,  &quot;= 1.6.8&quot;)
+  s.add_dependency(&quot;redcarpet&quot;,  &quot;= 2.2.2&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ローカルの環境を上記のバージョンに合わせてビルドしてみると、いくつかErrorが。&lt;/p&gt;
+
+&lt;p&gt;エラーの原因は、
+* _postの記事に書かれていたサンプルコードがmarkdownのリンク表記とかぶっていたため、不正なリンクとして解釈されていた
+* URLにマルチバイト文字を含むためエラーになった
+こと&lt;/p&gt;
+
+&lt;p&gt;上記の箇所を修正してローカル環境でビルドしてもエラーや警告が出ないことを確認し、GitHubに再度pushしても、同じくPage build failureとなってしまった。&lt;/p&gt;
+
+&lt;p&gt;ひとまずバージョン依存での問題ではなさそうということはわかった。&lt;/p&gt;
+
+&lt;h2 id=&quot;pages-dont-build-unable-to-run-jekyll&quot;&gt;Pages don’t build: “Unable to run Jekyll”の確認&lt;/h2&gt;
+&lt;p&gt;GitHubのヘルプには、Troubleshootingの手順で確認してもビルドに失敗したら、&lt;a href=&quot;https://help.github.com/articles/pages-don-t-build-unable-to-run-jekyll&quot;&gt;Page doesn’t build&lt;/a&gt; guideを確認するようにと記載されていた。&lt;/p&gt;
+
+&lt;p&gt;このPage does’nt build guideの内容は以下&lt;/p&gt;
+
+&lt;h3 id=&quot;unsafe-plugins&quot;&gt;Unsafe plugins&lt;/h3&gt;
+&lt;p&gt;危ないプラグインは使うなよ、ということらしいけど、debug.rbしか入っていないから、これが原因ではなさそう。&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax-errors&quot;&gt;Syntax errors&lt;/h3&gt;
+&lt;p&gt;sourceファイルのタイポかその辺のエラーじゃないか、ってことらしい。jekyllのsafeオプションを付けてビルドしてみる。以下のコマンドを実行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build --safe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これも問題なし。&lt;/p&gt;
+
+&lt;h3 id=&quot;source-setting&quot;&gt;Source setting&lt;/h3&gt;
+&lt;p&gt;GitHubのビルドサーバーでは、sourceセッティングをオーバーライドするらしく、sourceの設定を弄っていると正しくビルドされないらしい。&lt;/p&gt;
+
+&lt;p&gt;sourceセッティングは変更していないので、これも原因ではなさそう。&lt;/p&gt;
+
+&lt;h3 id=&quot;submodules-in-pages&quot;&gt;Submodules in Pages&lt;/h3&gt;
+&lt;p&gt;リポジトリでサブモジュールを使っている場合、ビルド時に自動でそのサブモジュールをpullするらしい。
+この時、サブモジュールのアクセス先がpublicではなくprivateだとアクセスできずに失敗するらしい。&lt;/p&gt;
+
+&lt;p&gt;サブモジュールは使っていないので、これも原因ではなさそう。&lt;/p&gt;
+
+&lt;h3 id=&quot;viewing-build-error-messages&quot;&gt;Viewing build error messages&lt;/h3&gt;
+&lt;p&gt;ビルドのエラーログを確認しろ、とのこと。&lt;/p&gt;
+
+&lt;p&gt;ローカル環境でビルドする以外の方法として、&lt;a href=&quot;http://travisci.org/&quot;&gt;Travis CI&lt;/a&gt;を使ってビルドエラーメッセージを確認することができるらしい。&lt;/p&gt;
+
+&lt;p&gt;手順は以下&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gemfileを準備
+リポジトリのルート直下に、ファイル名”Gemfile”で以下の内容を記述する。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;https://rubygems.org&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;github-pages&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.travis.ymlの準備
+テストサービスの設定に、ファイル名”.travis.yml”で以下の内容を記述する。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;ss&quot;&gt;language: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;script: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bundle exec jekyll build&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;この状態でGitHubへpushするとTravic CIでビルドジョブが実行される、らしい。&lt;/p&gt;
+
+&lt;h4 id=&quot;travis-ci&quot;&gt;Travis CIのビルドメッセージを確認&lt;/h4&gt;
+&lt;p&gt;Travis CIの画面から、以下のビルドメッセージを確認すると&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+Configuration file: /home/travis/build/modalsoul/modalsoul.github.com/_config.yml
+   Deprecation: Auto-regeneration can no longer be &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;from your configuration file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;. Use the --watch/-w &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;-line option instead.
+    Source: /home/travis/build/modalsoul/modalsoul.github.com
+    Destination: /home/travis/build/modalsoul/modalsoul.github.com/_site
+    Generating...   Liquid Exception: invalid byte sequence &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;UTF-8 &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;post.html
+error: invalid byte sequence &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;UTF-8. Use --trace to view backtrace
+The &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bundle exec jekyll build&quot;&lt;/span&gt; exited with 1.
+Done. Your build exited with 1.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;どうやらpost.htmlのパースでエラーになっているらしい。&lt;/p&gt;
+
+&lt;h2 id=&quot;liquid-exception&quot;&gt;Liquid Exceptionの確認&lt;/h2&gt;
+
+&lt;h3 id=&quot;markdown&quot;&gt;markdownパーサー&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Liquid Exception: invalid byte sequence in UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;で、ググってみると&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://igarashikuniaki.net/diary/20130519.html&quot;&gt;Github Pages で page build failed エラー｜いがいが日記&lt;/a&gt;
+&lt;a href=&quot;http://tokkonopapa.github.io/blog/2013/08/04/liquid-exception-error/&quot;&gt;Liquid Exception: Invalid Byte Sequence in UTF-8 in atom.xml｜T.I.D.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;markdownパーサーによってはビルドエラーになる場合があるらしい。
+markdownパーサーを、”redcarpet”、”kramdown”、”rdiscount”と変えて試してみた結果、どのmarkdownパーサーでも同じくビルド失敗。&lt;/p&gt;
+
+&lt;p&gt;markdownパーサー依存の問題ではなさそう。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;詳細なエラー発生箇所の確認&lt;/h3&gt;
+&lt;p&gt;エラー発生箇所をもっと詳細に特定するために、post.htmlの中身を削ってビルド・エラーメッセージの確認を行う。
+どうやら_includes/helpers/reference_thumbnail.htmlを使っている箇所が原因のよう。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;解決&lt;/h2&gt;
+&lt;p&gt;上記のファイルをエディタで開いてみると、文字コードがSHIFT_JISとなっていた。&lt;/p&gt;
+
+&lt;p&gt;これをUTF-8に変換してビルドしてみると、成功。&lt;/p&gt;
+
+&lt;p&gt;調べてみれば、なんてことない初歩的な問題でした。。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 17 Aug 2013 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/environment/2013/08/17/Github-pages-build-failure.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/environment/2013/08/17/Github-pages-build-failure.html</guid>
+        
+        <category>Github-pages</category>
+        
+        <category>Jekyll</category>
+        
+        
+        <category>environment</category>
+        
+      </item>
+    
+      <item>
+        <title>node.js+JSDoc3によるインラインAPIドキュメントの生成</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;謝辞&lt;/h2&gt;
+&lt;p&gt;以下の記事を参考にさせていただきました。感謝です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sites.google.com/site/jsdoc3manualjp/&quot;&gt;JsDoc3-manual-jp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://efcl.info/2011/0226/res2291/&quot;&gt;JavaScript対応APIドキュメント生成ツールのまとめ｜ Web scratch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;javascript&quot;&gt;JavaScriptのドキュメンテーション&lt;/h2&gt;
+
+&lt;p&gt;今回は「JavaScriptでコメントを書くときどうすればいいんだ？」という疑問から出発しました。
+Javaだと、JavaDocの形式で書いておけば、Eclipse等のIDEを使うと対象のメソッドをわざわざ見に行かなくともコメント、引数、戻り値が見れて便利です。&lt;/p&gt;
+
+&lt;p&gt;またJavaScriptの場合、静的型付け言語のように型システムによる補助が受けられないので、個人的にものぐさからJavaScriptでいい感じにコメント・ドキュメンテーションが残せるものを調べました。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;jsdoc3&quot;&gt;JSDoc3を使う&lt;/h2&gt;
+
+&lt;p&gt;ドキュメント生成ルーツは色々あるようですが、今回はJSDoc3を使いました。
+&lt;a href=&quot;https://github.com/jsdoc3/jsdoc&quot;&gt;
+&lt;img title=&quot;jsdoc3/jsdoc ・ GitHub&quot; src=&quot;http://capture.heartrails.com/120x90/cool/1351633993677?https://github.com/jsdoc3/jsdoc&quot; alt=&quot;https://github.com/jsdoc3/jsdoc&quot; width=&quot;120&quot; height=&quot;90&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;現状だとJSDocの後継”JsDoc Toolkit”がメジャーなようですが、さらに後継のJSDoc3を使いました。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;jsdoc3-1&quot;&gt;JSDoc3のインストール&lt;/h2&gt;
+&lt;p&gt;JSDoc3をインストールします。
+npmが既にインストールされている前提で&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;npm install -g git://github.com/jsdoc3/jsdoc.git&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;npmはとても便利ですね&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;アノテーションの記述&lt;/h2&gt;
+
+&lt;p&gt;ドキュメントに落としたいオブジェクトの直前にJSDocアノテーションを追加します。
+Javaと同じく”/＊＊… ＊/ “で囲まれた部分がアノテーションとなります。&lt;/p&gt;
+
+&lt;p&gt;タグは、”＠… “で記述します。&lt;/p&gt;
+
+&lt;p&gt;実際にnode.js＋expressのコードにアノテーションを追加してみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/modalsoul/expressSample/blob/master/app.js&quot;&gt;
+&lt;img title=&quot;expressSample/app.js at master ・ modalsoul/expressSample ・ GitHub&quot; src=&quot;http://capture.heartrails.com/200x150/cool/1351634631326?https://github.com/modalsoul/expressSample/blob/master/app.js&quot; alt=&quot;https://github.com/modalsoul/expressSample/blob/master/app.js&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;タグの種類&lt;/h2&gt;
+&lt;p&gt;上記のサンプルでは@param, @return, @moduleの3種類しか使っていませんが、JSDocには他にもタグが用意されているようです。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;主要属性&lt;/h3&gt;
+
+&lt;p&gt;@param  @return  @extends&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;アクセス識別子&lt;/h3&gt;
+
+&lt;p&gt;@private  @protected  @public  @access&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;オブジェクト属性&lt;/h3&gt;
+
+&lt;p&gt;@class  @constructor  @function  @constant  @member  @enum  …&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;オブジェクト参照属性&lt;/h3&gt;
+
+&lt;p&gt;@static  @inner&lt;/p&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;説明&lt;/h3&gt;
+
+&lt;p&gt;@desc  @example  @fileoverview  @classdesc …&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;サポート情報&lt;/h3&gt;
+
+&lt;p&gt;@version  @since  @deprecated  @see  @author&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;ドキュメントの生成&lt;/h2&gt;
+&lt;p&gt;JSDocを実行して、ドキュメントを生成します。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;jsdoc app.js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://modalsoul.github.com/assets/sample/jsdoc-out/56ea328d1a.html&quot;&gt;生成されたドキュメントはこちら&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Oct 2012 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/report/2012/10/30/how-to-use-jsdoc.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/30/how-to-use-jsdoc.html</guid>
+        
+        <category>node.js</category>
+        
+        <category>JavaScript</category>
+        
+        <category>JSDoc3</category>
+        
+        
+        <category>report</category>
+        
+      </item>
+    
+      <item>
+        <title>node.js+express+log4jsでのアクセスログローテーション</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;謝辞&lt;/h2&gt;
+&lt;p&gt;以下の記事を参考にさせていただきました。感謝です。&lt;/p&gt;
+
+&lt;p&gt;*&lt;a href=&quot;http://blog.shonanshachu.com/2012/10/nodejsexpressaccess-log-log-rotate.html&quot;&gt;【Node.js】expressでaccess log + log rotate ｜ 湘南社中テクニカルブログ&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;nodejsexpress&quot;&gt;node.jsとexpressでのアクセスログ&lt;/h2&gt;
+
+&lt;p&gt;node.js+expressには、express標準のloggerだとログの出力先をファイルにすると、対象のファイルがずっとオープン状態になってしまう、という欠点があります。
+(※:もしかしたら私が回避方法を知らないだけかもしれませんが。）&lt;/p&gt;
+
+&lt;p&gt;そのため、いい感じのログをファイル出力し、日次でローテーションする、というような運用ができません。&lt;/p&gt;
+
+&lt;p&gt;1ファイルに長々とアクセスログが出力されるようでは、運用もままならないので、log4jsを使ってexpressのアクセスログをいい感じにローテーションできるようにしたいと思います。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;log4js&quot;&gt;log4jsを使う&lt;/h2&gt;
+
+&lt;p&gt;LoggingFrameworkのlog4jsについては、こちらで紹介しています&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://modalsoul.github.com/report/2012/10/14/node-js-log4js/&quot;&gt;node.js+log4jsで、ログローテーションする&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://modalsoul.github.com/report/2012/10/14/node-js-log4js/&quot;&gt;
+&lt;img title=&quot;Now Capturing...&quot; src=&quot;http://capture.heartrails.com/120x90/cool?http://modalsoul.github.com/report/2012/10/14/node-js-log4js/&quot; alt=&quot;http://modalsoul.github.com/report/2012/10/14/node-js-log4js/&quot; width=&quot;120&quot; height=&quot;90&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;実際のコードはこんな感じ。※:要リファクタリング
+&lt;script src=&quot;https://gist.github.com/3973839.js&quot;&gt;
+&lt;/script&gt;
+app.routerの前で、functionを入れログレベルをinfoで出力させています。&lt;/p&gt;
+
+&lt;p&gt;実際にexpressをスタートさせ、ブラウザからアクセスすると以下のようなログが出力されます。&lt;/p&gt;
+
+&lt;p&gt;access.log&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-29 23:06:18.732] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] dateFile - 127.0.0.1	Mon Oct 29 2012 23:06:18 GMT+0900 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;東京 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;標準時&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;	GET	/	200	-	Mozilla/5.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Windows NT 6.1; WOW64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; AppleWebKit/537.4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;KHTML, like Gecko&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Chrome/22.0.1229.94 Safari/537.4
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-29 23:06:18.968] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] dateFile - 127.0.0.1	Mon Oct 29 2012 23:06:18 GMT+0900 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;東京 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;標準時&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;	GET	/stylesheets/style.css	200	http://localhost:3000/	Mozilla/5.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Windows NT 6.1; WOW64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; AppleWebKit/537.4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;KHTML, like Gecko&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Chrome/22.0.1229.94 Safari/537.4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Mon, 29 Oct 2012 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html</guid>
+        
+        <category>node.js</category>
+        
+        <category>express</category>
+        
+        <category>log4js</category>
+        
+        
+        <category>report</category>
+        
+      </item>
+    
+      <item>
+        <title>node.jsにおける、npmとpackage.jsonという作法について</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;謝辞&lt;/h2&gt;
+&lt;p&gt;以下の記事を参考にさせていただきました。感謝です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://kysnm.hatenablog.com/entry/20111225/1324828008&quot;&gt;npm についてまとめてみる - need something more…&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://d.hatena.ne.jp/sugyan/20110909/1315575343&quot;&gt;npm configで設定値を管理 - すぎゃーんメモ&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://d.hatena.ne.jp/Jxck/20120410/1334071898&quot;&gt;Node.js の起動オプション、環境変数、npm start の話 - Block Rockin’ Codes&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;npmpackagejson&quot;&gt;npmとpackage.jsonによるパッケージ管理&lt;/h2&gt;
+
+&lt;p&gt;node.jsではパッケージ管理にnpmを用います。そしてRubyのGemfileのように、パッケージのバージョン管理をするには、package.jsonファイルを用います。&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/3914746.js&quot;&gt; 
+&lt;/script&gt;
+
+&lt;p&gt;こんな感じ。&lt;/p&gt;
+
+&lt;p&gt;上記のようにバージョンを直接指定する以外にも、”xx以上”といった指定もできるようです。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;express&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;&amp;gt;=2.3.11&quot;&lt;/span&gt;,&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;package.jsonの編集が終わったら、&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;これで、一括でパッケージがインストールされます。&lt;/p&gt;
+
+&lt;p&gt;パッケージは、./node_modules配下にインストールされるので、git等でバージョン管理を行う場合、.gitignoreにnode_modules/を追加すると良いようです。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;npm-startpackagejson&quot;&gt;npm startによる起動とpackage.jsonでの設定&lt;/h2&gt;
+
+&lt;p&gt;package.jsonには、パッケージの依存関係以外にも色々記述できます。
+例えばscriptsに、prestart,start,poststartを記述しておくと、npm startで実行されるようです。&lt;/p&gt;
+
+&lt;p&gt;以下のような、package.jsonを記述した場合、&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;NODE_ENV=production NODE_PATH=lib node app&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;npm installを実行することで、実行環境を切り替え、モジュールをPATHに追加し、起動します。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;プロジェクトを作成する人は、package.jsonをキチンと書く。&lt;/p&gt;
+
+&lt;p&gt;cloneして使う人は、npm installして、npm startする。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 18 Oct 2012 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/report/2012/10/18/about-npm-start-and-package-json.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/18/about-npm-start-and-package-json.html</guid>
+        
+        <category>node.js</category>
+        
+        <category>npm</category>
+        
+        <category>package.json</category>
+        
+        
+        <category>report</category>
+        
+      </item>
+    
+      <item>
+        <title>node.js+log4jsで、ログローテーションする</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;インストール&lt;/h2&gt;
+
+&lt;p&gt;まずは、環境の準備です。&lt;/p&gt;
+
+&lt;p&gt;npmでlog4jsをインストールします。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install log4js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;ログ出力のために必要な手順&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;1. log4jsを読み込む&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var log4js &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; require&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;log4js&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;2. loggerを取得する&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;3. ログレベルを指定して、ログ出力する&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;logger.info&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;This is test.&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;4．実行結果&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;node logging-sample.js
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-14 14:04:49.197] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;default] - This is test.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;出力形式を指定せずに実行すると、デフォルトで標準出力にログ出力されます。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;ログをファイルに出力する手順&lt;/h2&gt;
+
+&lt;p&gt;ログの出力先を標準出力からファイルに変更します。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;1. appenders.jsonを生成&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
+	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
+&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;2. log4jsに設定を反映&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;log4js.configure&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
+	appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
+	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
+	&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;3. loggerを取得する&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;file&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;getLoggerの引数に、上記で設定したtypeを指定します。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;4．実行結果&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;実行すると、プロダクトと同じ階層に”logger.log”ファイルが生成され、以下のように出力されます。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-14 18:50:33.876] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] file - This is test.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;ログファイルの出力先を変更する&lt;/h3&gt;
+&lt;p&gt;appendersのfilenameに、ファイルパスを含めて記載すると、出力先を任意に変更できます。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;log4js.configure&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
+	appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
+	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logs/logging.log&quot;&lt;/span&gt;,
+	&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;上記の設定で実行すると、プロダクトと同階層にある”logs”ディレクトリ配下に、”logger.log”ファイルが生成され、ログが出力されます。&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;&lt;b&gt;ただし&lt;/b&gt;、パスにしていしたディレクトリは自動で生成はされないので、あらかじめディレクトリを生成しておく必要があります。&lt;/i&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;ログファイルのローテーションを設定する手順&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot;&gt;&lt;img title=&quot;Date rolling file appender ・ nomiddlename/log4js-node Wiki ・ GitHub&quot; src=&quot;http://capture.heartrails.com/200x150/cool/1350212685200?https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot; alt=&quot;https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;
+&lt;/a&gt;
+ログファイルを日次でローテーションするよう設定します。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;1. appenders.jsonを生成&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;dateFile&quot;&lt;/span&gt;,
+	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
+	&lt;span class=&quot;s2&quot;&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;-yyyy-MM-dd&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;2. log4jsに設定を反映する&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;log4js.configure({
+	appenders: [{
+	“type”: “dateFile”,
+	“filename”: “logging.log”,
+	“pattern”: “-yyyy-MM-dd”
+	}]
+});&lt;/p&gt;
+
+&lt;p&gt;ここで設定している”pattern”は、ローテーションで生成されるログファイル名のpostfixです。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;3. loggerを取得する&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;dateFile&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;getLoggerの引数に、上記で設定したtypeを指定します。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;4. ローテーションの動作&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;上記設定の場合、初回起動時は”filename”の設定値の”logging.log”という名前のログファイルが生成されます。&lt;/p&gt;
+
+&lt;p&gt;そして午前0時に、現在の”logging.log”が、”logging.log&lt;i&gt;-yyyy-MM-dd&lt;/i&gt;“にリネームされ新しい”logging.log”が生成されます。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;pattern&quot;&gt;patternの設定&lt;/h3&gt;
+
+&lt;p&gt;patternの設定は、ローテーションされたファイルのpostfixになります。&lt;/p&gt;
+
+&lt;p&gt;patternの設定は、以下の書式が適用されます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;yyyy : 西暦を4桁表示します。2桁表示するには”yy”を指定します。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MM : 月&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;dd : 日&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;hh : 時間(24時間表示)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;mm : 分&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ss : 秒&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;sss : ミリ秒&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;O : タイムゾーン（大文字のOです）&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これでnode.js+log4jsで、ログローテーションできるようになりました。&lt;/p&gt;
+
+&lt;p&gt;最後に、日次でローテーションするサンプル全コードを載せます。&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/3888287.js&quot;&gt; 
+&lt;/script&gt;
+
+&lt;p&gt;この他にもlog4jsには色々な設定ができるようなので、機会を見て調べてみたいと思います。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/report/2012/10/14/node-js-log4js.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/14/node-js-log4js.html</guid>
+        
+        <category>node.js</category>
+        
+        <category>log4js</category>
+        
+        
+        <category>report</category>
+        
+      </item>
+    
+  </channel>
+</rss>
