@@ -5,9 +5,35 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Apr 2016 13:46:19 +0900</pubDate>
-    <lastBuildDate>Thu, 14 Apr 2016 13:46:19 +0900</lastBuildDate>
+    <pubDate>Sun, 12 Jun 2016 23:32:23 +0900</pubDate>
+    <lastBuildDate>Sun, 12 Jun 2016 23:32:23 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q03:カードを裏返せ。
+だいぶ間が空いてしまった。。&lt;/p&gt;
+
+&lt;p&gt;Q: 順番に並んだ1~100までの番号が書かれた100枚のカードが裏返しに置かれている。n番目のカードからn-1枚おきにカードを裏返すのを、2から100までやったとき、最後に裏向きになっているカードの番号を求めろ。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flatMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;だいぶやっつけな感じになってしまった。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 12 Jun 2016 16:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
     
       <item>
         <title>Q02:数列の四則演算|プログラマ脳を鍛える数学パズル</title>
@@ -748,183 +774,6 @@ app.routerの前で、functionを入れログレベルをinfoで出力させて�
         <category>npm</category>
         
         <category>package.json</category>
-        
-        
-        <category>report</category>
-        
-      </item>
-    
-      <item>
-        <title>node.js+log4jsで、ログローテーションする</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;インストール&lt;/h2&gt;
-
-&lt;p&gt;まずは、環境の準備です。&lt;/p&gt;
-
-&lt;p&gt;npmでlog4jsをインストールします。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install log4js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;ログ出力のために必要な手順&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;1. log4jsを読み込む&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var log4js &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; require&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;log4js&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;2. loggerを取得する&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;3. ログレベルを指定して、ログ出力する&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;logger.info&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;This is test.&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;4．実行結果&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;node logging-sample.js
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-14 14:04:49.197] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;default] - This is test.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;出力形式を指定せずに実行すると、デフォルトで標準出力にログ出力されます。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;ログをファイルに出力する手順&lt;/h2&gt;
-
-&lt;p&gt;ログの出力先を標準出力からファイルに変更します。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;1. appenders.jsonを生成&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
-	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
-&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;2. log4jsに設定を反映&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;log4js.configure&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
-	appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
-	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
-	&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;3. loggerを取得する&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;file&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;getLoggerの引数に、上記で設定したtypeを指定します。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;4．実行結果&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;実行すると、プロダクトと同じ階層に”logger.log”ファイルが生成され、以下のように出力されます。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2012-10-14 18:50:33.876] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;INFO] file - This is test.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;ログファイルの出力先を変更する&lt;/h3&gt;
-&lt;p&gt;appendersのfilenameに、ファイルパスを含めて記載すると、出力先を任意に変更できます。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;log4js.configure&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
-	appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;,
-	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logs/logging.log&quot;&lt;/span&gt;,
-	&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;上記の設定で実行すると、プロダクトと同階層にある”logs”ディレクトリ配下に、”logger.log”ファイルが生成され、ログが出力されます。&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;&lt;b&gt;ただし&lt;/b&gt;、パスにしていしたディレクトリは自動で生成はされないので、あらかじめディレクトリを生成しておく必要があります。&lt;/i&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;ログファイルのローテーションを設定する手順&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot;&gt;&lt;img title=&quot;Date rolling file appender ・ nomiddlename/log4js-node Wiki ・ GitHub&quot; src=&quot;http://capture.heartrails.com/200x150/cool/1350212685200?https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot; alt=&quot;https://github.com/nomiddlename/log4js-node/wiki/Date%20rolling%20file%20appender&quot; width=&quot;200&quot; height=&quot;150&quot; /&gt;
-&lt;/a&gt;
-ログファイルを日次でローテーションするよう設定します。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;1. appenders.jsonを生成&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;appenders: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;dateFile&quot;&lt;/span&gt;,
-	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;logging.log&quot;&lt;/span&gt;,
-	&lt;span class=&quot;s2&quot;&gt;&quot;pattern&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;-yyyy-MM-dd&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;2. log4jsに設定を反映する&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;log4js.configure({
-	appenders: [{
-	“type”: “dateFile”,
-	“filename”: “logging.log”,
-	“pattern”: “-yyyy-MM-dd”
-	}]
-});&lt;/p&gt;
-
-&lt;p&gt;ここで設定している”pattern”は、ローテーションで生成されるログファイル名のpostfixです。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;3. loggerを取得する&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;var logger &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; log4js.getLogger&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;dateFile&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;getLoggerの引数に、上記で設定したtypeを指定します。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;4. ローテーションの動作&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;上記設定の場合、初回起動時は”filename”の設定値の”logging.log”という名前のログファイルが生成されます。&lt;/p&gt;
-
-&lt;p&gt;そして午前0時に、現在の”logging.log”が、”logging.log&lt;i&gt;-yyyy-MM-dd&lt;/i&gt;“にリネームされ新しい”logging.log”が生成されます。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;pattern&quot;&gt;patternの設定&lt;/h3&gt;
-
-&lt;p&gt;patternの設定は、ローテーションされたファイルのpostfixになります。&lt;/p&gt;
-
-&lt;p&gt;patternの設定は、以下の書式が適用されます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;yyyy : 西暦を4桁表示します。2桁表示するには”yy”を指定します。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;MM : 月&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;dd : 日&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;hh : 時間(24時間表示)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;mm : 分&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;ss : 秒&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;sss : ミリ秒&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;O : タイムゾーン（大文字のOです）&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これでnode.js+log4jsで、ログローテーションできるようになりました。&lt;/p&gt;
-
-&lt;p&gt;最後に、日次でローテーションするサンプル全コードを載せます。&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/3888287.js&quot;&gt; 
-&lt;/script&gt;
-
-&lt;p&gt;この他にもlog4jsには色々な設定ができるようなので、機会を見て調べてみたいと思います。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/report/2012/10/14/node-js-log4js.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/14/node-js-log4js.html</guid>
-        
-        <category>node.js</category>
-        
-        <category>log4js</category>
         
         
         <category>report</category>
