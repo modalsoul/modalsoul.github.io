@@ -5,9 +5,37 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Jun 2016 23:32:23 +0900</pubDate>
-    <lastBuildDate>Sun, 12 Jun 2016 23:32:23 +0900</lastBuildDate>
+    <pubDate>Wed, 15 Jun 2016 08:43:49 +0900</pubDate>
+    <lastBuildDate>Wed, 15 Jun 2016 08:43:49 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Q04:棒の切り分け|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q04:棒の切り分け。&lt;/p&gt;
+
+&lt;p&gt;Q: 長さ&lt;code class=&quot;highlighter-rouge&quot;&gt;n[cm]&lt;/code&gt;の1本の棒を&lt;code class=&quot;highlighter-rouge&quot;&gt;1[cm]&lt;/code&gt;単位に切り分ける。ただし、1本の棒を一度に切ることが出来るのは1人だけ(ex. 棒が3本あれば同時に3人で切ることができる)。最大&lt;code class=&quot;highlighter-rouge&quot;&gt;m&lt;/code&gt;人いるとき、最短何回で切り分けられるか。&lt;/p&gt;
+
+&lt;p&gt;20cmを3人の場合と、100cmを5人の場合と、それぞれ求めろ。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Tue, 14 Jun 2016 21:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/06/14/math-puzzle-04.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/14/math-puzzle-04.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
     
       <item>
         <title>Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル</title>
@@ -699,81 +727,6 @@ app.routerの前で、functionを入れログレベルをinfoで出力させて�
         <category>express</category>
         
         <category>log4js</category>
-        
-        
-        <category>report</category>
-        
-      </item>
-    
-      <item>
-        <title>node.jsにおける、npmとpackage.jsonという作法について</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;謝辞&lt;/h2&gt;
-&lt;p&gt;以下の記事を参考にさせていただきました。感謝です。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://kysnm.hatenablog.com/entry/20111225/1324828008&quot;&gt;npm についてまとめてみる - need something more…&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://d.hatena.ne.jp/sugyan/20110909/1315575343&quot;&gt;npm configで設定値を管理 - すぎゃーんメモ&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://d.hatena.ne.jp/Jxck/20120410/1334071898&quot;&gt;Node.js の起動オプション、環境変数、npm start の話 - Block Rockin’ Codes&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;npmpackagejson&quot;&gt;npmとpackage.jsonによるパッケージ管理&lt;/h2&gt;
-
-&lt;p&gt;node.jsではパッケージ管理にnpmを用います。そしてRubyのGemfileのように、パッケージのバージョン管理をするには、package.jsonファイルを用います。&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/3914746.js&quot;&gt; 
-&lt;/script&gt;
-
-&lt;p&gt;こんな感じ。&lt;/p&gt;
-
-&lt;p&gt;上記のようにバージョンを直接指定する以外にも、”xx以上”といった指定もできるようです。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;express&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;&amp;gt;=2.3.11&quot;&lt;/span&gt;,&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;package.jsonの編集が終わったら、&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;これで、一括でパッケージがインストールされます。&lt;/p&gt;
-
-&lt;p&gt;パッケージは、./node_modules配下にインストールされるので、git等でバージョン管理を行う場合、.gitignoreにnode_modules/を追加すると良いようです。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;npm-startpackagejson&quot;&gt;npm startによる起動とpackage.jsonでの設定&lt;/h2&gt;
-
-&lt;p&gt;package.jsonには、パッケージの依存関係以外にも色々記述できます。
-例えばscriptsに、prestart,start,poststartを記述しておくと、npm startで実行されるようです。&lt;/p&gt;
-
-&lt;p&gt;以下のような、package.jsonを記述した場合、&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;NODE_ENV=production NODE_PATH=lib node app&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;npm installを実行することで、実行環境を切り替え、モジュールをPATHに追加し、起動します。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;プロジェクトを作成する人は、package.jsonをキチンと書く。&lt;/p&gt;
-
-&lt;p&gt;cloneして使う人は、npm installして、npm startする。&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 18 Oct 2012 00:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/report/2012/10/18/about-npm-start-and-package-json.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/report/2012/10/18/about-npm-start-and-package-json.html</guid>
-        
-        <category>node.js</category>
-        
-        <category>npm</category>
-        
-        <category>package.json</category>
         
         
         <category>report</category>
