@@ -5,9 +5,39 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 18 Jun 2016 00:02:21 +0900</pubDate>
-    <lastBuildDate>Sat, 18 Jun 2016 00:02:21 +0900</lastBuildDate>
+    <pubDate>Sat, 18 Jun 2016 20:39:47 +0900</pubDate>
+    <lastBuildDate>Sat, 18 Jun 2016 20:39:47 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Q07:日付の2進数変換|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q07:日付の2進数変換。&lt;/p&gt;
+
+&lt;p&gt;Q: 1964年10月10日から2020年7月24日の間で、YYYYMMDDの10進数を2進数に変換し、逆向きに並べ替えて10進数に戻した時、元の日付と同じになる日付を求める。&lt;/p&gt;
+
+&lt;p&gt;日付の操作が面倒なので、&lt;a href=&quot;https://github.com/nscala-time/nscala-time&quot;&gt;nscala-time&lt;/a&gt;と&lt;a href=&quot;http://www.joda.org/joda-time/&quot;&gt;Joda-Time&lt;/a&gt;を使う。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.github.nscala_time.time.Imports._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.joda.time.Days&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1964-10-10&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Days&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;daysBetween&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2020-07-24&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getDays&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;YYYYMMdd&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toBinaryString&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;takeRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1001&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sat, 18 Jun 2016 20:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/06/18/math-puzzle-07.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/18/math-puzzle-07.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
     
       <item>
         <title>Q06:（改造版）コラッツの予想|プログラマ脳を鍛える数学パズル</title>
@@ -460,176 +490,6 @@ GithubのREADMEでもこういった現象が起きることが書かれてい�
         <category>jshint</category>
         
         <category>JavaScript</category>
-        
-        
-        <category>environment</category>
-        
-      </item>
-    
-      <item>
-        <title>Github-pagesでPage　build failureにハマった件。またはLiquid　Exception：　invalid　byte　sequence　in　UTF-8になった件。</title>
-        <description>&lt;h2 id=&quot;github&quot;&gt;Githubからの通知の確認&lt;/h2&gt;
-&lt;p&gt;Github-pagesのリポジトリへpushすると以下のような文面のメールが届きます。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Subject: Page build failure
-
-The page build failed with the following error:
-
-page build failed
-
-For information on troubleshooting Jekyll see https://help.github.com/articles/using-jekyll-with-pages#troubleshooting
-If you have any questions please contact GitHub Support.
-
-support@github.com
-https://github.com/contact
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;通知してくれるのはいいんですが、情報量が少ない。。せめてビルド時のエラーログなりを送ってほしい。。。&lt;/p&gt;
-
-&lt;h2 id=&quot;github-1&quot;&gt;Githubのヘルプページの確認&lt;/h2&gt;
-&lt;p&gt;ひとまず、メールに記載されていたURLのページを確認します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://capture.heartrails.com/128x128?https://help.github.com/articles/using-jekyll-with-pages#troubleshooting&quot; alt=&quot;Troubleshooting｜Using Jekyll with Pages｜GitHub Help&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Troubleshootingに記載されている要旨は、「ローカルでビルドして、パースエラーを見つけなさい」とのこと。&lt;/p&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;ローカル環境でビルド&lt;/h3&gt;
-&lt;p&gt;GitHubで使っているJekyllとその依存関係のバージョンについては、&lt;a href=&quot;https://github.com/github/pages-gem/blob/master/github-pages.gemspec#L16&quot;&gt;the same versions of Jekyll and other dependencies that we use&lt;/a&gt;に記載されていて、この時点では以下のバージョンになっていた。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  s.rubygems_version      = &quot;1.8.0&quot;
-  s.required_ruby_version = &quot;~&amp;gt; 1.9.3&quot;
-  ~~~
-  # Jekyll and related dependency versions as used by GitHub Pages. 
-  # For more information see:
-  # https://help.github.com/articles/using-jekyll-with-pages
-
-  s.add_dependency(&quot;RedCloth&quot;,   &quot;= 4.2.9&quot;)
-  s.add_dependency(&quot;jekyll&quot;,     &quot;= 1.1.2&quot;)
-  s.add_dependency(&quot;kramdown&quot;,   &quot;= 1.0.2&quot;)
-  s.add_dependency(&quot;liquid&quot;,     &quot;= 2.5.1&quot;)
-  s.add_dependency(&quot;maruku&quot;,     &quot;= 0.6.1&quot;)
-  s.add_dependency(&quot;rdiscount&quot;,  &quot;= 1.6.8&quot;)
-  s.add_dependency(&quot;redcarpet&quot;,  &quot;= 2.2.2&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ローカルの環境を上記のバージョンに合わせてビルドしてみると、いくつかErrorが。&lt;/p&gt;
-
-&lt;p&gt;エラーの原因は、
-* _postの記事に書かれていたサンプルコードがmarkdownのリンク表記とかぶっていたため、不正なリンクとして解釈されていた
-* URLにマルチバイト文字を含むためエラーになった
-こと&lt;/p&gt;
-
-&lt;p&gt;上記の箇所を修正してローカル環境でビルドしてもエラーや警告が出ないことを確認し、GitHubに再度pushしても、同じくPage build failureとなってしまった。&lt;/p&gt;
-
-&lt;p&gt;ひとまずバージョン依存での問題ではなさそうということはわかった。&lt;/p&gt;
-
-&lt;h2 id=&quot;pages-dont-build-unable-to-run-jekyll&quot;&gt;Pages don’t build: “Unable to run Jekyll”の確認&lt;/h2&gt;
-&lt;p&gt;GitHubのヘルプには、Troubleshootingの手順で確認してもビルドに失敗したら、&lt;a href=&quot;https://help.github.com/articles/pages-don-t-build-unable-to-run-jekyll&quot;&gt;Page doesn’t build&lt;/a&gt; guideを確認するようにと記載されていた。&lt;/p&gt;
-
-&lt;p&gt;このPage does’nt build guideの内容は以下&lt;/p&gt;
-
-&lt;h3 id=&quot;unsafe-plugins&quot;&gt;Unsafe plugins&lt;/h3&gt;
-&lt;p&gt;危ないプラグインは使うなよ、ということらしいけど、debug.rbしか入っていないから、これが原因ではなさそう。&lt;/p&gt;
-
-&lt;h3 id=&quot;syntax-errors&quot;&gt;Syntax errors&lt;/h3&gt;
-&lt;p&gt;sourceファイルのタイポかその辺のエラーじゃないか、ってことらしい。jekyllのsafeオプションを付けてビルドしてみる。以下のコマンドを実行&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build --safe
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;これも問題なし。&lt;/p&gt;
-
-&lt;h3 id=&quot;source-setting&quot;&gt;Source setting&lt;/h3&gt;
-&lt;p&gt;GitHubのビルドサーバーでは、sourceセッティングをオーバーライドするらしく、sourceの設定を弄っていると正しくビルドされないらしい。&lt;/p&gt;
-
-&lt;p&gt;sourceセッティングは変更していないので、これも原因ではなさそう。&lt;/p&gt;
-
-&lt;h3 id=&quot;submodules-in-pages&quot;&gt;Submodules in Pages&lt;/h3&gt;
-&lt;p&gt;リポジトリでサブモジュールを使っている場合、ビルド時に自動でそのサブモジュールをpullするらしい。
-この時、サブモジュールのアクセス先がpublicではなくprivateだとアクセスできずに失敗するらしい。&lt;/p&gt;
-
-&lt;p&gt;サブモジュールは使っていないので、これも原因ではなさそう。&lt;/p&gt;
-
-&lt;h3 id=&quot;viewing-build-error-messages&quot;&gt;Viewing build error messages&lt;/h3&gt;
-&lt;p&gt;ビルドのエラーログを確認しろ、とのこと。&lt;/p&gt;
-
-&lt;p&gt;ローカル環境でビルドする以外の方法として、&lt;a href=&quot;http://travisci.org/&quot;&gt;Travis CI&lt;/a&gt;を使ってビルドエラーメッセージを確認することができるらしい。&lt;/p&gt;
-
-&lt;p&gt;手順は以下&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Gemfileを準備
-リポジトリのルート直下に、ファイル名”Gemfile”で以下の内容を記述する。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;https://rubygems.org&#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;github-pages&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;.travis.ymlの準備
-テストサービスの設定に、ファイル名”.travis.yml”で以下の内容を記述する。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;ss&quot;&gt;language: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;script: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bundle exec jekyll build&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;この状態でGitHubへpushするとTravic CIでビルドジョブが実行される、らしい。&lt;/p&gt;
-
-&lt;h4 id=&quot;travis-ci&quot;&gt;Travis CIのビルドメッセージを確認&lt;/h4&gt;
-&lt;p&gt;Travis CIの画面から、以下のビルドメッセージを確認すると&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
-Configuration file: /home/travis/build/modalsoul/modalsoul.github.com/_config.yml
-   Deprecation: Auto-regeneration can no longer be &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;from your configuration file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;. Use the --watch/-w &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;-line option instead.
-    Source: /home/travis/build/modalsoul/modalsoul.github.com
-    Destination: /home/travis/build/modalsoul/modalsoul.github.com/_site
-    Generating...   Liquid Exception: invalid byte sequence &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;UTF-8 &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;post.html
-error: invalid byte sequence &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;UTF-8. Use --trace to view backtrace
-The &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bundle exec jekyll build&quot;&lt;/span&gt; exited with 1.
-Done. Your build exited with 1.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;どうやらpost.htmlのパースでエラーになっているらしい。&lt;/p&gt;
-
-&lt;h2 id=&quot;liquid-exception&quot;&gt;Liquid Exceptionの確認&lt;/h2&gt;
-
-&lt;h3 id=&quot;markdown&quot;&gt;markdownパーサー&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Liquid Exception: invalid byte sequence in UTF-8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;で、ググってみると&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://igarashikuniaki.net/diary/20130519.html&quot;&gt;Github Pages で page build failed エラー｜いがいが日記&lt;/a&gt;
-&lt;a href=&quot;http://tokkonopapa.github.io/blog/2013/08/04/liquid-exception-error/&quot;&gt;Liquid Exception: Invalid Byte Sequence in UTF-8 in atom.xml｜T.I.D.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;markdownパーサーによってはビルドエラーになる場合があるらしい。
-markdownパーサーを、”redcarpet”、”kramdown”、”rdiscount”と変えて試してみた結果、どのmarkdownパーサーでも同じくビルド失敗。&lt;/p&gt;
-
-&lt;p&gt;markdownパーサー依存の問題ではなさそう。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;詳細なエラー発生箇所の確認&lt;/h3&gt;
-&lt;p&gt;エラー発生箇所をもっと詳細に特定するために、post.htmlの中身を削ってビルド・エラーメッセージの確認を行う。
-どうやら_includes/helpers/reference_thumbnail.htmlを使っている箇所が原因のよう。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;解決&lt;/h2&gt;
-&lt;p&gt;上記のファイルをエディタで開いてみると、文字コードがSHIFT_JISとなっていた。&lt;/p&gt;
-
-&lt;p&gt;これをUTF-8に変換してビルドしてみると、成功。&lt;/p&gt;
-
-&lt;p&gt;調べてみれば、なんてことない初歩的な問題でした。。&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 17 Aug 2013 00:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/environment/2013/08/17/Github-pages-build-failure.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/environment/2013/08/17/Github-pages-build-failure.html</guid>
-        
-        <category>Github-pages</category>
-        
-        <category>Jekyll</category>
         
         
         <category>environment</category>
