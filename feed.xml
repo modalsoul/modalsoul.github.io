@@ -5,9 +5,47 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 22 Jun 2016 10:06:53 +0900</pubDate>
-    <lastBuildDate>Wed, 22 Jun 2016 10:06:53 +0900</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 14:01:23 +0900</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 14:01:23 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Q09:つりあわない男女|プログラマ脳を鍛える数学パズル</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q09:つりあわない男女。&lt;/p&gt;
+
+&lt;p&gt;タイトルが日経ほげほげの婚活イジリねたコラムっぽい。&lt;/p&gt;
+
+&lt;p&gt;Q: 男性20人、女性10人が到着順に並んだ場合、どこで区切っても２つのグループの男女の人数が同じにならないような到着順は何通りあるか。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;man&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;woman&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;man&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;woman&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;基本的な考え方は本の解説と同じだけど、到着順の組み合わせの求め方が違う。&lt;/p&gt;
+
+&lt;p&gt;この辺りの考え方は、kazu-yamamotoさんの&lt;a href=&quot;https://github.com/kazu-yamamoto/recursion-drill/blob/master/README.md&quot;&gt;再帰ドリル&lt;/a&gt;、特に&lt;a href=&quot;https://github.com/kazu-yamamoto/recursion-drill/blob/master/drill/6.md&quot;&gt;再帰のこころ&lt;/a&gt;がわかりやすくて参考になる。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Jun 2016 23:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/06/22/math-puzzle-09.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/22/math-puzzle-09.html</guid>
+        
+        <category>プログラマ脳を鍛える数学パズル</category>
+        
+        <category>Scala</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
     
       <item>
         <title>Q08:優秀な掃除ロボット|プログラマ脳を鍛える数学パズル</title>
@@ -38,6 +76,8 @@
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
+        <category>Scala</category>
+        
         
         <category>programing</category>
         
@@ -67,6 +107,8 @@
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/18/math-puzzle-07.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
+        
+        <category>Scala</category>
         
         
         <category>programing</category>
@@ -107,6 +149,8 @@
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
+        <category>Scala</category>
+        
         
         <category>programing</category>
         
@@ -137,6 +181,8 @@
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
+        <category>Scala</category>
+        
         
         <category>programing</category>
         
@@ -165,6 +211,8 @@
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
+        <category>Scala</category>
+        
         
         <category>programing</category>
         
@@ -190,6 +238,8 @@
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
+        
+        <category>Scala</category>
         
         
         <category>programing</category>
@@ -262,6 +312,8 @@
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
+        <category>Scala</category>
+        
         
         <category>programing</category>
         
@@ -286,6 +338,8 @@
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/03/22/math-puzzle-01.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
+        
+        <category>Scala</category>
         
         
         <category>programing</category>
@@ -343,91 +397,6 @@ Scalaと同じようにリストを生成するような便利な関数がある
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2013/10/14/elixir-prime-number.html</guid>
         
         <category>elixir</category>
-        
-        <category>素数</category>
-        
-        
-        <category>programing</category>
-        
-      </item>
-    
-      <item>
-        <title>Scalaで素数判定【追記アリ】</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;概要&lt;/h2&gt;
-&lt;p&gt;今回は、1&amp;lt;= X &amp;lt;=10^9 の範囲の自然数Xを渡されたとき、Xが素数か否かを判定します。&lt;/p&gt;
-
-&lt;p&gt;判定には、試し割り法を使いました。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;コード&lt;/h2&gt;
-&lt;p&gt;↓のようになりました&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/modalsoul/6902340.js&quot;&gt;
-&lt;/script&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;解説&lt;/h2&gt;
-&lt;p&gt;処理のおおまかな流れは以下のような感じ&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;対象の数字Xを受け取る&lt;/li&gt;
-  &lt;li&gt;Xが１か偶数だったら、素数ではない&lt;/li&gt;
-  &lt;li&gt;3からXの平方根までのリストを作る&lt;/li&gt;
-  &lt;li&gt;リストから偶数を除去&lt;/li&gt;
-  &lt;li&gt;リストの先頭から順に、Xがその数で割り切れるかどうかを調べる&lt;/li&gt;
-  &lt;li&gt;割り切れたら、素数ではない&lt;/li&gt;
-  &lt;li&gt;割り切れずに、リストの末尾まで到達したら、素数&lt;/li&gt;
-  &lt;li&gt;結果を表示&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(x to y).filter().foreach() の形式で書きたかったのでこんな設計になりました。
-なんとなくScalaっぽくてこの書き方が好きなので&lt;/p&gt;
-
-&lt;p&gt;foreachの中の処理で割り切れた場合、明示的なreturnでループを抜けています&lt;/p&gt;
-
-&lt;p&gt;対象の数が大きくなると生成されるリストも大きくなり、ループが長くなるので
-filterの条件を増やして(ex. 3, 5, 7, 11,,,)リストが短くなるようにしてみたりもしたんですが、
-早くなりませんでした、というか若干遅くなった。。。&lt;/p&gt;
-
-&lt;p&gt;filterを追加することでループの回数を減らすことの損益分岐点は、思ったより低かったようです。無念&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;追記&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/gakuzzzz&quot;&gt;@gakuzzzz&lt;/a&gt;さんにコメントいただき、コードを改良しました。&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-    &lt;p&gt;
-        &lt;a href=&quot;https://twitter.com/modal_soul&quot;&gt;@modal_soul&lt;/a&gt; (3L to sqrt(num).toLong by 2) とかすると filter が必要なくなって速くなりそうですね。
-    &lt;/p&gt;&amp;mdash; がくぞ (@gakuzzzz)
-    &lt;a href=&quot;https://twitter.com/gakuzzzz/statuses/387965601525669888&quot;&gt;October 9, 2013&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;
-&lt;/script&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;コード・その２&lt;/h3&gt;
-&lt;script src=&quot;https://gist.github.com/modalsoul/6918594.js&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;(x to y by 2)とすることで、2刻みでリストを生成するので、最初に生成されるリストが短くできる&amp;amp;filterが省略できるわけですね。&lt;/p&gt;
-
-&lt;p&gt;Before:140ms, After:130ms だいたい10msほど速くなりました。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;コード・その３&lt;/h3&gt;
-&lt;script src=&quot;https://gist.github.com/modalsoul/6918797.js&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;returnを使うと例外で遅くなるのでは？という話もあったので、forallを使うパターンも試してみました。
-結果は↑とほぼ同じ結果になりました。
-forallがbooleanを返すので、returnのためのtrue/falseがなくなったので、コードはだいぶ綺麗になった気がします。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 09 Oct 2013 00:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2013/10/09/scala-prime-number.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2013/10/09/scala-prime-number.html</guid>
-        
-        <category>Scala</category>
         
         <category>素数</category>
         
