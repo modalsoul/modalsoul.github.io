@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>node.js+express+log4jsでのアクセスログローテーション</title>
-  <meta name="description" content="謝辞以下の記事を参考にさせていただきました。感謝です。">
+  <title>Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル</title>
+  <meta name="description" content="プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問をやる。今回は、Q21:排他的論理和で作る三角形。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html">
+  <link rel="canonical" href="http://modalsoul.github.io/programing/2016/07/04/math-puzzle-22.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="node.js+express+log4jsでのアクセスログローテーション">
+  <meta property="og:title" content="Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html">
+<meta property="og:url" content="http://modalsoul.github.io/programing/2016/07/04/math-puzzle-22.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://farm4.staticflickr.com/3272/3024100752_36c698bab8_n.jpg">
+<meta property="og:image" content="http://ecx.images-amazon.com/images/I/51XOIRL5WcL._SX349_BO1,204,203,200_.jpg">
 
 
   <div id="fb-root"></div>
@@ -283,81 +283,53 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-10-29T00:00:00+09:00" itemprop="datePublished">Oct 29, 2012</time>
-      <h1 class="post-title" itemprop="name headline">node.js+express+log4jsでのアクセスログローテーション</h1>
+      <time datetime="2016-07-04T23:59:00+09:00" itemprop="datePublished">Jul 4, 2016</time>
+      <h1 class="post-title" itemprop="name headline">Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/report" class="label label-default">report</a>
+          <a href="/programing" class="label label-default">programing</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/node-js" class="label label-default">node.js</a>
+          <a href="/tag/プログラマ脳を鍛える数学パズル" class="label label-default">プログラマ脳を鍛える数学パズル</a>
         
-          <a href="/tag/express" class="label label-default">express</a>
-        
-          <a href="/tag/log4js" class="label label-default">log4js</a>
+          <a href="/tag/scala" class="label label-default">Scala</a>
         
       </div>
     </header>
     
       <div  class="thumbnail">
-        <img src="http://farm4.staticflickr.com/3272/3024100752_36c698bab8_n.jpg" class="post-thumbnail"/>
+        <img src="http://ecx.images-amazon.com/images/I/51XOIRL5WcL._SX349_BO1,204,203,200_.jpg" class="post-thumbnail"/>
       </div>
     
 
     <div class="post-content" itemprop="articleBody">
-      <h2 id="section">謝辞</h2>
-<p>以下の記事を参考にさせていただきました。感謝です。</p>
+      <p><a href="http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G" target="_blank">プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問</a>をやる。今回は、Q21:排他的論理和で作る三角形。</p>
 
-<p>*<a href="http://blog.shonanshachu.com/2012/10/nodejsexpressaccess-log-log-rotate.html">【Node.js】expressでaccess log + log rotate ｜ 湘南社中テクニカルブログ</a></p>
+<p>Q: 「パスカルの三角形」を「右上の数と左上の数の和」ではなく「排他的論理和」で配置した時、2014番目の0が出力される段数を求める。</p>
 
-<hr />
-
-<h2 id="nodejsexpress">node.jsとexpressでのアクセスログ</h2>
-
-<p>node.js+expressには、express標準のloggerだとログの出力先をファイルにすると、対象のファイルがずっとオープン状態になってしまう、という欠点があります。
-(※:もしかしたら私が回避方法を知らないだけかもしれませんが。）</p>
-
-<p>そのため、いい感じのログをファイル出力し、日次でローテーションする、というような運用ができません。</p>
-
-<p>1ファイルに長々とアクセスログが出力されるようでは、運用もままならないので、log4jsを使ってexpressのアクセスログをいい感じにローテーションできるようにしたいと思います。</p>
-
-<hr />
-
-<h2 id="log4js">log4jsを使う</h2>
-
-<p>LoggingFrameworkのlog4jsについては、こちらで紹介しています</p>
-
-<p><a href="http://modalsoul.github.com/report/2012/10/14/node-js-log4js/">node.js+log4jsで、ログローテーションする</a></p>
-
-<p><a href="http://modalsoul.github.com/report/2012/10/14/node-js-log4js/">
-<img title="Now Capturing..." src="http://capture.heartrails.com/120x90/cool?http://modalsoul.github.com/report/2012/10/14/node-js-log4js/" alt="http://modalsoul.github.com/report/2012/10/14/node-js-log4js/" width="120" height="90" />
-</a></p>
-
-<p>実際のコードはこんな感じ。※:要リファクタリング
-<script src="https://gist.github.com/3973839.js">
-</script>
-app.routerの前で、functionを入れログレベルをinfoで出力させています。</p>
-
-<p>実際にexpressをスタートさせ、ブラウザからアクセスすると以下のようなログが出力されます。</p>
-
-<p>access.log</p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">[</span>2012-10-29 23:06:18.732] <span class="o">[</span>INFO] dateFile - 127.0.0.1	Mon Oct 29 2012 23:06:18 GMT+0900 <span class="o">(</span>東京 <span class="o">(</span>標準時<span class="o">))</span>	GET	/	200	-	Mozilla/5.0 <span class="o">(</span>Windows NT 6.1; WOW64<span class="o">)</span> AppleWebKit/537.4 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Chrome/22.0.1229.94 Safari/537.4
-<span class="o">[</span>2012-10-29 23:06:18.968] <span class="o">[</span>INFO] dateFile - 127.0.0.1	Mon Oct 29 2012 23:06:18 GMT+0900 <span class="o">(</span>東京 <span class="o">(</span>標準時<span class="o">))</span>	GET	/stylesheets/style.css	200	http://localhost:3000/	Mozilla/5.0 <span class="o">(</span>Windows NT 6.1; WOW64<span class="o">)</span> AppleWebKit/537.4 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Chrome/22.0.1229.94 Safari/537.4</code></pre></figure>
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">makeCol</span><span class="o">(</span><span class="n">before</span><span class="k">:</span><span class="kt">Seq</span><span class="o">[</span><span class="kt">Int</span><span class="o">])(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="n">before</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">before</span><span class="o">(</span><span class="n">n</span><span class="o">))%</span><span class="mi">2</span>
+<span class="k">def</span> <span class="n">count</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">before</span><span class="k">:</span><span class="kt">Seq</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">zero</span><span class="k">:</span><span class="kt">Int</span><span class="o">=</span><span class="mi">0</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">zero</span> <span class="o">&gt;=</span> <span class="mi">2014</span><span class="o">)</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+  <span class="k">else</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">next</span> <span class="k">=</span> <span class="mi">1</span><span class="o">+:(</span><span class="mi">1</span> <span class="n">until</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="n">makeCol</span><span class="o">(</span><span class="n">before</span><span class="o">)):+</span><span class="mi">1</span>
+    <span class="n">count</span><span class="o">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">zero</span><span class="o">+</span><span class="n">next</span><span class="o">.</span><span class="n">count</span><span class="o">(</span><span class="k">_</span> <span class="o">==</span> <span class="mi">0</span><span class="o">))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">count</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span></code></pre></figure>
 
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programing/2016/07/04/math-puzzle-22.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html" class="hatena-bookmark-button" data-hatena-bookmark-title="node.js+express+log4jsでのアクセスログローテーション" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programing/2016/07/04/math-puzzle-22.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/report/2012/10/29/node-express-access-log-rotation.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/programing/2016/07/04/math-puzzle-22.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -367,16 +339,10 @@ app.routerの前で、functionを入れログレベルをinfoで出力させて�
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/10/30/how-to-use-jsdoc.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;node.js+JSDoc3によるインラインAPIドキュメントの生成</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/10/18/about-npm-start-and-package-json.html" aria-label="Previous">
-          <span aria-hidden="true">node.jsにおける、npmとpackage.jsonという作法について&raquo;</span>
+        <a href="/programing/2016/07/04/math-puzzle-21.html" aria-label="Previous">
+          <span aria-hidden="true">Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル&raquo;</span>
         </a>
       </span>
       
@@ -411,7 +377,7 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
-        <li><a href="/programing/2016/07/08/math-puzzle-22.html">Q22:絡まない糸電話|プログラマ脳を鍛える数学パズル</a></li>
+        <li><a href="/programing/2016/07/04/math-puzzle-22.html">Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル</a></li>
       
         <li><a href="/programing/2016/07/04/math-puzzle-21.html">Q21:排他的論理和で作る三角形|プログラマ脳を鍛える数学パズル</a></li>
       
