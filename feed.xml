@@ -5,9 +5,38 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jul 2016 22:22:43 +0900</pubDate>
-    <lastBuildDate>Wed, 13 Jul 2016 22:22:43 +0900</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 23:23:13 +0900</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 23:23:13 +0900</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</title>
+        <description>&lt;p&gt;趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。
+記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。&lt;/p&gt;
+
+&lt;p&gt;節約とかそういう目的がある訳ではなく、数値があると計測したくなる、くらいのライトな動機からはじめました。&lt;/p&gt;
+
+&lt;p&gt;で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま手で更新するのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにしてみた。&lt;/p&gt;
+
+&lt;p&gt;素のJSがつらかったので、Underscore.jsなりlodashなり使えないか探したら、ありました&lt;a href=&quot;https://sites.google.com/site/scriptsexamples/custom-methods/underscoregs&quot;&gt;UnderscoreGS&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Underscore.jsの完全な互換という訳ではないですが、Underscore.jsにあるいろいろなメソッドが使えます。&lt;/p&gt;
+
+&lt;p&gt;コードはこちら。
+&lt;script src=&quot;https://gist.github.com/modalsoul/a542983c7b4f43acad261912f45d7491.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;あんまりUnderscoreGS使う旨味のないコードだなぁ。。ま、頻繁に手を入れるものでもないので、これにて書き捨て。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 Jul 2016 18:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html</guid>
+        
+        <category>GoogleAppsScript</category>
+        
+        
+        <category>programing</category>
+        
+      </item>
     
       <item>
         <title>Q25:オシャレな靴ひもの結び方｜プログラマ脳を鍛える数学パズル</title>
@@ -315,36 +344,6 @@
         <pubDate>Fri, 01 Jul 2016 23:00:00 +0900</pubDate>
         <link>http://modalsoul.github.io/programing/2016/07/01/math-puzzle-18.html</link>
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/01/math-puzzle-18.html</guid>
-        
-        <category>プログラマ脳を鍛える数学パズル</category>
-        
-        <category>Scala</category>
-        
-        
-        <category>programing</category>
-        
-      </item>
-    
-      <item>
-        <title>Q17:30人31脚に挑戦！|プログラマ脳を鍛える数学パズル</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q17:30人31脚に挑戦！。&lt;/p&gt;
-
-&lt;p&gt;Q: 30人31脚をするときの男女の並び方が何通りあるか求める。ただし、女子が隣り合わないようにする。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;&#39;b&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;b&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;g&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;b&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;b&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&#39;g&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Thu, 30 Jun 2016 23:59:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2016/06/30/math-puzzle-17.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/06/30/math-puzzle-17.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
