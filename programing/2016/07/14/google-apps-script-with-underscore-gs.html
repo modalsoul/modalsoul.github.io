@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</title>
-  <meta name="description" content="趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。">
+  <meta name="description" content="趣味でバイクに乗り出してから、給油と走行距離の情報をGoogleフォームを使って記録してたりします。記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html">
 <meta property="og:site_name" content="modal_soul debriefing">
-<meta property="og:description" content="Googleフォームの集計をApps Scriptで自動化したときに、Underscore.jsを使いたくなったので、そのメモ。">
+<meta property="og:description" content="Googleスプレッドシートの集計をApps Scriptで自動化したときに、Underscore.jsを使いたくなったので、そのメモ。">
 <meta property="og:image" content="https://farm8.staticflickr.com/7193/6924080647_140eefbf8b_z_d.jpg">
 
 
@@ -129,6 +129,12 @@
         
           
           <a class="page-link" href="/poem/index.html">Category archive for poem</a>
+          
+        
+          
+          <a class="page-link" href="/gadget/index.html">Category archive for gadget</a>
+          
+        
           
         
           
@@ -313,12 +319,12 @@
     
 
     <div class="post-content" itemprop="articleBody">
-      <p>趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。
+      <p>趣味でバイクに乗り出してから、給油と走行距離の情報をGoogleフォームを使って記録してたりします。
 記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。</p>
 
 <p>節約とかそういう目的がある訳ではなく、数値があると計測したくなる、くらいのライトな動機からはじめました。</p>
 
-<p>で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま手で更新するのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにしてみた。</p>
+<p>で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま関数でやるのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにした。</p>
 
 <p>素のJSがつらかったので、Underscore.jsなりlodashなり使えないか探したら、ありました<a href="https://sites.google.com/site/scriptsexamples/custom-methods/underscoregs">UnderscoreGS</a>。</p>
 
@@ -327,7 +333,7 @@
 <p>コードはこちら。
 <script src="https://gist.github.com/modalsoul/a542983c7b4f43acad261912f45d7491.js"></script></p>
 
-<p>あんまりUnderscoreGS使う旨味のないコードだなぁ。。ま、頻繁に手を入れるものでもないので、これにて書き捨て。</p>
+<p>あまりUnderscoreGS活用できてないけれど、まぁ頻繁に手を入れるものでもないので、これにて書き捨て。</p>
 
     </div>
     <div class="footer">
@@ -347,6 +353,12 @@
 
     </div>
     <div class="post-paginator">
+      
+      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
+        <a href="/gadget/2016/07/18/ergodox-ez-ordered.html" aria-label="Next">
+          <span aria-hidden="true">&laquo;ErgoDox EZを注文した</span>
+        </a>
+      </span>
       
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
@@ -386,6 +398,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/gadget/2016/07/18/ergodox-ez-ordered.html">ErgoDox EZを注文した</a></li>
+      
         <li><a href="/programing/2016/07/14/google-apps-script-with-underscore-gs.html">GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</a></li>
       
         <li><a href="/programing/2016/07/13/math-puzzle-25.html">Q25:オシャレな靴ひもの結び方｜プログラマ脳を鍛える数学パズル</a></li>
@@ -393,8 +407,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/programing/2016/07/10/math-puzzle-24.html">Q24:完璧に撃ち抜くストラックアウト｜プログラマ脳を鍛える数学パズル</a></li>
       
         <li><a href="/programing/2016/07/09/math-puzzle-23.html">Q23:ブラックジャックで大もうけ!?|プログラマ脳を鍛える数学パズル</a></li>
-      
-        <li><a href="/poem/2016/07/09/rookie-needs-their-philosophy-of-career.html">新人教育で最初に必要なのはキャリア観を持ってもらうことじゃないかという話</a></li>
       
     </ul>
     <h3>Recent Books:</h3>
