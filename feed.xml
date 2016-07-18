@@ -5,8 +5,8 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Jul 2016 23:32:10 +0900</pubDate>
-    <lastBuildDate>Mon, 18 Jul 2016 23:32:10 +0900</lastBuildDate>
+    <pubDate>Tue, 19 Jul 2016 00:41:47 +0900</pubDate>
+    <lastBuildDate>Tue, 19 Jul 2016 00:41:47 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -32,6 +32,110 @@
         
         
         <category>gadget</category>
+        
+      </item>
+    
+      <item>
+        <title>第１部 魔法のSQL 1-2 自己結合の使い方｜達人に学ぶSQL徹底指南書</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;1-2 自己結合の使い方&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;重複順列・順列・組み合わせ&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;順列対&lt;/h3&gt;
+&lt;p&gt;クロス結合して単純に直積を作れば得られる。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;順序対から重複を排除&lt;/h3&gt;
+&lt;p&gt;結合条件によって、同一要素の組み合わせを排除。
+２つのテーブルが実際に存在すると想像することがポイント。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;組み合わせ&lt;/h3&gt;
+&lt;p&gt;等号「=」以外の比較演算子である&lt;や&gt;, &amp;lt;&amp;gt;を使って行う結合を「 **非等値結合** 」と言う。&lt;/や&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;重複行を削除する&lt;/h2&gt;
+&lt;p&gt;自己相関サブクエリを使って重複を削除。
+SQLの動作を考える際に、データの記憶方法（テーブル、ビュー）を考慮する必要はない。どちらも等しく「集合」（関係）。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;部分的に不一致なキーの検索&lt;/h2&gt;
+&lt;p&gt;自己非等値結合を使う。
+結合の代わりに、相関サブクエリを使っても書ける。この場合、DISTINCTが不要になる。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;ランキング&lt;/h2&gt;
+&lt;p&gt;自己非等値結合を使う。
+「同心円的な」（セルコ）再帰的集合を作る。&lt;/p&gt;
+
+&lt;p&gt;※ 結合条件に合致しない場合も結果に反映させるために、内部結合ではなく外部結合を使っている。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;同順位が続いた後に順位を飛ばす&lt;/h3&gt;
+&lt;p&gt;COUNTで件数をだし、順位に使う。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;連続的に出力する&lt;/h3&gt;
+&lt;p&gt;COUNTの対象をDISTINCTにすることで対応。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-10&quot;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;自己結合はとても強力だけど、異なるテーブル同士を対象に行う結合に比べてコスト高。
+※ 特に非等値結合と組み合わせる場合。&lt;/p&gt;
+
+&lt;p&gt;自己結合で使用する結合キーは、なるべく主キーを使うか、インデックスを作成しておく。&lt;/p&gt;
+
+&lt;p&gt;本当に異なるテーブルを結合していると理解しやすい。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jul 2016 18:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-2.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-2.html</guid>
+        
+        <category>SQL</category>
+        
+        
+        <category>booklog</category>
+        
+      </item>
+    
+      <item>
+        <title>第１部 魔法のSQL 1-1 CASE式のススメ｜達人に学ぶSQL徹底指南書</title>
+        <description>&lt;h1 id=&quot;case&quot;&gt;1-1 CASE式のススメ&lt;/h1&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;既存のコード体系を新しい体系に変換して集計する&lt;/h2&gt;
+&lt;p&gt;GROUP BY句でCASE式を使うことで、集計単位を自由に設定できる。動的な変更もできる。&lt;/p&gt;
+
+&lt;p&gt;PostgreSQL,MySQLでは、SELECT句のCASE式に別名をつけて、GROUP BY句で参照できる。※標準違反&lt;/p&gt;
+
+&lt;h2 id=&quot;sql&quot;&gt;異なる条件の集計を1つのSQLで行う&lt;/h2&gt;
+&lt;p&gt;SQLの結果を二次元表形式に整形できる。クロス表の形式で結果が出力される。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;WHERE句で条件分岐させるのは素人のやること。プロはSELECT句で分岐させる。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;check&quot;&gt;CHECK制約で複数の列の条件関係を定義する&lt;/h2&gt;
+&lt;p&gt;CHECK制約でCASE式が使える。
+論理積よりもゆるい条件法で記述できる。&lt;/p&gt;
+
+&lt;h2 id=&quot;update&quot;&gt;条件を分岐させたUPDATE&lt;/h2&gt;
+&lt;p&gt;複数のUPDATEを、CASE式を使って１つのSQLで実現できる。
+退避用の値を用意しなくてすむ。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;テーブル同士のマッチング&lt;/h2&gt;
+&lt;p&gt;DECODE関数などと比べると、CASE式は式の中で式を評価できる（BETWEEN, Like, &amp;gt;, &amp;lt; etc..といった述語群を使える）。&lt;/p&gt;
+
+&lt;h2 id=&quot;case-1&quot;&gt;CASE式の中で集約関数を使う&lt;/h2&gt;
+&lt;p&gt;集約結果に対する条件をHAVING句ではなく、CASE式を使うことでSELECT句で書くことができる。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;HAVING句で条件分岐させるのは素人のやること。プロはSELECT句で分岐させる。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;CASE式は、列名や定数を書ける場所には常に書くことができる。
+便利だからCASE式を使おう。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jul 2016 12:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-1.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-1.html</guid>
+        
+        <category>SQL</category>
+        
+        
+        <category>booklog</category>
         
       </item>
     
@@ -249,96 +353,6 @@
         <pubDate>Mon, 04 Jul 2016 23:59:00 +0900</pubDate>
         <link>http://modalsoul.github.io/programing/2016/07/04/math-puzzle-21.html</link>
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/04/math-puzzle-21.html</guid>
-        
-        <category>プログラマ脳を鍛える数学パズル</category>
-        
-        <category>Scala</category>
-        
-        
-        <category>programing</category>
-        
-      </item>
-    
-      <item>
-        <title>Q20:受難のファサードの魔法陣|プログラマ脳を鍛える数学パズル</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q20:受難のファサードの魔法陣。&lt;/p&gt;
-
-&lt;table class=&quot;table table-striped&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;14&lt;/td&gt;
-      &lt;td&gt;14&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;11&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Q: 上の魔法陣を使い、以下の条件で足し算をした結果、その和が同じになる組み合わせが最もおおくなる値(和)を求める。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;足し合わせるのは、縦・横・斜めに限らない&lt;/li&gt;
-  &lt;li&gt;足し合わせる数字の個数は4つに限らない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;,&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]){(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zipWithIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combinations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;updated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxBy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Scalaの&lt;code class=&quot;highlighter-rouge&quot;&gt;combinations&lt;/code&gt;は、Rubyの&lt;code class=&quot;highlighter-rouge&quot;&gt;combination&lt;/code&gt;と異なり、同じ値を区別&lt;strong&gt;しない&lt;/strong&gt;ので、&lt;code class=&quot;highlighter-rouge&quot;&gt;zipWithIndex&lt;/code&gt;を使って区別するようにしている。すごい無駄感。
-区別しなかったとしても、66になるしね。。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Jul 2016 23:59:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2016/07/03/math-puzzle-20.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/03/math-puzzle-20.html</guid>
-        
-        <category>プログラマ脳を鍛える数学パズル</category>
-        
-        <category>Scala</category>
-        
-        
-        <category>programing</category>
-        
-      </item>
-    
-      <item>
-        <title>Q19:友達の友達は友達？|プログラマ脳を鍛える数学パズル</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q19:友達の友達は友達？。&lt;/p&gt;
-
-&lt;p&gt;Q: 2つの数の最大公約数が1でない場合、それを友達とする。ある数から他のすべての数にたどり着くには、何段階の友達をたどれば良いか数える。1~Nまでの合成から7個を選んだ時、最大で6段階たどることになる最小のNを求める。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#::&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;takeWhile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permutations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foldLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MaxValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)+:(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}:+(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;横に長くなってしまった。。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 02 Jul 2016 23:59:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2016/07/02/math-puzzle-19.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/02/math-puzzle-19.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
