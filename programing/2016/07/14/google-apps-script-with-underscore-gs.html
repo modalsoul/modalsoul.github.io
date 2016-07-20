@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</title>
-  <meta name="description" content="趣味でバイクに乗り出してから、給油と走行距離の情報をGoogleフォームを使って記録してたりします。記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。">
+  <meta name="description" content="趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html">
 <meta property="og:site_name" content="modal_soul debriefing">
-<meta property="og:description" content="Googleスプレッドシートの集計をApps Scriptで自動化したときに、Underscore.jsを使いたくなったので、そのメモ。">
+<meta property="og:description" content="Googleフォームの集計をApps Scriptで自動化したときに、Underscore.jsを使いたくなったので、そのメモ。">
 <meta property="og:image" content="https://farm8.staticflickr.com/7193/6924080647_140eefbf8b_z_d.jpg">
 
 
@@ -307,7 +307,7 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2016-07-14T18:00:00+09:00" itemprop="datePublished">Jul 14, 2016</time>
+      <time datetime="2016-07-14T23:00:00+09:00" itemprop="datePublished">Jul 14, 2016</time>
       <h1 class="post-title" itemprop="name headline">GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
@@ -322,17 +322,19 @@
     </header>
     
       <div  class="thumbnail">
+        
         <img src="https://farm8.staticflickr.com/7193/6924080647_140eefbf8b_z_d.jpg" class="post-thumbnail"/>
+        
       </div>
     
 
     <div class="post-content" itemprop="articleBody">
-      <p>趣味でバイクに乗り出してから、給油と走行距離の情報をGoogleフォームを使って記録してたりします。
+      <p>趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。
 記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。</p>
 
 <p>節約とかそういう目的がある訳ではなく、数値があると計測したくなる、くらいのライトな動機からはじめました。</p>
 
-<p>で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま関数でやるのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにした。</p>
+<p>で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま手で更新するのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにしてみた。</p>
 
 <p>素のJSがつらかったので、Underscore.jsなりlodashなり使えないか探したら、ありました<a href="https://sites.google.com/site/scriptsexamples/custom-methods/underscoregs">UnderscoreGS</a>。</p>
 
@@ -341,7 +343,7 @@
 <p>コードはこちら。
 <script src="https://gist.github.com/modalsoul/a542983c7b4f43acad261912f45d7491.js"></script></p>
 
-<p>あまりUnderscoreGS活用できてないけれど、まぁ頻繁に手を入れるものでもないので、これにて書き捨て。</p>
+<p>あんまりUnderscoreGS使う旨味のないコードだなぁ。。ま、頻繁に手を入れるものでもないので、これにて書き捨て。</p>
 
     </div>
     <div class="footer">
@@ -406,6 +408,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/booklog/2016/07/19/sql-orientation-by-expert-1-3.html">第１部 魔法のSQL 1-3 3値理論とNULL｜達人に学ぶSQL徹底指南書</a></li>
+      
         <li><a href="/gadget/2016/07/18/ergodox-ez-ordered.html">ErgoDox EZを注文した</a></li>
       
         <li><a href="/booklog/2016/07/17/sql-orientation-by-expert-1-2.html">第１部 魔法のSQL 1-2 自己結合の使い方｜達人に学ぶSQL徹底指南書</a></li>
@@ -413,8 +417,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/booklog/2016/07/17/sql-orientation-by-expert-1-1.html">第１部 魔法のSQL 1-1 CASE式のススメ｜達人に学ぶSQL徹底指南書</a></li>
       
         <li><a href="/programing/2016/07/14/google-apps-script-with-underscore-gs.html">GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</a></li>
-      
-        <li><a href="/programing/2016/07/13/math-puzzle-25.html">Q25:オシャレな靴ひもの結び方｜プログラマ脳を鍛える数学パズル</a></li>
       
     </ul>
     <h3>Recent Books:</h3>
