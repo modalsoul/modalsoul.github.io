@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Androidプログラミング入門してみた-アクティビティ編-</title>
-  <meta name="description" content="前回のつづきです。">
+  <title>第１部 魔法のSQL 1-4 HAVING句の力｜達人に学ぶSQL徹底指南書</title>
+  <meta name="description" content="1-4 HAVING句の力">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html">
+  <link rel="canonical" href="http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="Androidプログラミング入門してみた-アクティビティ編-">
+  <meta property="og:title" content="第１部 魔法のSQL 1-4 HAVING句の力｜達人に学ぶSQL徹底指南書">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html">
+<meta property="og:url" content="http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html">
 <meta property="og:site_name" content="modal_soul debriefing">
-<meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
+<meta property="og:description" content="達人に学ぶSQL徹底指南書読書ログ">
+<meta property="og:image" content="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00DIM6330&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=modalsoul-22">
 
 
   <div id="fb-root"></div>
@@ -307,139 +307,64 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-04-04T00:00:00+09:00" itemprop="datePublished">Apr 4, 2012</time>
-      <h1 class="post-title" itemprop="name headline">Androidプログラミング入門してみた-アクティビティ編-</h1>
+      <time datetime="2016-07-19T23:00:00+09:00" itemprop="datePublished">Jul 19, 2016</time>
+      <h1 class="post-title" itemprop="name headline">第１部 魔法のSQL 1-4 HAVING句の力｜達人に学ぶSQL徹底指南書</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/programing" class="label label-default">Programing</a>
+          <a href="/booklog" class="label label-default">booklog</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/android" class="label label-default">Android</a>
+          <a href="/tag/sql" class="label label-default">SQL</a>
         
       </div>
     </header>
     
+      <div  class="thumbnail">
+        
+          <a href="http://www.amazon.co.jp/gp/product/B00DIM6330/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00DIM6330&linkCode=as2&tag=modalsoul-22" target="_blank">
+            <img src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00DIM6330&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=modalsoul-22" class="post-thumbnail"/>
+          </a>
+        
+      </div>
+    
 
     <div class="post-content" itemprop="articleBody">
-      <p><a href="/Programing/2012/04/02/start-android-application-architecture">前回</a>のつづきです。</p>
+      <h1 id="having">1-4 HAVING句の力</h1>
 
-<p>今回も主に書籍（ <a href="http://www.amazon.co.jp/gp/product/4844331272/ref=as_li_ss_il?ie=UTF8&amp;tag=modalsoul-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4844331272">本格アプリを作ろう！ Androidプログラミングレシピ</a>）を参考にして進めます。</p>
+<h2 id="section">データの歯抜けを探す</h2>
+<p>現在の標準SQLでは <strong>HAVING句を単独で使える</strong>。
+ただしその場合、SELECT句で元テーブルの列を参照できなくなるので、定数を指定するか集約関数を使う必要がある。</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/4844331272/ref=as_li_ss_il?ie=UTF8&amp;tag=modalsoul-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4844331272">
-<img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&amp;Format=_SL160_&amp;ASIN=4844331272&amp;MarketPlace=JP&amp;ID=AsinImage&amp;WS=1&amp;tag=modalsoul-22&amp;ServiceVersion=20070822" />
-</a>
-<img src="http://www.assoc-amazon.jp/e/ir?t=modalsoul-22&amp;l=as2&amp;o=9&amp;a=4844331272" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+<h2 id="having-1">HAVING句でサブクエリ：最頻値を求める</h2>
+<p>GROUP BYは、もとの集合から部分集合を作る働きをする。</p>
 
-<h2 id="section">アクティビティについて</h2>
-<p>アクティビティは、<b>android.appp.Activity</b>クラスのサブクラスによって記述される。
-<b>Activity</b>のサブクラスでは、アクティビティが存続する間Androidが呼び出す、<b>ライフサイクルコールバックメソッド</b>をオーバーライドします。</p>
+<h2 id="having-2">HAVING句で自己結合：メジアンを求める</h2>
+<p>大小関係に基づいて部分集合を作るなら、自己非等値結合。</p>
 
-<h4 id="section-1">７つのライフサイクルコールバックメソッド</h4>
+<h2 id="null">NULLを含まない集合を探す</h2>
+<p>COUNT(*)はNULLを数える。COUNT(列名)はNULLを除外して集計する。</p>
 
-<ul>
-  <li>onCreate(Bundle)</li>
-</ul>
+<p>特定の条件を満たす集合に含まれるかどうかを決める関数。 <strong>特性関数</strong></p>
 
-<p>最初にアクティビティが作成されたときに呼び出されるメソッド。このメソッドは、アクティビティのユーザインタフェースを作り、その他のグローバルな初期化（バックグラウンドスレッドの作成など）を必要に応じて実行する。<b>onCreate(Bundle)</b>が呼び出された後に、<b>onStart()</b>が呼び出される。このアクティビティの前の状態が保存されていたら、<b>onCreate()</b>に<b>android.os.Bundle</b>が渡される。（無ければnull参照が渡される）</p>
+<h2 id="section-1">関係除算でバスケット解析</h2>
+<p>ひとつの実体についての情報が複数行に分散して存在する場合、WHERE句で単純にORやINで条件を指定しても正しい結果は得られない。
+WHERE句で指定する条件は、あくまで１行について適用されるから。</p>
 
-<ul>
-  <li>onStart()</li>
-</ul>
-
-<p>アクティビティをユーザに見せる直前に呼び出される。<b>onStart()</b>を呼び出した後、アクティビティがフォアグラウンドに出たときに<b>onResume()</b>を呼び出し、アクティビティが隠されるときに<b>onStop()</b>を呼び出す。</p>
-
-<ul>
-  <li>onRestart()</li>
-</ul>
-
-<p>停止されていたアクティビティが再スタートされる直前に呼び出される。名前の通り。<b>onRestart()</b>の後に<b>onStart()</b>が呼び出される。</p>
-
-<ul>
-  <li>onResume()</li>
-</ul>
-
-<p>アクティビティがユーザと対話処理を始める直前に呼び出される。このアクティビティがフォーカスを得て、ユーザの入力を受けつける。<b>onResume()</b>の呼び出し後に、そのアクティビティを中断する必要がある場合のみ<b>onPause()</b>を呼び出す。</p>
-
-<ul>
-  <li>onPause()</li>
-</ul>
-
-<p>別のアクティビティを再開しようとするときに呼び出される。このメソッドがリターンするまで次のアクティビティが再開されないことに注意。<b>onPause()</b>を呼び出した後、ユーザがそのアクティビティとの対話処理を再開したら<b>onResume()</b>を呼び出し、アクティビティがユーザから見えなくなったら<b>onStop()</b>を呼び出す。</p>
-
-<ul>
-  <li>onStop()</li>
-</ul>
-
-<p>アクティビティがユーザから見えなくなったときに呼び出される。アクティビティが破棄されたか、他のアクティビティが再開されて隠されたかのどちらかの理由で発生する。<b>onStop()</b>を呼び出した後、再びユーザとの対話処理に戻る場合は<b>onRestart()</b>を呼び出し、破棄される場合は<b>onDestroy()</b>が呼び出される。</p>
-
-<ul>
-  <li>onDestroy()</li>
-</ul>
-
-<p>アクティビティが破棄される前に呼び出される。ただし、メモリ不足により強制終了される場合は例外で、<b>onDestroy()</b>は呼び出されない。</p>
-
-<p>これらの７つのメソッドによって、アクティビティのライフサイクル全体が定義され、３つのネストしたループが記述される。</p>
-
-<h3 id="section-2">３つのネストしたループ</h3>
-
-<ul>
-  <li>ライフタイム全体</li>
-</ul>
-
-<p>最初にメソッド<b>onCreate(Bundle)</b>が呼び出されたときから、<b>onDestroy()</b>が呼び出されるまでの全ての期間。</p>
-
-<ul>
-  <li>可視ライフタイム</li>
-</ul>
-
-<p>メソッド<b>onStart()</b>の呼び出しから、それに対応する<b>onStop()</b>の呼び出しまでの期間。この間、ユーザはアクティビティを画面で見られるが、アクティビティがフォアグラウンドで対話処理をしているとは限らない。</p>
-
-<ul>
-  <li>フォアグラウンドタイム</li>
-</ul>
-
-<p>メソッド<b>onResume()</b>の呼び出しから、それに対応する<b>onPause()</b>の呼び出しまでの期間。この間、他の全てのアクティビティより手前にあり、ユーザとの対話処理を行っている。</p>
-
-<p>上記のライフサイクルを図にしたものがこれ</p>
-
-<p><img src="http://codezine.jp/static/images/article/4657/01.gif" alt="アクティビティのライフサイクル" /></p>
-
-<p>これを見てわかるように、<b>onDestroy()</b>は呼び出されない場合があるので、データ保存の処理を書いてもあてにはならない。<b>onPause()</b>の中でコミットするのが一般的。<b>onDestroy()</b>の実装では、アクティビティに割り当てられていたリソースの解放をするのが一般的。</p>
-
-<h2 id="section-3">タスク、アクティビティスタック</h2>
-
-<ul>
-  <li>タスク</li>
-</ul>
-
-<p>相関するアクティビティのシーケンスのこと。アクティビティスタックを提供する。</p>
-
-<ul>
-  <li>アクティビティスタック</li>
-</ul>
-
-<p>相関するアクティビティのシーケンスを記録する。「ヒストリースタック」「バックスタック」とも呼ばれる。</p>
-
-<p>このスタックに最初にプッシュされるアクティビティは、タスクを開始したアクティビティであり、<b>ルートアクティビティ</b>と呼ぶ。実行中のアクティビティは、スタックの一番上に位置する。</p>
-
-<p>実行中のアクティビティが別のアクティビティを起動すると、新しいアクティビティがスタックにプッシュされてフォーカスを得る。前のアクティビティがスタックに残り、停止状態になる。
-ユーザが端末のバックボタンを押すと、現在のアクティビティがポップされて、その前のアクティビティが実行中になる。ポップされたアクティビティは破棄される。このときアクティビティが停止したときのユーザインターフェースの状態がレストアされる。</p>
-
-<p>スタック内のアクティビティの順序は変わることがなく、プッシュもしくはポップされるだけ。アクティビティがスタックにプッシュされるのは、現在のアクティビティによって起動された場合のみ。スタックからポップされるのはバックボタンが押され、アクティビティの使用が終わったとき。</p>
-
+<h2 id="section-2">まとめ</h2>
+<p>WHERE句は <strong>集合の要素</strong> の性質を調べる道具、対してHAVING句は <strong>集合自身</strong> の性質を調べる道具。</p>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Androidプログラミング入門してみた-アクティビティ編-" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html" class="hatena-bookmark-button" data-hatena-bookmark-title="第１部 魔法のSQL 1-4 HAVING句の力｜達人に学ぶSQL徹底指南書" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -449,16 +374,10 @@
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/05/11/scrumdo-full-boost.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;スクラム道 Full Boost 「青物横丁制圧作戦」#scrumdoに参加しました。</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/programing/2012/04/02/start-android-application-architecture.html" aria-label="Previous">
-          <span aria-hidden="true">Androidプログラミング入門してみた-アーキテクチャ編-&raquo;</span>
+        <a href="/booklog/2016/07/19/sql-orientation-by-expert-1-3.html" aria-label="Previous">
+          <span aria-hidden="true">第１部 魔法のSQL 1-3 3値理論とNULL｜達人に学ぶSQL徹底指南書&raquo;</span>
         </a>
       </span>
       
