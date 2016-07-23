@@ -5,9 +5,51 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jul 2016 15:47:38 +0900</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 15:47:38 +0900</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2016 20:36:14 +0900</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 20:36:14 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>第１部 魔法のSQL 1-6 相関サブクエリで行と行を比較する｜達人に学ぶSQL徹底指南書</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;1-6 相関サブクエリで行と行を比較する&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;成長・後退・現状維持&lt;/h2&gt;
+&lt;p&gt;相関サブクエリと自己結合は同値変換可能な場合が多い。&lt;/p&gt;
+
+&lt;p&gt;パフォーマンスは、環境によりけり。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;前年の比較結果を一覧表示する&lt;/h2&gt;
+&lt;p&gt;相関サブクエリをSELECT句に移して、前年と今年の比較をする。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;時系列の歯抜けがある場合：直近と比較&lt;/h2&gt;
+&lt;p&gt;内部結合だと、比較対象のない最初の年度が除外される。
+除外しない場合、自己外部結合を使う。&lt;/p&gt;
+
+&lt;p&gt;極地関数はソートを発生させるので、パフォーマンスが落ちる。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;移動累計と移動平均&lt;/h2&gt;
+&lt;p&gt;相関サブクエリでは、スカラ・サブクエリで行数のカウントを取れる。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;オーバーラップする期間を調べる&lt;/h2&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;相関サブクエリを使うと、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可読性が低くなりやすい&lt;/li&gt;
+  &lt;li&gt;パフォーマンスがよくない&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 21 Jul 2016 23:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/booklog/2016/07/21/sql-orientation-by-expert-1-6.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/21/sql-orientation-by-expert-1-6.html</guid>
+        
+        <category>SQL</category>
+        
+        
+        <category>booklog</category>
+        
+      </item>
     
       <item>
         <title>第１部 魔法のSQL 1-5 外部結合の使い方｜達人に学ぶSQL徹底指南書</title>
@@ -358,40 +400,6 @@ SQLの動作を考える際に、データの記憶方法（テーブル、ビ�
         <pubDate>Sun, 10 Jul 2016 09:00:00 +0900</pubDate>
         <link>http://modalsoul.github.io/programing/2016/07/10/math-puzzle-24.html</link>
         <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/10/math-puzzle-24.html</guid>
-        
-        <category>プログラマ脳を鍛える数学パズル</category>
-        
-        <category>Scala</category>
-        
-        
-        <category>programing</category>
-        
-      </item>
-    
-      <item>
-        <title>Q23:ブラックジャックで大もうけ!?|プログラマ脳を鍛える数学パズル</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G&quot; target=&quot;_blank&quot;&gt;プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問&lt;/a&gt;をやる。今回は、Q23:ブラックジャックで大もうけ!?。&lt;/p&gt;
-
-&lt;p&gt;Q: コインを1枚ずつ賭けていったとき、最初に10枚のコインを持ち、ゲームを24回行った時、手元にコインが残るよパターンが何通りか求める。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scala&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mutable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;,&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;memo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;memo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;game&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Sat, 09 Jul 2016 19:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2016/07/09/math-puzzle-23.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/09/math-puzzle-23.html</guid>
         
         <category>プログラマ脳を鍛える数学パズル</category>
         
