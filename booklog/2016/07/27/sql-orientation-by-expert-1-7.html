@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル</title>
-  <meta name="description" content="プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問をやる。今回は、Q03:カードを裏返せ。だいぶ間が空いてしまった。。">
+  <title>第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書</title>
+  <meta name="description" content="1-7 SQLで集合演算">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html">
+  <link rel="canonical" href="http://modalsoul.github.io/booklog/2016/07/27/sql-orientation-by-expert-1-7.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル">
+  <meta property="og:title" content="第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html">
+<meta property="og:url" content="http://modalsoul.github.io/booklog/2016/07/27/sql-orientation-by-expert-1-7.html">
 <meta property="og:site_name" content="modal_soul debriefing">
-<meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://ecx.images-amazon.com/images/I/51XOIRL5WcL._SX349_BO1,204,203,200_.jpg">
+<meta property="og:description" content="達人に学ぶSQL徹底指南書読書ログ">
+<meta property="og:image" content="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00DIM6330&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=modalsoul-22">
 
 
   <div id="fb-root"></div>
@@ -315,55 +315,101 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2016-06-12T16:00:00+09:00" itemprop="datePublished">Jun 12, 2016</time>
-      <h1 class="post-title" itemprop="name headline">Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル</h1>
+      <time datetime="2016-07-27T23:59:00+09:00" itemprop="datePublished">Jul 27, 2016</time>
+      <h1 class="post-title" itemprop="name headline">第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/programing" class="label label-default">programing</a>
+          <a href="/booklog" class="label label-default">booklog</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/プログラマ脳を鍛える数学パズル" class="label label-default">プログラマ脳を鍛える数学パズル</a>
-        
-          <a href="/tag/scala" class="label label-default">Scala</a>
+          <a href="/tag/sql" class="label label-default">SQL</a>
         
       </div>
     </header>
     
       <div  class="thumbnail">
         
-          <a href="http://www.amazon.co.jp/gp/product/B016QEE30G/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B016QEE30G&linkCode=as2&tag=modalsoul-22" target="_blank">
-            <img src="http://ecx.images-amazon.com/images/I/51XOIRL5WcL._SX349_BO1,204,203,200_.jpg" class="post-thumbnail"/>
+          <a href="http://www.amazon.co.jp/gp/product/B00DIM6330/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00DIM6330&linkCode=as2&tag=modalsoul-22" target="_blank">
+            <img src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00DIM6330&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=modalsoul-22" class="post-thumbnail"/>
           </a>
         
       </div>
     
 
     <div class="post-content" itemprop="articleBody">
-      <p><a href="http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E8%84%B3%E3%82%92%E9%8D%9B%E3%81%88%E3%82%8B%E6%95%B0%E5%AD%A6%E3%83%91%E3%82%BA%E3%83%AB-%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%A7%E9%AB%98%E9%80%9F%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%9B%B8%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B70%E5%95%8F-%E5%A2%97%E4%BA%95%E6%95%8F%E5%85%8B-ebook/dp/B016QEE30G%3FSubscriptionId%3DAKIAJLDE2PXG6A4EGGHQ%26tag%3Dmodalsoul-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB016QEE30G" target="_blank">プログラマ脳を鍛える数学パズル シンプルで高速なコードが書けるようになる70問</a>をやる。今回は、Q03:カードを裏返せ。
-だいぶ間が空いてしまった。。</p>
+      <h1 id="sql">1-7 SQLで集合演算</h1>
 
-<p>Q: 順番に並んだ1~100までの番号が書かれた100枚のカードが裏返しに置かれている。n番目のカードからn-1枚おきにカードを裏返すのを、2から100までやったとき、最後に裏向きになっているカードの番号を求めろ。</p>
+<h2 id="section">導入ー集合演算に関するいくつかの注意点</h2>
 
-<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">var</span> <span class="n">cards</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="kc">false</span><span class="o">))</span>
-<span class="o">(</span><span class="mi">2</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">foreach</span><span class="o">{</span> <span class="n">n</span> <span class="k">=&gt;</span>
-  <span class="n">cards</span> <span class="k">=</span> <span class="n">cards</span><span class="o">.</span><span class="n">map</span><span class="o">{</span><span class="k">case</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">side</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">%</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">!</span><span class="n">side</span> <span class="k">else</span> <span class="n">side</span><span class="o">)}</span>
-<span class="o">}</span>
-<span class="n">cards</span><span class="o">.</span><span class="n">flatMap</span><span class="o">{</span><span class="k">case</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">side</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="k">if</span><span class="o">(</span><span class="n">side</span><span class="o">)</span> <span class="nc">None</span> <span class="k">else</span> <span class="nc">Some</span><span class="o">(</span><span class="n">num</span><span class="o">)}</span></code></pre></figure>
+<ul>
+  <li>注意１：SQLの扱う集合は重複行を許す多重集合のため、それに対応するALLオプションが存在する</li>
+</ul>
 
-<p>だいぶやっつけな感じになってしまった。</p>
+<blockquote>
+  <p>ex.) UNION ALL</p>
+</blockquote>
+
+<p>集合演算は重複排除のために暗黙のソートを発生させるが、<strong>ALLオプションを付けるとソートが行われないのでパフォーマンスが向上する</strong>。</p>
+
+<ul>
+  <li>注意２：演算の順番に優先順位がある
+UNIONとEXCEPTに対して、INTERSECTのほうが先に実行される。</li>
+</ul>
+
+<p>併用する場合、INTERSECT以外を優先的に実行したい場合は、括弧で明示的に演算の順番を指定する必要がある。</p>
+
+<ul>
+  <li>
+    <p>注意３：DBMSごとに集合演算子の実装状況にバラツキがある</p>
+  </li>
+  <li>
+    <p>注意４：除算の標準的な定義がない</p>
+  </li>
+</ul>
+
+<h2 id="section-1">テーブル同士のコンペアー</h2>
+
+<h3 id="section-2">1. 集合の相性チェック：基本編</h3>
+
+<p>ALLオプションを付けなければ重複行を排除する。テーブル同士が同じなら、重複が排除されきれいに重なり合う。</p>
+
+<h3 id="section-3">2. 集合の相性チェック：応用編</h3>
+
+<p>INTERSECTにも冪等姓が成り立つ。</p>
+
+<blockquote>
+  <p>A INTERSECT B = A = B</p>
+</blockquote>
+
+<p>A≠Bの場合、UNIONとINTERSECTの結果は異なり、UNIONの方が絶対に行数が多くなる。</p>
+
+<p><code class="highlighter-rouge">(A UNION B) EXCEPT (A INTERSECT B)</code>が空集合かどうかを判定する。</p>
+
+<p>差分は排他的和集合を選択すればよい。</p>
+
+<h3 id="section-4">3. 差集合で関係除算を表現する</h3>
+<p>要求される集合から引き算して、結果が空集合なら全部備えていた、と判定できる。</p>
+
+<h3 id="section-5">4. 等しい部分集合を見つける</h3>
+<p>集合の相等性を調べる方法には、冪等性か全単射を利用する２通りがある。</p>
+
+<h3 id="section-6">5. 重複行を削除する高速なクエリ</h3>
+<p>極値関数を使って残したいrowidを１つだけ取得し、その集合をテーブル算対から引き算する。</p>
+
+<p>EXCEPTを使うと、補集合を簡単に表現できる。</p>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/booklog/2016/07/27/sql-orientation-by-expert-1-7.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Q03:カードを裏返せ|プログラマ脳を鍛える数学パズル" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/booklog/2016/07/27/sql-orientation-by-expert-1-7.html" class="hatena-bookmark-button" data-hatena-bookmark-title="第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/programing/2016/06/12/math-puzzle-03.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/booklog/2016/07/27/sql-orientation-by-expert-1-7.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -373,16 +419,10 @@
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/programing/2016/06/14/math-puzzle-04.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;Q04:棒の切り分け|プログラマ脳を鍛える数学パズル</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/programing/2016/03/23/math-puzzle-02.html" aria-label="Previous">
-          <span aria-hidden="true">Q02:数列の四則演算|プログラマ脳を鍛える数学パズル&raquo;</span>
+        <a href="/programming/2016/07/24/knockout-js-debounce.html" aria-label="Previous">
+          <span aria-hidden="true">Knockout.jsでdebounceしたかった話&raquo;</span>
         </a>
       </span>
       
