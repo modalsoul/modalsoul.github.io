@@ -5,9 +5,168 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jul 2016 07:54:37 +0900</pubDate>
-    <lastBuildDate>Sat, 30 Jul 2016 07:54:37 +0900</lastBuildDate>
+    <pubDate>Sat, 24 Sep 2016 22:20:20 +0900</pubDate>
+    <lastBuildDate>Sat, 24 Sep 2016 22:20:20 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>コップ本第3版と第2版の差分をメモっとく。第1~10章</title>
+        <description>&lt;p&gt;9/20に&lt;a href=&quot;https://www.amazon.co.jp/Scala%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%A9%E3%83%96%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E7%AC%AC3%E7%89%88-Martin-Odersky/dp/4844381490/ref=as_li_ss_tl?ie=UTF8&amp;amp;qid=1474707665&amp;amp;sr=8-1&amp;amp;keywords=scala%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%A9%E3%83%96%E3%83%AB&amp;amp;linkCode=ll1&amp;amp;tag=modalsoul-22&amp;amp;linkId=5bbda6023af579e812cd7415c8465eb0&quot;&gt;Scalaスケーラブルプログラミング&lt;/a&gt;の第3版が出版されて、しかも第3版から電子書籍にも対応したので、早速入手した。&lt;/p&gt;
+
+&lt;p&gt;せっかくなんで、手元の第2版と読み比べして、差分をメモってく。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;第01章 スケーラブルな言語&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;scala&quot;&gt;第02章 Scalaプログラミングの第一歩&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;scala-1&quot;&gt;第03章 Scalaプログラミングの次の一歩&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;第04章 クラスとオブジェクト&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;4.2 クラス、フィールド、メソッド&lt;/h2&gt;
+&lt;p&gt;結果型の省略に関して、クラス内で宣言されたpublicメソッドの結果型を明示的に提示することが適切な方法、と紹介されている。&lt;/p&gt;
+
+&lt;h2 id=&quot;app&quot;&gt;4.5 Appトレイト&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scala.Application&lt;/code&gt;トレイトは、コマンドライン引数を使えなかったが、&lt;code class=&quot;highlighter-rouge&quot;&gt;scala.App&lt;/code&gt;トレイトは&lt;code class=&quot;highlighter-rouge&quot;&gt;args&lt;/code&gt;という名前の文字列の配列を指定しておけば、コマンドライン引数にアクセスできる。&lt;/p&gt;
+
+&lt;p&gt;こんな感じ&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sample&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arg: $arg&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scala Sample hoge fuga
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;arg: hoge
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;arg: fuga
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;第05章 基本型と演算子&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;5.1 基本型&lt;/h2&gt;
+&lt;p&gt;Javaのプリミティブ型に対応するScalaのvalue typeで、小文字の別名についての言及がなくなった。&lt;/p&gt;
+
+&lt;p&gt;2.8では、↓と書いても自動的にScalaのvalue typeと同じように扱われていたらしい。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1f&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1d&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2.11だとコンパイルエラーになる。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;5.2 リテラル&lt;/h2&gt;
+&lt;p&gt;Javaプログラマーのための近道で、読んでおいた方がよいScalaのリテラルに、文字列補間(5.3節)が追加された。
+8進数の整数リテラルをサポートしていない記載が追加された。(コードサンプルも追随している)&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;5.3 文字列補間&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;5.3節 文字列補間&lt;/strong&gt; が追加された。&lt;/p&gt;
+
+&lt;h3 id=&quot;s&quot;&gt;s文字列補間子&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;reader&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, $name!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;raw&quot;&gt;raw補間子&lt;/h3&gt;
+&lt;p&gt;s補間子と同様に扱えるが、文字列リテラルのエスケープシーケンスを認識しない。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;\\\\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ちなみにs補間子だと、&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;f&quot;&gt;f補間子&lt;/h3&gt;
+&lt;p&gt;対象の式に出力書式を指定することができる。指定する場合は、対象の式に続いてパーセント記号(%)と書式指定の構文(&lt;code class=&quot;highlighter-rouge&quot;&gt;java.util.Formatter&lt;/code&gt;で定義されていりもの)を記述する。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${math.Pi}%.5f&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.14159&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;出力書式の構文が指定されていない場合、デフォルトでは%sと認識され&lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt;値が代入される。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;5.6 関係演算子と論理演算子&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;salt&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pepper&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;この場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;salt&lt;/code&gt;が&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;なら、&lt;code class=&quot;highlighter-rouge&quot;&gt;pepper&lt;/code&gt;が呼び出されることはない。&lt;/p&gt;
+
+&lt;p&gt;どうしても、式の右辺(この場合&lt;code class=&quot;highlighter-rouge&quot;&gt;pepper&lt;/code&gt;)を評価したいのなら、代わりに&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;を使う。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-8&quot;&gt;第06章 関数型スタイルのオブジェクト&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;section-9&quot;&gt;第07章 組み込みの制御構造&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h2 id=&quot;finally&quot;&gt;7.4.3 finally節&lt;/h2&gt;
+&lt;p&gt;try-catch-finallyの括弧の有無について注意書きが追加された。&lt;/p&gt;
+
+&lt;p&gt;※ catch節では、case文を必ず括弧で囲まなければならない。しかし、try節とfinally節では、式を1つだけ含む場合は括弧で囲む必要はない。
+例えば、次のようにも記述できる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-10&quot;&gt;第08章 関数とクロージャー&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;section-11&quot;&gt;第09章 制御の抽象化&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+
+&lt;h1 id=&quot;section-12&quot;&gt;第10章 合成と継承&lt;/h1&gt;
+&lt;p&gt;なし&lt;/p&gt;
+</description>
+        <pubDate>Sat, 24 Sep 2016 18:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/booklog/2016/09/24/cup-book-3rd.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/09/24/cup-book-3rd.html</guid>
+        
+        <category>Scala</category>
+        
+        <category>コップ本第3版</category>
+        
+        
+        <category>booklog</category>
+        
+      </item>
     
       <item>
         <title>第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書</title>
@@ -439,35 +598,6 @@ SQLの動作を考える際に、データの記憶方法（テーブル、ビ�
         
         
         <category>booklog</category>
-        
-      </item>
-    
-      <item>
-        <title>GoogleAppsScriptでGoogleフォームの集計を自動化する。ついでにUnderscoreGS。</title>
-        <description>&lt;p&gt;趣味でバイクに乗り出してから、給油と走行距離情報をGoogleフォームを使って記録してたりします。
-記録している項目は、給油した日付や給油量、金額、ガソリンスタンドの種類と場所、そして走行距離。&lt;/p&gt;
-
-&lt;p&gt;節約とかそういう目的がある訳ではなく、数値があると計測したくなる、くらいのライトな動機からはじめました。&lt;/p&gt;
-
-&lt;p&gt;で、この情報を使って区間燃費や月間燃費を出してグラフ化してみると季節性の変化なんかが見えてきて楽しいんですが、ちまちま手で更新するのが面倒になったので、GoogleAppsScriptを使って、フォーム送信をトリガーに自動でこれらの情報が更新されるようにしてみた。&lt;/p&gt;
-
-&lt;p&gt;素のJSがつらかったので、Underscore.jsなりlodashなり使えないか探したら、ありました&lt;a href=&quot;https://sites.google.com/site/scriptsexamples/custom-methods/underscoregs&quot;&gt;UnderscoreGS&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;Underscore.jsの完全な互換という訳ではないですが、Underscore.jsにあるいろいろなメソッドが使えます。&lt;/p&gt;
-
-&lt;p&gt;コードはこちら。
-&lt;script src=&quot;https://gist.github.com/modalsoul/a542983c7b4f43acad261912f45d7491.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;あんまりUnderscoreGS使う旨味のないコードだなぁ。。ま、頻繁に手を入れるものでもないので、これにて書き捨て。&lt;/p&gt;
-</description>
-        <pubDate>Thu, 14 Jul 2016 23:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/programing/2016/07/14/google-apps-script-with-underscore-gs.html</guid>
-        
-        <category>GoogleAppsScript</category>
-        
-        
-        <category>programing</category>
         
       </item>
     
