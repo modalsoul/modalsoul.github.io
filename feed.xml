@@ -5,9 +5,131 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Oct 2016 13:26:23 +0900</pubDate>
-    <lastBuildDate>Mon, 24 Oct 2016 13:26:23 +0900</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 18:51:13 +0900</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 18:51:13 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Ammonite-REPLを使う</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.lihaoyi.com/Ammonite/&quot;&gt;Ammonite&lt;/a&gt; projectなるものがあるらしい。
+その中の、Ammonite-REPLはリッチなREPLが使える代物らしいので、試してみた。&lt;/p&gt;
+
+&lt;h1 id=&quot;install&quot;&gt;Install&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;sudo curl -L -o /usr/local/bin/amm https://git.io/vP4Gw &amp;amp;&amp;amp; chmod +x /usr/local/bin/amm &amp;amp;&amp;amp; amm&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;hello-world&quot;&gt;Hello World!&lt;/h1&gt;
+
+&lt;p&gt;早速&lt;code class=&quot;highlighter-rouge&quot;&gt;amm&lt;/code&gt;を起動してみる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm
+Loading...
+Welcome to the Ammonite Repl 0.7.8
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Scala 2.11.8 Java 1.8.0_20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+@ println&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ファイルに記述して実行してみる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;println&lt;span class=&quot;se&quot;&gt;\(\&quot;&lt;/span&gt;Hello World&lt;span class=&quot;se&quot;&gt;\!\&quot;\)&lt;/span&gt; &amp;gt; Hello.sc
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Hello.sc
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;# 便利っぽいあれこれ
+## シェルスクリプトっぽく使う&lt;/p&gt;
+
+&lt;p&gt;さっきの&lt;code class=&quot;highlighter-rouge&quot;&gt;Hello.sc&lt;/code&gt;の先頭に、１行追加する。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;#!/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amm&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これでファイルを直接実行できる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;./Hello.sc
+Compiling Hello.sc
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;ファイルをインポートする&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Bar.sc&quot;&gt;val message = &quot;Hello World&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
+println(Bar.message)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Foo.sc
+Compiling Foo.sc
+Compiling Bar.sc
+Hello World
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これで、&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo&lt;/code&gt;で、&lt;code class=&quot;highlighter-rouge&quot;&gt;Bar&lt;/code&gt;で定義されたフィールドやメソッドにアクセスできる。&lt;/p&gt;
+
+&lt;p&gt;sugoi!&lt;/p&gt;
+
+&lt;p&gt;ただし、デフォルトではローカルのスコープに展開してくれないので、&lt;code class=&quot;highlighter-rouge&quot;&gt;Bar.message&lt;/code&gt;みたいな感じになる。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo&lt;/code&gt;でも&lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;でアクセスしたい場合は、↓のように明示する必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
+impor Bar.message
+
+println(message)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import $file.Bar.message&lt;/code&gt;のように１行ではいけないので注意。1行で書くなら、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar.message
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;ワイルドカードでインポート&lt;/h3&gt;
+
+&lt;p&gt;いちいち明示するのが面倒なら、ワイルドカードが使える。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar._
+println(message)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;ライブラリをインポートする&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-ToJson.sc&quot;&gt;import $ivy.`com.typesafe.play::play-json:2.4.6`, play.api.libs.json.Json
+
+val json = Json.toJson(Map(&quot;hello&quot; -&amp;gt; &quot;world&quot;))
+println(json)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm ToJson.sc
+Compiling ToJson.sc
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&quot;world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;play-jsonが使えた
+sugoi!!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 27 Oct 2016 19:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/environment/2016/10/27/ammonite-repl.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/environment/2016/10/27/ammonite-repl.html</guid>
+        
+        <category>Scala</category>
+        
+        <category>Ammonite</category>
+        
+        
+        <category>environment</category>
+        
+      </item>
     
       <item>
         <title>コップ本第3版と第2版の差分をメモっとく。第11~20章</title>
@@ -620,61 +742,6 @@ WHERE句で指定する条件は、あくまで１行について適用される
         
         
         <category>gadget</category>
-        
-      </item>
-    
-      <item>
-        <title>第１部 魔法のSQL 1-2 自己結合の使い方｜達人に学ぶSQL徹底指南書</title>
-        <description>&lt;h1 id=&quot;section&quot;&gt;1-2 自己結合の使い方&lt;/h1&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;重複順列・順列・組み合わせ&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;順列対&lt;/h3&gt;
-&lt;p&gt;クロス結合して単純に直積を作れば得られる。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;順序対から重複を排除&lt;/h3&gt;
-&lt;p&gt;結合条件によって、同一要素の組み合わせを排除。
-２つのテーブルが実際に存在すると想像することがポイント。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;組み合わせ&lt;/h3&gt;
-&lt;p&gt;等号「=」以外の比較演算子である&lt;や&gt;, &amp;lt;&amp;gt;を使って行う結合を「 **非等値結合** 」と言う。&lt;/や&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;重複行を削除する&lt;/h2&gt;
-&lt;p&gt;自己相関サブクエリを使って重複を削除。
-SQLの動作を考える際に、データの記憶方法（テーブル、ビュー）を考慮する必要はない。どちらも等しく「集合」（関係）。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-6&quot;&gt;部分的に不一致なキーの検索&lt;/h2&gt;
-&lt;p&gt;自己非等値結合を使う。
-結合の代わりに、相関サブクエリを使っても書ける。この場合、DISTINCTが不要になる。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-7&quot;&gt;ランキング&lt;/h2&gt;
-&lt;p&gt;自己非等値結合を使う。
-「同心円的な」（セルコ）再帰的集合を作る。&lt;/p&gt;
-
-&lt;p&gt;※ 結合条件に合致しない場合も結果に反映させるために、内部結合ではなく外部結合を使っている。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-8&quot;&gt;同順位が続いた後に順位を飛ばす&lt;/h3&gt;
-&lt;p&gt;COUNTで件数をだし、順位に使う。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-9&quot;&gt;連続的に出力する&lt;/h3&gt;
-&lt;p&gt;COUNTの対象をDISTINCTにすることで対応。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-10&quot;&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;自己結合はとても強力だけど、異なるテーブル同士を対象に行う結合に比べてコスト高。
-※ 特に非等値結合と組み合わせる場合。&lt;/p&gt;
-
-&lt;p&gt;自己結合で使用する結合キーは、なるべく主キーを使うか、インデックスを作成しておく。&lt;/p&gt;
-
-&lt;p&gt;本当に異なるテーブルを結合していると理解しやすい。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 17 Jul 2016 18:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-2.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/17/sql-orientation-by-expert-1-2.html</guid>
-        
-        <category>SQL</category>
-        
-        
-        <category>booklog</category>
         
       </item>
     
