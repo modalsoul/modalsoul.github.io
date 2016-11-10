@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>スクラム道 StaffMeetup20120523に遊びに行ってきました。</title>
-  <meta name="description" content="@nawoto StaffMeetup遊びに行ってみたいです！&mdash; imae masatoshiさん (@modal_soul) 5月 14, 2012">
+  <title>Scala 2.12.0でSAM型</title>
+  <meta name="description" content="Scala 2.12.0がリリースされましたね。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/report/2012/05/23/scrumdo-staff-meet-up.html">
+  <link rel="canonical" href="http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="スクラム道 StaffMeetup20120523に遊びに行ってきました。">
+  <meta property="og:title" content="Scala 2.12.0でSAM型">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/report/2012/05/23/scrumdo-staff-meet-up.html">
+<meta property="og:url" content="http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
+<meta property="og:image" content="http://capture.heartrails.com/400x300?http://www.scala-lang.org/news/2.12.0">
 
 
   <div id="fb-root"></div>
@@ -321,114 +321,86 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-05-23T00:00:00+09:00" itemprop="datePublished">May 23, 2012</time>
-      <h1 class="post-title" itemprop="name headline">スクラム道 StaffMeetup20120523に遊びに行ってきました。</h1>
+      <time datetime="2016-11-10T19:00:00+09:00" itemprop="datePublished">Nov 10, 2016</time>
+      <h1 class="post-title" itemprop="name headline">Scala 2.12.0でSAM型</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/report" class="label label-default">report</a>
+          <a href="/programming" class="label label-default">programming</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/agile" class="label label-default">Agile</a>
-        
-          <a href="/tag/スクラム道" class="label label-default">スクラム道</a>
-        
-          <a href="/tag/ネタ" class="label label-default">ネタ</a>
+          <a href="/tag/scala" class="label label-default">Scala</a>
         
       </div>
     </header>
     
+      <div  class="thumbnail">
+        
+          <a href="http://www.scala-lang.org/news/2.12.0" target="_blank">
+            <img src="http://capture.heartrails.com/400x300?http://www.scala-lang.org/news/2.12.0" class="post-thumbnail"/>
+          </a>
+        
+      </div>
+    
 
     <div class="post-content" itemprop="articleBody">
-      <blockquote class="twitter-tweet" data-in-reply-to="202028418051747841" lang="ja">
-<p>@<a href="https://twitter.com/nawoto">nawoto</a> StaffMeetup遊びに行ってみたいです！</p>
-&mdash; imae masatoshiさん (@modal_soul) 
-<a href="https://twitter.com/modal_soul/status/202042716673159170" data-datetime="2012-05-14T14:28:32+00:00">5月 14, 2012</a>
+      <p><a href="http://www.scala-lang.org/news/2.12.0">Scala 2.12.0</a>がリリースされましたね。</p>
+
+<p>↑のページにこんな記述がありましたね。</p>
+
+<blockquote>
+  <p>Scala and Java 8 interop is also improved for functional code, as methods that take functions can easily be called in both directions using lambda syntax. The FunctionN classes in Scala’s standard library are now Single Abstract Method (SAM) types, and all SAM types are treated uniformly – from type checking through code generation. No class file is generated for a lambda; invokedynamic is used instead.</p>
 </blockquote>
-<script src="//platform.twitter.com/widgets.js" charset="utf-8">
-</script>
 
-<p>こんな流れで、スクラム道のスタッフミーティングに遊びに行ってきました。</p>
+<p>雑訳</p>
 
-<p>スクラム道の活動がどのように運営されてきたのか、イベントに参加するだけではわからないことところを見学でき、愉しかったです。</p>
+<blockquote>
+  <p>ScalaとJavaの相互運用が関数的なコードのために改善されています。ラムダ構文を使うことで、関数を引数にとるメソッドを双方向で簡単に呼び出すことができます。Scalaの標準ライブラリのFuncionNクラスはSingle Abstract Method(SAM)タイプであり、型チェックからコードの生成まで、すべてのSAMタイプが一律に扱われます。ラムダのためにクラスファイルが生成されることはなく、代わりにinvokedynamicが使われます。</p>
+</blockquote>
 
-<p>どうもありがとうございました</p>
+<p>どゆこと？</p>
 
 <hr />
 
-<p><a href="http://partake.in/events/c4e5c8e0-e5d7-4d3c-a1e2-52ad57749078">スクラム道 StaffMeetup20120523-［PARTAKE］</a></p>
+<p>Java8では、ラムダ式を使うことで</p>
 
-<p>勉強会スタイルではないので、覚えている限り雑感をば。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
 
-<p>※多分にミーティング後のものも含まれています。</p>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</code></pre>
+</div>
 
-<p>・イベントにストーリーがある</p>
+<p>なコードを、</p>
 
-<p>・ストーリーが無いものは売り切りになる、続かない</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">);</span> <span class="o">};</span>
+</code></pre>
+</div>
 
-<p>・モチベーションマネジメントがすごい。コミュニティとスタッフがWinWinな関係。</p>
+<p>とスッキリ書ける訳で、Scalaも2.12でSAMの対応が改善されて、</p>
 
-<p>・大崎はロスっぽい</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">task</span><span class="k">:</span><span class="kt">Runnable</span> <span class="o">=</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">)</span>
+</code></pre>
+</div>
 
-<p>・たすけてハラえもん</p>
+<p>とスッキリ書けるようになったんですね</p>
 
-<p>・地獄のちゃんげ</p>
-
-<p>・母親のような心境</p>
-
-<p>・西のちゃんげはいらない</p>
-
-<p>・SlideShare有料プラン押しすぎ</p>
-
-<p>・Speaker Deck馬鹿でいいやつ</p>
-
-<p>・プロレスから学べ</p>
-
-<p>・信頼のayayaレスポンス、でも東京じゃん</p>
-
-<p>・Bで素振り</p>
-
-<p>・uedyo大阪夏の陣</p>
-
-<hr />
-
-<h2 id="section">地方コミュニティ募集</h2>
-
-<blockquote class="twitter-tweet" lang="ja"><p>スクラム道と組んでくれる地方のコミュニティ求む 
-<a href="https://twitter.com/search/%2523scrumdo">#scrumdo</a>
-</p>&mdash; Nishimura Naotoさん (@nawoto) 
-<a href="https://twitter.com/nawoto/status/205305686693904388" data-datetime="2012-05-23T14:34:24+00:00">5月 23, 2012</a>
-</blockquote>
-<script src="//platform.twitter.com/widgets.js" charset="utf-8">
-</script>
-
-<blockquote class="twitter-tweet" lang="ja">
-<p>ちなみにネタじゃなくて本気で一緒にやってくれるとこを募集中です。メンションだけじゃ分かんないんで俺にメールしてくれ 
-<a href="https://twitter.com/search/%2523scrumdo">#scrumdo
-</a>
-</p>&mdash; Nishimura Naotoさん (@nawoto) 
-<a href="https://twitter.com/nawoto/status/205308208510803968" data-datetime="2012-05-23T14:44:26+00:00">5月 23, 2012</a>
-</blockquote>
-<script src="//platform.twitter.com/widgets.js" charset="utf-8">
-</script>
-
-<p>スクラム道では、スクラム道と組んでくれる地方コミュニティを募集しているそうです。</p>
-
-<p>我こそは！という地方コミュニティは名乗りを挙げてみてはどうでしょうか？</p>
-
-<p>※個人的には、会津若松のコミュニティ（あるのか？）にでてきてもらいたいな、と</p>
+<p>やったね、という雑な理解</p>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/report/2012/05/23/scrumdo-staff-meet-up.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/report/2012/05/23/scrumdo-staff-meet-up.html" class="hatena-bookmark-button" data-hatena-bookmark-title="スクラム道 StaffMeetup20120523に遊びに行ってきました。" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programming/2016/11/10/scala-sam-type.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Scala 2.12.0でSAM型" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/report/2012/05/23/scrumdo-staff-meet-up.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -438,16 +410,10 @@
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/05/25/agile-kaihatsu-kihon-no-ki.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;横浜道場 特別編 「アジャイル開発 基本のキ」に参加しました。</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/05/21/everybody-scrum-master.html" aria-label="Previous">
-          <span aria-hidden="true">「全員スクラムマスター。」に参加しました。#devlove&raquo;</span>
+        <a href="/environment/2016/10/27/ammonite-repl.html" aria-label="Previous">
+          <span aria-hidden="true">Ammonite-REPLを使う&raquo;</span>
         </a>
       </span>
       

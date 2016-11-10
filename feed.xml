@@ -5,9 +5,68 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 18:51:13 +0900</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 18:51:13 +0900</lastBuildDate>
+    <pubDate>Thu, 10 Nov 2016 20:39:10 +0900</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2016 20:39:10 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Scala 2.12.0でSAM型</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.scala-lang.org/news/2.12.0&quot;&gt;Scala 2.12.0&lt;/a&gt;がリリースされましたね。&lt;/p&gt;
+
+&lt;p&gt;↑のページにこんな記述がありましたね。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Scala and Java 8 interop is also improved for functional code, as methods that take functions can easily be called in both directions using lambda syntax. The FunctionN classes in Scala’s standard library are now Single Abstract Method (SAM) types, and all SAM types are treated uniformly – from type checking through code generation. No class file is generated for a lambda; invokedynamic is used instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;雑訳&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ScalaとJavaの相互運用が関数的なコードのために改善されています。ラムダ構文を使うことで、関数を引数にとるメソッドを双方向で簡単に呼び出すことができます。Scalaの標準ライブラリのFuncionNクラスはSingle Abstract Method(SAM)タイプであり、型チェックからコードの生成まで、すべてのSAMタイプが一律に扱われます。ラムダのためにクラスファイルが生成されることはなく、代わりにinvokedynamicが使われます。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;どゆこと？&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Java8では、ラムダ式を使うことで&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;なコードを、&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;とスッキリ書ける訳で、Scalaも2.12でSAMの対応が改善されて、&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;とスッキリ書けるようになったんですね&lt;/p&gt;
+
+&lt;p&gt;やったね、という雑な理解&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Nov 2016 19:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programming/2016/11/10/scala-sam-type.html</guid>
+        
+        <category>Scala</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Ammonite-REPLを使う</title>
@@ -60,12 +119,14 @@ Hello World!
 
 &lt;h2 id=&quot;section&quot;&gt;ファイルをインポートする&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Bar.sc&quot;&gt;val message = &quot;Hello World&quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Bar.sc
+val message = &quot;Hello World&quot;
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar
 println(Bar.message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Foo.sc
 Compiling Foo.sc
@@ -82,32 +143,36 @@ Hello World
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo&lt;/code&gt;でも&lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;でアクセスしたい場合は、↓のように明示する必要がある。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
-impor Bar.message
+&lt;p&gt;```Foo.sc
+import $file.Bar
+impor Bar.message&lt;/p&gt;
 
-println(message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;println(message)
+```&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import $file.Bar.message&lt;/code&gt;のように１行ではいけないので注意。1行で書くなら、&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar.message
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar, Bar.message
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;ワイルドカードでインポート&lt;/h3&gt;
 
 &lt;p&gt;いちいち明示するのが面倒なら、ワイルドカードが使える。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar._
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar, Bar._
 println(message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-2&quot;&gt;ライブラリをインポートする&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-ToJson.sc&quot;&gt;import $ivy.`com.typesafe.play::play-json:2.4.6`, play.api.libs.json.Json
+&lt;p&gt;```ToJson.sc
+import $ivy.&lt;code class=&quot;highlighter-rouge&quot;&gt;com.typesafe.play::play-json:2.4.6&lt;/code&gt;, play.api.libs.json.Json&lt;/p&gt;
 
-val json = Json.toJson(Map(&quot;hello&quot; -&amp;gt; &quot;world&quot;))
+&lt;p&gt;val json = Json.toJson(Map(“hello” -&amp;gt; “world”))
 println(json)
-&lt;/code&gt;&lt;/pre&gt;
+```&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm ToJson.sc
 Compiling ToJson.sc
@@ -716,32 +781,6 @@ WHERE句で指定する条件は、あくまで１行について適用される
         
         
         <category>booklog</category>
-        
-      </item>
-    
-      <item>
-        <title>ErgoDox EZを注文した</title>
-        <description>&lt;p&gt;左手の親指の具合がどうもよろしくないので、セパレートかつエルゴノミクスなキーボードを探したら、これに行き着いた次第です。&lt;/p&gt;
-
-&lt;p&gt;で、一式揃ったキット&lt;a href=&quot;https://www.indiegogo.com/projects/ergodox-ez-an-incredible-mechanical-keyboard/x/14602708#/&quot;&gt;ErgoDox EZ&lt;/a&gt;を&lt;a href=&quot;https://www.indiegogo.com/&quot;&gt;INDIEGOGO&lt;/a&gt;で注文した。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ErgoDox EZ Bundle:Blank $295&lt;/li&gt;
-  &lt;li&gt;送料 $30&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;合計：$325&lt;/p&gt;
-
-&lt;p&gt;早くこないかな&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 Jul 2016 22:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/gadget/2016/07/18/ergodox-ez-ordered.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/gadget/2016/07/18/ergodox-ez-ordered.html</guid>
-        
-        <category>ErgoDox</category>
-        
-        
-        <category>gadget</category>
         
       </item>
     
