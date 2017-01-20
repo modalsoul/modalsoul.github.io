@@ -302,6 +302,10 @@
           
         
           
+        
+          
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -365,10 +369,10 @@
 
 <p>Java8では、ラムダ式を使うことで</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">};</span>
@@ -377,13 +381,13 @@
 
 <p>なコードを、</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">);</span> <span class="o">};</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Runnable</span> <span class="n">task</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">);</span> <span class="o">};</span>
 </code></pre>
 </div>
 
 <p>とスッキリ書ける訳で、Scalaも2.12でSAMの対応が改善されて、</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">task</span><span class="k">:</span><span class="kt">Runnable</span> <span class="o">=</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">)</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">task</span><span class="k">:</span><span class="kt">Runnable</span> <span class="o">=</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">"Task is running"</span><span class="o">)</span>
 </code></pre>
 </div>
 
@@ -409,6 +413,12 @@
 
     </div>
     <div class="post-paginator">
+      
+      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
+        <a href="/programming/2017/01/20/giter8-sbt-new-integration.html" aria-label="Next">
+          <span aria-hidden="true">&laquo;sbt、Giter8を統合するってよ</span>
+        </a>
+      </span>
       
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
@@ -448,6 +458,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
+      
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
       
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
@@ -455,8 +467,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
       
         <li><a href="/booklog/2016/09/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第1~10章</a></li>
-      
-        <li><a href="/booklog/2016/07/27/sql-orientation-by-expert-1-7.html">第１部 魔法のSQL 1-7 SQLで集合演算｜達人に学ぶSQL徹底指南書</a></li>
       
     </ul>
     <h3>Recent Books:</h3>
