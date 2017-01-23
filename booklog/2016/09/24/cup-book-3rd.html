@@ -306,6 +306,10 @@
           
         
           
+        
+          
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -378,7 +382,7 @@
 
 <p>こんな感じ</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Sample</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Sample</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
   <span class="k">for</span><span class="o">(</span><span class="n">arg</span> <span class="k">&lt;-</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"arg: $arg"</span><span class="o">)</span>
   <span class="o">}</span>
@@ -386,7 +390,7 @@
 </code></pre>
 </div>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>scala Sample hoge fuga
+<div class="highlighter-rouge"><pre class="highlight"><code>scala Sample hoge fuga
 <span class="gp">&gt; </span>arg: hoge
 <span class="gp">&gt; </span>arg: fuga
 </code></pre>
@@ -399,7 +403,7 @@
 
 <p>2.8では、↓と書いても自動的にScalaのvalue typeと同じように扱われていたらしい。</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">i</span><span class="k">:</span><span class="kt">int</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">i</span><span class="k">:</span><span class="kt">int</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">val</span> <span class="n">f</span><span class="k">:</span><span class="kt">float</span> <span class="o">=</span> <span class="mf">1f</span>
 <span class="k">val</span> <span class="n">d</span><span class="k">:</span><span class="kt">double</span> <span class="o">=</span> <span class="mf">1d</span>
 </code></pre>
@@ -416,7 +420,7 @@
 
 <h3 id="s">s文字列補間子</h3>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">name</span> <span class="k">=</span> <span class="s">"reader"</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">name</span> <span class="k">=</span> <span class="s">"reader"</span>
 <span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Hello, $name!"</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="nc">Hello</span><span class="o">,</span> <span class="n">reader</span><span class="o">!</span>
 </code></pre>
@@ -425,14 +429,14 @@
 <h3 id="raw">raw補間子</h3>
 <p>s補間子と同様に扱えるが、文字列リテラルのエスケープシーケンスを認識しない。</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">println</span><span class="o">(</span><span class="n">raw</span><span class="s">"No\\\\escape!"</span><span class="o">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">println</span><span class="o">(</span><span class="n">raw</span><span class="s">"No\\\\escape!"</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="nc">No</span><span class="o">\\\\</span><span class="n">escape</span><span class="o">!</span>
 </code></pre>
 </div>
 
 <p>ちなみにs補間子だと、</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"No\\\\escape!"</span><span class="o">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"No\\\\escape!"</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="nc">No</span><span class="o">\\</span><span class="n">escape</span><span class="o">!</span>
 </code></pre>
 </div>
@@ -440,7 +444,7 @@
 <h3 id="f">f補間子</h3>
 <p>対象の式に出力書式を指定することができる。指定する場合は、対象の式に続いてパーセント記号(%)と書式指定の構文(<code class="highlighter-rouge">java.util.Formatter</code>で定義されていりもの)を記述する。</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">f</span><span class="s">"${math.Pi}%.5f"</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">f</span><span class="s">"${math.Pi}%.5f"</span>
 <span class="o">&gt;</span> <span class="n">res0</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">3.14159</span>
 </code></pre>
 </div>
@@ -449,7 +453,7 @@
 
 <h2 id="section-7">5.6 関係演算子と論理演算子</h2>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="n">salt</span><span class="k">:</span><span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">"salt"</span><span class="o">);</span> <span class="kc">false</span> <span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="n">salt</span><span class="k">:</span><span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">"salt"</span><span class="o">);</span> <span class="kc">false</span> <span class="o">}</span>
 <span class="k">def</span> <span class="n">pepper</span><span class="k">:</span><span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">"pepper"</span><span class="o">);</span> <span class="kc">true</span> <span class="o">}</span>
 
 <span class="n">salt</span><span class="o">&amp;&amp;</span><span class="n">pepper</span>
@@ -462,7 +466,7 @@
 
 <p>どうしても、式の右辺(この場合<code class="highlighter-rouge">pepper</code>)を評価したいのなら、代わりに<code class="highlighter-rouge">&amp;</code>や<code class="highlighter-rouge">|</code>を使う。</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">salt</span><span class="o">&amp;&amp;</span><span class="n">pepper</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">salt</span><span class="o">&amp;&amp;</span><span class="n">pepper</span>
 
 <span class="o">&gt;</span> <span class="n">salt</span>
 <span class="o">&gt;</span> <span class="n">pepper</span>
@@ -482,7 +486,7 @@
 <p>※ catch節では、case文を必ず括弧で囲まなければならない。しかし、try節とfinally節では、式を1つだけ含む場合は括弧で囲む必要はない。
 例えば、次のようにも記述できる。</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">try</span> <span class="n">t</span><span class="o">()</span> <span class="k">catch</span> <span class="o">{</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">try</span> <span class="n">t</span><span class="o">()</span> <span class="k">catch</span> <span class="o">{</span>
     <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="o">=&gt;</span> <span class="o">...</span>
 <span class="o">}</span> <span class="k">finally</span> <span class="n">f</span><span class="o">()</span>
 </code></pre>
@@ -560,6 +564,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html">BluemixにPlayframeworkアプリケーションをデプロイする</a></li>
+      
         <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
       
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
@@ -567,8 +573,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
       
         <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
-      
-        <li><a href="/booklog/2016/09/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第1~10章</a></li>
       
     </ul>
     <h3>Recent Books:</h3>

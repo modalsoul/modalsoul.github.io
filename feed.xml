@@ -5,26 +5,158 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 13:46:02 +0900</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 13:46:02 +0900</lastBuildDate>
-    <generator>Jekyll v3.3.0</generator>
+    <pubDate>Mon, 23 Jan 2017 21:33:32 +0900</pubDate>
+    <lastBuildDate>Mon, 23 Jan 2017 21:33:32 +0900</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>BluemixにPlayframeworkアプリケーションをデプロイする</title>
+        <description>&lt;p&gt;Bluemixを触りだしたので、HelloWorldとしてWebアプリケーションをデプロイしてみた。&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;準備&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Playframework 2.5.10&lt;/li&gt;
+  &lt;li&gt;Scala 2.11.7&lt;/li&gt;
+  &lt;li&gt;CloudFoundry CLI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上記に加え、Bluemixのアカウントの登録、適当なアプリケーションが実装済みの前提で進めます。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;デプロイ対象を生成する&lt;/h1&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sbt dist&lt;/code&gt;でzipファイルを生成する。
+&lt;strong&gt;[APPLICATION_NAME]&lt;/strong&gt; etc..はプロジェクト固有の値になっているので、適宜読み替え。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;sbt dist
+・・・
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;info] Your package is ready &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; /~/[APPLICATION_NAME]/target/universal/[APPLICATION_NAME-VERSION-SNAPSHOT].zip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;manifestyml&quot;&gt;manifest.ymlファイルを作成する&lt;/h1&gt;
+&lt;p&gt;プロジェクトルートにmanifest.ymlを作成。
+&lt;strong&gt;[HOST_NAME]&lt;/strong&gt;、 &lt;strong&gt;[NAME]&lt;/strong&gt; は任意の値を設定。
+&lt;strong&gt;path&lt;/strong&gt; の設定は、↑のzipファイルのパスを指定。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;manifest.yml
+applications:
+  - host: [HOST_NAME]
+    name: [NAME]
+    buildpack: java_buildpack
+    path: ./target/universal/[APPLICATION_NAME-VERSION-SNAPSHOT].zip
+    instances: 1
+    memory: 512M
+&lt;/code&gt;
+# 認証
+Bluemix登録時のメールアドレスとパスワードを聞かれるので、入力する。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;cf login
+API エンドポイント: https://api.ng.bluemix.net
+
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;Email
+
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;Password
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;api&quot;&gt;APIエンドポイントの設定&lt;/h1&gt;
+&lt;p&gt;↑で認証したエンドポイント以外を使う場合、エンドポイントを指定しなおす必要がある。&lt;/p&gt;
+
+&lt;p&gt;今現在、使用できるエンドポイントは以下の3つ。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;米国南部&lt;/li&gt;
+  &lt;li&gt;英国&lt;/li&gt;
+  &lt;li&gt;シドニー&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;それぞれ設定が異なるので注意。&lt;/p&gt;
+
+&lt;p&gt;使用する組織、スペースが異なる場合も別途設定。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cf api https://api.[REGION].bluemix.net
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;エンドポイント&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;REGION&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;米国南部&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;ng&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;英国&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;eu-gb&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;シドニー&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;au-syd&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;デプロイ&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;cf push
+
+・・・
+
+要求された状態: started
+インスタンス: 1/1
+使用: 512M x 1 インスタンス
+URL: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;HOST_NAME].au-syd.mybluemix.net
+最終アップロード日時: Mon Jan 22 02:33:15 UTC 2017
+スタック: cflinuxfs2
+ビルドパック: java_buildpack
+
+状態   開始日時                 CPU    メモリー           ディスク         詳細
+&lt;span class=&quot;c&quot;&gt;#0   実行   2017-01-22 11:34:21 AM   0.0%   512M の中の 964K   1G の中の 1.3M&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;こんなような出力がされて、完了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;URL&lt;/strong&gt; を叩くと、アプリケーションの動作を確認できる。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Jan 2017 20:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programming/2017/01/22/deploy-playframework-application-to-bluemix.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programming/2017/01/22/deploy-playframework-application-to-bluemix.html</guid>
+        
+        <category>Scala</category>
+        
+        <category>Play2</category>
+        
+        <category>Bluemix</category>
+        
+        <category>CloudFoundryCLI</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>sbt、Giter8を統合するってよ</title>
         <description>&lt;p&gt;これまでScalaのsbtプロジェクトを作成するときは、&lt;a href=&quot;http://www.foundweekends.org/giter8/&quot;&gt;Giter8&lt;/a&gt;を使っていたんですが、sbt 0.13.13から&lt;code class=&quot;highlighter-rouge&quot;&gt;sbt new&lt;/code&gt;でg8テンプレートを使った雛形生成ができるようになったそうです。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.scala-sbt.org/0.13/docs/sbt-new-and-Templates.html&quot;&gt;sbt new and Templates&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;sbt 0.13.13 adds a new command called new, to create new build definitions from a template. The new command is extensible via a mechanism called the template resolver.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.scala-sbt.org/0.13/docs/sbt-new-and-Templates.html&quot;&gt;sbt new and Templates&lt;/a&gt;
+&amp;gt; sbt 0.13.13 adds a new command called new, to create new build definitions from a template. The new command is extensible via a mechanism called the template resolver.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;g8 modalsoul/scala-sbt
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;g8 modalsoul/scala-sbt
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;としていたのが、&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;sbt new modalsoul/scala-sbt
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;sbt new modalsoul/scala-sbt
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -69,10 +201,10 @@
 
 &lt;p&gt;Java8では、ラムダ式を使うことで&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
@@ -81,13 +213,13 @@
 
 &lt;p&gt;なコードを、&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;とスッキリ書ける訳で、Scalaも2.12でSAMの対応が改善されて、&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Task is running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -121,7 +253,7 @@
 
 &lt;p&gt;早速&lt;code class=&quot;highlighter-rouge&quot;&gt;amm&lt;/code&gt;を起動してみる。&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm
 Loading...
 Welcome to the Ammonite Repl 0.7.8
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Scala 2.11.8 Java 1.8.0_20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
@@ -132,39 +264,41 @@ Hello World!
 
 &lt;p&gt;ファイルに記述して実行してみる。&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;println&lt;span class=&quot;se&quot;&gt;\(\&quot;&lt;/span&gt;Hello World&lt;span class=&quot;se&quot;&gt;\!\&quot;\)&lt;/span&gt; &amp;gt; Hello.sc
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;println&lt;span class=&quot;se&quot;&gt;\(\&quot;&lt;/span&gt;Hello World&lt;span class=&quot;se&quot;&gt;\!\&quot;\)&lt;/span&gt; &amp;gt; Hello.sc
 &lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Hello.sc
 Hello World!
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;h1 id=&quot;section&quot;&gt;便利っぽいあれこれ&lt;/h1&gt;
-&lt;h2 id=&quot;section-1&quot;&gt;シェルスクリプトっぽく使う&lt;/h2&gt;
+&lt;p&gt;# 便利っぽいあれこれ
+## シェルスクリプトっぽく使う&lt;/p&gt;
 
 &lt;p&gt;さっきの&lt;code class=&quot;highlighter-rouge&quot;&gt;Hello.sc&lt;/code&gt;の先頭に、１行追加する。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;#!/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amm&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;#!/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amm&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;これでファイルを直接実行できる。&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;./Hello.sc
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;./Hello.sc
 Compiling Hello.sc
 Hello World!
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;ファイルをインポートする&lt;/h2&gt;
+&lt;h2 id=&quot;section&quot;&gt;ファイルをインポートする&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Bar.sc&quot;&gt;val message = &quot;Hello World&quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Bar.sc
+val message = &quot;Hello World&quot;
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar
 println(Bar.message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Foo.sc
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm Foo.sc
 Compiling Foo.sc
 Compiling Bar.sc
 Hello World
@@ -179,34 +313,38 @@ Hello World
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo&lt;/code&gt;でも&lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;でアクセスしたい場合は、↓のように明示する必要がある。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar
-impor Bar.message
+&lt;p&gt;```Foo.sc
+import $file.Bar
+impor Bar.message&lt;/p&gt;
 
-println(message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;println(message)
+```&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import $file.Bar.message&lt;/code&gt;のように１行ではいけないので注意。1行で書くなら、&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar.message
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar, Bar.message
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;ワイルドカードでインポート&lt;/h3&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;ワイルドカードでインポート&lt;/h3&gt;
 
 &lt;p&gt;いちいち明示するのが面倒なら、ワイルドカードが使える。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Foo.sc&quot;&gt;import $file.Bar, Bar._
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.sc
+import $file.Bar, Bar._
 println(message)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;ライブラリをインポートする&lt;/h2&gt;
+&lt;h2 id=&quot;section-2&quot;&gt;ライブラリをインポートする&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-ToJson.sc&quot;&gt;import $ivy.`com.typesafe.play::play-json:2.4.6`, play.api.libs.json.Json
+&lt;p&gt;```ToJson.sc
+import $ivy.&lt;code class=&quot;highlighter-rouge&quot;&gt;com.typesafe.play::play-json:2.4.6&lt;/code&gt;, play.api.libs.json.Json&lt;/p&gt;
 
-val json = Json.toJson(Map(&quot;hello&quot; -&amp;gt; &quot;world&quot;))
+&lt;p&gt;val json = Json.toJson(Map(“hello” -&amp;gt; “world”))
 println(json)
-&lt;/code&gt;&lt;/pre&gt;
+```&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm ToJson.sc
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;amm ToJson.sc
 Compiling ToJson.sc
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&quot;world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -246,15 +384,13 @@ sugoi!!&lt;/p&gt;
 &lt;h2 id=&quot;section&quot;&gt;11.4 独自の値クラスの定義&lt;/h2&gt;
 &lt;p&gt;節が追加された。&lt;/p&gt;
 
-&lt;p&gt;値クラスにできるクラスの条件&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;パタメータがちょうど１つ&lt;/li&gt;
-  &lt;li&gt;内容はdefだけ&lt;/li&gt;
-  &lt;li&gt;他のクラスは値クラスを拡張できない&lt;/li&gt;
-  &lt;li&gt;値クラスは、&lt;code class=&quot;highlighter-rouge&quot;&gt;equals&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;を再定義できない&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;値クラスにできるクラスの条件
+* パタメータがちょうど１つ
+* 内容はdefだけ
+* 他のクラスは値クラスを拡張できない
+* 値クラスは、&lt;code class=&quot;highlighter-rouge&quot;&gt;equals&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;を再定義できない&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dollars&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AnyVal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dollars&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AnyVal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;$&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
@@ -270,8 +406,8 @@ sugoi!!&lt;/p&gt;
 &lt;p&gt;なし&lt;/p&gt;
 
 &lt;h1 id=&quot;section-3&quot;&gt;第14章 アサーションとテスト&lt;/h1&gt;
-&lt;h2 id=&quot;section-4&quot;&gt;14.1 アサーション&lt;/h2&gt;
-&lt;p&gt;アサーションをコンパイル時に有効・無効化する方法が変わった。&lt;/p&gt;
+&lt;p&gt;## 14.1 アサーション
+アサーションをコンパイル時に有効・無効化する方法が変わった。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;第2版 : JVMの&lt;code class=&quot;highlighter-rouge&quot;&gt;-ea&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;-da&lt;/code&gt;オプション&lt;/li&gt;
@@ -280,7 +416,7 @@ sugoi!!&lt;/p&gt;
 
 &lt;p&gt;ScalaTestの使い方についての説明が更新された。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;14.3 情報が豊富なエラーレポート&lt;/h2&gt;
+&lt;h2 id=&quot;section-4&quot;&gt;14.3 情報が豊富なエラーレポート&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;expect&lt;/code&gt;が&lt;code class=&quot;highlighter-rouge&quot;&gt;assertResult&lt;/code&gt;に。&lt;/p&gt;
 
@@ -291,14 +427,14 @@ sugoi!!&lt;/p&gt;
 &lt;h2 id=&quot;junittestng&quot;&gt;(第2版)14.4 JUnitとTestNGの使い方&lt;/h2&gt;
 &lt;p&gt;無くなった&lt;/p&gt;
 
-&lt;h2 id=&quot;section-6&quot;&gt;14.4 仕様としてのテスト&lt;/h2&gt;
+&lt;h2 id=&quot;section-5&quot;&gt;14.4 仕様としてのテスト&lt;/h2&gt;
 &lt;p&gt;ScalaTestの説明がバージョンアップに追随。
 specsの説明がspecs2に。&lt;/p&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;14.5 プロパティベーステスト&lt;/h2&gt;
+&lt;h2 id=&quot;section-6&quot;&gt;14.5 プロパティベーステスト&lt;/h2&gt;
 &lt;p&gt;ScalaCheckの説明がバージョンに追随。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-8&quot;&gt;第15章 ケースクラスとパターンマッチ&lt;/h1&gt;
+&lt;h1 id=&quot;section-7&quot;&gt;第15章 ケースクラスとパターンマッチ&lt;/h1&gt;
 
 &lt;h3 id=&quot;matchswitch&quot;&gt;15.1.3 matchとswitchの違い&lt;/h3&gt;
 
@@ -307,9 +443,9 @@ specsの説明がspecs2に。&lt;/p&gt;
 &lt;h4 id=&quot;type-erasure&quot;&gt;15.2.7.1 型消去(type erasure)&lt;/h4&gt;
 &lt;p&gt;scalaインタープリターの&lt;code class=&quot;highlighter-rouge&quot;&gt;-unchecked&lt;/code&gt;オプションの説明が無くなった。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;15.2.8 変数の束縛&lt;/h3&gt;
+&lt;h3 id=&quot;section-8&quot;&gt;15.2.8 変数の束縛&lt;/h3&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnOp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;abs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;@&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnOp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;abs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -320,23 +456,23 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;p&gt;という捕捉が追加された。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-10&quot;&gt;第16章 リストの操作&lt;/h1&gt;
+&lt;h1 id=&quot;section-9&quot;&gt;第16章 リストの操作&lt;/h1&gt;
 
-&lt;h3 id=&quot;section-11&quot;&gt;16.6.2 分割統治原則&lt;/h3&gt;
+&lt;h3 id=&quot;section-10&quot;&gt;16.6.2 分割統治原則&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;???&lt;/code&gt;についての注釈が追加された。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-12&quot;&gt;第17章 コレクションの使い方&lt;/h1&gt;
+&lt;h1 id=&quot;section-11&quot;&gt;第17章 コレクションの使い方&lt;/h1&gt;
 &lt;p&gt;なし&lt;/p&gt;
 
-&lt;h1 id=&quot;section-13&quot;&gt;第18章 ミュータブルオブジェクト&lt;/h1&gt;
+&lt;h1 id=&quot;section-12&quot;&gt;第18章 ミュータブルオブジェクト&lt;/h1&gt;
 &lt;p&gt;章名が、ステートフルオブジェクト =&amp;gt; ミュータブルオブジェクトに変更。&lt;/p&gt;
 
-&lt;h1 id=&quot;section-14&quot;&gt;第19章 型のパラメーター化&lt;/h1&gt;
+&lt;h1 id=&quot;section-13&quot;&gt;第19章 型のパラメーター化&lt;/h1&gt;
 &lt;p&gt;なし&lt;/p&gt;
 
-&lt;h1 id=&quot;section-15&quot;&gt;第20章 抽象メンバー&lt;/h1&gt;
+&lt;h1 id=&quot;section-14&quot;&gt;第20章 抽象メンバー&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-16&quot;&gt;20.8 リファインメント型&lt;/h2&gt;
+&lt;h2 id=&quot;section-15&quot;&gt;20.8 リファインメント型&lt;/h2&gt;
 &lt;p&gt;節名が、&lt;strong&gt;構造的サブ型&lt;/strong&gt; から &lt;strong&gt;リファインメント型&lt;/strong&gt; に変更された。&lt;/p&gt;
 
 &lt;p&gt;9.4節のローンパターンのサンプルを一般化する場合についての説明以降が省略された。&lt;/p&gt;
@@ -383,7 +519,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;p&gt;こんな感じ&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sample&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sample&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arg: $arg&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -391,7 +527,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scala Sample hoge fuga
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scala Sample hoge fuga
 &lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;arg: hoge
 &lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;arg: fuga
 &lt;/code&gt;&lt;/pre&gt;
@@ -404,7 +540,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;p&gt;2.8では、↓と書いても自動的にScalaのvalue typeと同じように扱われていたらしい。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1f&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1d&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -421,7 +557,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;h3 id=&quot;s&quot;&gt;s文字列補間子&lt;/h3&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;reader&quot;&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;reader&quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, $name!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -430,14 +566,14 @@ specsの説明がspecs2に。&lt;/p&gt;
 &lt;h3 id=&quot;raw&quot;&gt;raw補間子&lt;/h3&gt;
 &lt;p&gt;s補間子と同様に扱えるが、文字列リテラルのエスケープシーケンスを認識しない。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;\\\\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;ちなみにs補間子だと、&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No\\\\escape!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -445,7 +581,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 &lt;h3 id=&quot;f&quot;&gt;f補間子&lt;/h3&gt;
 &lt;p&gt;対象の式に出力書式を指定することができる。指定する場合は、対象の式に続いてパーセント記号(%)と書式指定の構文(&lt;code class=&quot;highlighter-rouge&quot;&gt;java.util.Formatter&lt;/code&gt;で定義されていりもの)を記述する。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${math.Pi}%.5f&quot;&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${math.Pi}%.5f&quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.14159&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -454,7 +590,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;h2 id=&quot;section-7&quot;&gt;5.6 関係演算子と論理演算子&lt;/h2&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;salt&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;salt&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pepper&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
@@ -467,7 +603,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 
 &lt;p&gt;どうしても、式の右辺(この場合&lt;code class=&quot;highlighter-rouge&quot;&gt;pepper&lt;/code&gt;)を評価したいのなら、代わりに&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;を使う。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salt&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pepper&lt;/span&gt;
@@ -487,7 +623,7 @@ specsの説明がspecs2に。&lt;/p&gt;
 &lt;p&gt;※ catch節では、case文を必ず括弧で囲まなければならない。しかし、try節とfinally節では、式を1つだけ含む場合は括弧で囲む必要はない。
 例えば、次のようにも記述できる。&lt;/p&gt;
 
-&lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -604,7 +740,7 @@ UNIONとEXCEPTに対して、INTERSECTのほうが先に実行される。&lt;/l
 &lt;p&gt;rateLimit拡張を使うことで、同じことができるようだ。
 通常&lt;code class=&quot;highlighter-rouge&quot;&gt;observable&lt;/code&gt;は変更されるとただちに通知を行うのだけれど、rateLimit拡張を使うことで変更の通知を遅らせることができる。&lt;/p&gt;
 
-&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rateLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;notifyAtFixedRate&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}})&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rateLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;notifyAtFixedRate&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -612,7 +748,7 @@ UNIONとEXCEPTに対して、INTERSECTのほうが先に実行される。&lt;/l
 
 &lt;p&gt;このrateLimit拡張は、methodのデフォルトが&lt;code class=&quot;highlighter-rouge&quot;&gt;notifyAtFixedRate&lt;/code&gt;なので、省略して↓の形式の呼び出しもできる。&lt;/p&gt;
 
-&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rateLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rateLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -730,43 +866,6 @@ debounceという新しい単語を知ることで、連鎖的に知識が広が
         <pubDate>Wed, 20 Jul 2016 23:00:00 +0900</pubDate>
         <link>http://modalsoul.github.io/booklog/2016/07/20/sql-orientation-by-expert-1-5.html</link>
         <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/20/sql-orientation-by-expert-1-5.html</guid>
-        
-        <category>SQL</category>
-        
-        
-        <category>booklog</category>
-        
-      </item>
-    
-      <item>
-        <title>第１部 魔法のSQL 1-4 HAVING句の力｜達人に学ぶSQL徹底指南書</title>
-        <description>&lt;h1 id=&quot;having&quot;&gt;1-4 HAVING句の力&lt;/h1&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;データの歯抜けを探す&lt;/h2&gt;
-&lt;p&gt;現在の標準SQLでは &lt;strong&gt;HAVING句を単独で使える&lt;/strong&gt;。
-ただしその場合、SELECT句で元テーブルの列を参照できなくなるので、定数を指定するか集約関数を使う必要がある。&lt;/p&gt;
-
-&lt;h2 id=&quot;having-1&quot;&gt;HAVING句でサブクエリ：最頻値を求める&lt;/h2&gt;
-&lt;p&gt;GROUP BYは、もとの集合から部分集合を作る働きをする。&lt;/p&gt;
-
-&lt;h2 id=&quot;having-2&quot;&gt;HAVING句で自己結合：メジアンを求める&lt;/h2&gt;
-&lt;p&gt;大小関係に基づいて部分集合を作るなら、自己非等値結合。&lt;/p&gt;
-
-&lt;h2 id=&quot;null&quot;&gt;NULLを含まない集合を探す&lt;/h2&gt;
-&lt;p&gt;COUNT(*)はNULLを数える。COUNT(列名)はNULLを除外して集計する。&lt;/p&gt;
-
-&lt;p&gt;特定の条件を満たす集合に含まれるかどうかを決める関数。 &lt;strong&gt;特性関数&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;関係除算でバスケット解析&lt;/h2&gt;
-&lt;p&gt;ひとつの実体についての情報が複数行に分散して存在する場合、WHERE句で単純にORやINで条件を指定しても正しい結果は得られない。
-WHERE句で指定する条件は、あくまで１行について適用されるから。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;WHERE句は &lt;strong&gt;集合の要素&lt;/strong&gt; の性質を調べる道具、対してHAVING句は &lt;strong&gt;集合自身&lt;/strong&gt; の性質を調べる道具。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 19 Jul 2016 23:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/19/sql-orientation-by-expert-1-4.html</guid>
         
         <category>SQL</category>
         
