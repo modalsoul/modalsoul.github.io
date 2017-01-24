@@ -5,8 +5,8 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 20:26:30 +0900</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 20:26:30 +0900</lastBuildDate>
+    <pubDate>Tue, 24 Jan 2017 20:34:55 +0900</pubDate>
+    <lastBuildDate>Tue, 24 Jan 2017 20:34:55 +0900</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -119,6 +119,8 @@ ok: created action &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ACTION_NAME]
 &lt;/div&gt;
 
 &lt;h1 id=&quot;section-4&quot;&gt;おわり&lt;/h1&gt;
+&lt;p&gt;作ったサンプルのプロジェクトは&lt;a href=&quot;https://github.com/modalsoul/OpenWhiskSampleAction&quot;&gt;こちら&lt;/a&gt;。&lt;/p&gt;
+
 &lt;p&gt;これでなんとなくOpenWhisk使えるようにはなったので、モノリシックをマイクロにするぞ。&lt;/p&gt;
 </description>
         <pubDate>Tue, 24 Jan 2017 20:00:00 +0900</pubDate>
