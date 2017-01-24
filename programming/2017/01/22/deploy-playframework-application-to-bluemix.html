@@ -310,6 +310,8 @@
           
         
           
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -344,8 +346,6 @@
         
           <a href="/tag/bluemix" class="label label-default">Bluemix</a>
         
-          <a href="/tag/cloudfoundrycli" class="label label-default">CloudFoundryCLI</a>
-        
       </div>
     </header>
     
@@ -374,7 +374,7 @@
 <p><code class="highlighter-rouge">sbt dist</code>でzipファイルを生成する。
 <strong>[APPLICATION_NAME]</strong> etc..はプロジェクト固有の値になっているので、適宜読み替え。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>sbt dist
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>sbt dist
 ・・・
 <span class="o">[</span>info] Your package is ready <span class="k">in</span> /~/[APPLICATION_NAME]/target/universal/[APPLICATION_NAME-VERSION-SNAPSHOT].zip
 </code></pre>
@@ -385,19 +385,18 @@
 <strong>[HOST_NAME]</strong>、 <strong>[NAME]</strong> は任意の値を設定。
 <strong>path</strong> の設定は、↑のzipファイルのパスを指定。</p>
 
-<p><code class="highlighter-rouge">manifest.yml
-applications:
+<pre><code class="language-manifest.yml">applications:
   - host: [HOST_NAME]
     name: [NAME]
     buildpack: java_buildpack
     path: ./target/universal/[APPLICATION_NAME-VERSION-SNAPSHOT].zip
     instances: 1
     memory: 512M
-</code>
-# 認証
-Bluemix登録時のメールアドレスとパスワードを聞かれるので、入力する。</p>
+</code></pre>
+<h1 id="section-2">認証</h1>
+<p>Bluemix登録時のメールアドレスとパスワードを聞かれるので、入力する。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>cf login
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>cf login
 API エンドポイント: https://api.ng.bluemix.net
 
 <span class="gp">&gt; </span>Email
@@ -421,7 +420,7 @@ API エンドポイント: https://api.ng.bluemix.net
 
 <p>使用する組織、スペースが異なる場合も別途設定。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cf api https://api.[REGION].bluemix.net
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cf api https://api.[REGION].bluemix.net
 </code></pre>
 </div>
 <hr />
@@ -451,9 +450,9 @@ API エンドポイント: https://api.ng.bluemix.net
 
 <hr />
 
-<h1 id="section-2">デプロイ</h1>
+<h1 id="section-3">デプロイ</h1>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>cf push
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>cf push
 
 ・・・
 
@@ -493,6 +492,12 @@ URL: <span class="o">[</span>HOST_NAME].au-syd.mybluemix.net
     </div>
     <div class="post-paginator">
       
+      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
+        <a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" aria-label="Next">
+          <span aria-hidden="true">&laquo;OpenWhisk+Scalaで作るServerless Architectureとっかかり</span>
+        </a>
+      </span>
+      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
         <a href="/programming/2017/01/20/giter8-sbt-new-integration.html" aria-label="Previous">
@@ -531,6 +536,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">OpenWhisk+Scalaで作るServerless Architectureとっかかり</a></li>
+      
         <li><a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html">BluemixにPlayframeworkアプリケーションをデプロイする</a></li>
       
         <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
@@ -538,8 +545,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
       
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
-      
-        <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
       
     </ul>
     <h3>Recent Books:</h3>

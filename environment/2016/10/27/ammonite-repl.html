@@ -310,6 +310,8 @@
           
         
           
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -366,7 +368,7 @@
 
 <p>早速<code class="highlighter-rouge">amm</code>を起動してみる。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm
 Loading...
 Welcome to the Ammonite Repl 0.7.8
 <span class="o">(</span>Scala 2.11.8 Java 1.8.0_20<span class="o">)</span>
@@ -377,41 +379,39 @@ Hello World!
 
 <p>ファイルに記述して実行してみる。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span><span class="nb">echo </span>println<span class="se">\(\"</span>Hello World<span class="se">\!\"\)</span> &gt; Hello.sc
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span><span class="nb">echo </span>println<span class="se">\(\"</span>Hello World<span class="se">\!\"\)</span> &gt; Hello.sc
 <span class="gp">&gt; </span>amm Hello.sc
 Hello World!
 </code></pre>
 </div>
-<p># 便利っぽいあれこれ
-## シェルスクリプトっぽく使う</p>
+<h1 id="section">便利っぽいあれこれ</h1>
+<h2 id="section-1">シェルスクリプトっぽく使う</h2>
 
 <p>さっきの<code class="highlighter-rouge">Hello.sc</code>の先頭に、１行追加する。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">#!/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">amm</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="o">#!/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">amm</span>
 <span class="n">println</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">)</span>
 </code></pre>
 </div>
 
 <p>これでファイルを直接実行できる。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>./Hello.sc
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>./Hello.sc
 Compiling Hello.sc
 Hello World!
 </code></pre>
 </div>
 
-<h2 id="section">ファイルをインポートする</h2>
+<h2 id="section-2">ファイルをインポートする</h2>
 
-<p><code class="highlighter-rouge">Bar.sc
-val message = "Hello World"
-</code></p>
+<pre><code class="language-Bar.sc">val message = "Hello World"
+</code></pre>
 
-<p><code class="highlighter-rouge">Foo.sc
-import $file.Bar
+<pre><code class="language-Foo.sc">import $file.Bar
 println(Bar.message)
-</code></p>
+</code></pre>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm Foo.sc
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm Foo.sc
 Compiling Foo.sc
 Compiling Bar.sc
 Hello World
@@ -426,38 +426,34 @@ Hello World
 
 <p><code class="highlighter-rouge">Foo</code>でも<code class="highlighter-rouge">message</code>でアクセスしたい場合は、↓のように明示する必要がある。</p>
 
-<p>```Foo.sc
-import $file.Bar
-impor Bar.message</p>
+<pre><code class="language-Foo.sc">import $file.Bar
+impor Bar.message
 
-<p>println(message)
-```</p>
+println(message)
+</code></pre>
 
 <p><code class="highlighter-rouge">import $file.Bar.message</code>のように１行ではいけないので注意。1行で書くなら、</p>
 
-<p><code class="highlighter-rouge">Foo.sc
-import $file.Bar, Bar.message
-</code></p>
+<pre><code class="language-Foo.sc">import $file.Bar, Bar.message
+</code></pre>
 
-<h3 id="section-1">ワイルドカードでインポート</h3>
+<h3 id="section-3">ワイルドカードでインポート</h3>
 
 <p>いちいち明示するのが面倒なら、ワイルドカードが使える。</p>
 
-<p><code class="highlighter-rouge">Foo.sc
-import $file.Bar, Bar._
+<pre><code class="language-Foo.sc">import $file.Bar, Bar._
 println(message)
-</code></p>
+</code></pre>
 
-<h2 id="section-2">ライブラリをインポートする</h2>
+<h2 id="section-4">ライブラリをインポートする</h2>
 
-<p>```ToJson.sc
-import $ivy.<code class="highlighter-rouge">com.typesafe.play::play-json:2.4.6</code>, play.api.libs.json.Json</p>
+<pre><code class="language-ToJson.sc">import $ivy.`com.typesafe.play::play-json:2.4.6`, play.api.libs.json.Json
 
-<p>val json = Json.toJson(Map(“hello” -&gt; “world”))
+val json = Json.toJson(Map("hello" -&gt; "world"))
 println(json)
-```</p>
+</code></pre>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm ToJson.sc
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>amm ToJson.sc
 Compiling ToJson.sc
 <span class="o">{</span><span class="s2">"hello"</span>:<span class="s2">"world"</span><span class="o">}</span>
 </code></pre>
@@ -529,6 +525,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">OpenWhisk+Scalaで作るServerless Architectureとっかかり</a></li>
+      
         <li><a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html">BluemixにPlayframeworkアプリケーションをデプロイする</a></li>
       
         <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
@@ -536,8 +534,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
       
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
-      
-        <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
       
     </ul>
     <h3>Recent Books:</h3>

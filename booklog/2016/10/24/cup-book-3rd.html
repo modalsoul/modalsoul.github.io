@@ -310,6 +310,8 @@
           
         
           
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -371,13 +373,15 @@
 <h2 id="section">11.4 独自の値クラスの定義</h2>
 <p>節が追加された。</p>
 
-<p>値クラスにできるクラスの条件
-* パタメータがちょうど１つ
-* 内容はdefだけ
-* 他のクラスは値クラスを拡張できない
-* 値クラスは、<code class="highlighter-rouge">equals</code>や<code class="highlighter-rouge">hashCode</code>を再定義できない</p>
+<p>値クラスにできるクラスの条件</p>
+<ul>
+  <li>パタメータがちょうど１つ</li>
+  <li>内容はdefだけ</li>
+  <li>他のクラスは値クラスを拡張できない</li>
+  <li>値クラスは、<code class="highlighter-rouge">equals</code>や<code class="highlighter-rouge">hashCode</code>を再定義できない</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dollars</span><span class="o">(</span><span class="k">val</span> <span class="n">amount</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">AnyVal</span> <span class="o">{</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dollars</span><span class="o">(</span><span class="k">val</span> <span class="n">amount</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">AnyVal</span> <span class="o">{</span>
 	<span class="k">override</span> <span class="k">def</span> <span class="n">toString</span><span class="o">()</span> <span class="k">=</span> <span class="s">"$"</span> <span class="o">+</span> <span class="n">amount</span>
 <span class="o">}</span>
 
@@ -393,8 +397,8 @@
 <p>なし</p>
 
 <h1 id="section-3">第14章 アサーションとテスト</h1>
-<p>## 14.1 アサーション
-アサーションをコンパイル時に有効・無効化する方法が変わった。</p>
+<h2 id="section-4">14.1 アサーション</h2>
+<p>アサーションをコンパイル時に有効・無効化する方法が変わった。</p>
 
 <ul>
   <li>第2版 : JVMの<code class="highlighter-rouge">-ea</code>と<code class="highlighter-rouge">-da</code>オプション</li>
@@ -403,7 +407,7 @@
 
 <p>ScalaTestの使い方についての説明が更新された。</p>
 
-<h2 id="section-4">14.3 情報が豊富なエラーレポート</h2>
+<h2 id="section-5">14.3 情報が豊富なエラーレポート</h2>
 
 <p><code class="highlighter-rouge">expect</code>が<code class="highlighter-rouge">assertResult</code>に。</p>
 
@@ -414,14 +418,14 @@
 <h2 id="junittestng">(第2版)14.4 JUnitとTestNGの使い方</h2>
 <p>無くなった</p>
 
-<h2 id="section-5">14.4 仕様としてのテスト</h2>
+<h2 id="section-6">14.4 仕様としてのテスト</h2>
 <p>ScalaTestの説明がバージョンアップに追随。
 specsの説明がspecs2に。</p>
 
-<h2 id="section-6">14.5 プロパティベーステスト</h2>
+<h2 id="section-7">14.5 プロパティベーステスト</h2>
 <p>ScalaCheckの説明がバージョンに追随。</p>
 
-<h1 id="section-7">第15章 ケースクラスとパターンマッチ</h1>
+<h1 id="section-8">第15章 ケースクラスとパターンマッチ</h1>
 
 <h3 id="matchswitch">15.1.3 matchとswitchの違い</h3>
 
@@ -430,9 +434,9 @@ specsの説明がspecs2に。</p>
 <h4 id="type-erasure">15.2.7.1 型消去(type erasure)</h4>
 <p>scalaインタープリターの<code class="highlighter-rouge">-unchecked</code>オプションの説明が無くなった。</p>
 
-<h3 id="section-8">15.2.8 変数の束縛</h3>
+<h3 id="section-9">15.2.8 変数の束縛</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">expr</span> <span class="k">match</span> <span class="o">{</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">expr</span> <span class="k">match</span> <span class="o">{</span>
 	<span class="k">case</span> <span class="nc">UnOp</span><span class="o">(</span><span class="s">"abs"</span><span class="o">,</span> <span class="n">e</span> <span class="k">@</span> <span class="nc">UnOp</span><span class="o">(</span><span class="s">"abs"</span><span class="o">,</span> <span class="k">_</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="n">e</span>
 <span class="o">}</span>
 </code></pre>
@@ -443,23 +447,23 @@ specsの説明がspecs2に。</p>
 
 <p>という捕捉が追加された。</p>
 
-<h1 id="section-9">第16章 リストの操作</h1>
+<h1 id="section-10">第16章 リストの操作</h1>
 
-<h3 id="section-10">16.6.2 分割統治原則</h3>
+<h3 id="section-11">16.6.2 分割統治原則</h3>
 <p><code class="highlighter-rouge">???</code>についての注釈が追加された。</p>
 
-<h1 id="section-11">第17章 コレクションの使い方</h1>
+<h1 id="section-12">第17章 コレクションの使い方</h1>
 <p>なし</p>
 
-<h1 id="section-12">第18章 ミュータブルオブジェクト</h1>
+<h1 id="section-13">第18章 ミュータブルオブジェクト</h1>
 <p>章名が、ステートフルオブジェクト =&gt; ミュータブルオブジェクトに変更。</p>
 
-<h1 id="section-13">第19章 型のパラメーター化</h1>
+<h1 id="section-14">第19章 型のパラメーター化</h1>
 <p>なし</p>
 
-<h1 id="section-14">第20章 抽象メンバー</h1>
+<h1 id="section-15">第20章 抽象メンバー</h1>
 
-<h2 id="section-15">20.8 リファインメント型</h2>
+<h2 id="section-16">20.8 リファインメント型</h2>
 <p>節名が、<strong>構造的サブ型</strong> から <strong>リファインメント型</strong> に変更された。</p>
 
 <p>9.4節のローンパターンのサンプルを一般化する場合についての説明以降が省略された。</p>
@@ -527,6 +531,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">OpenWhisk+Scalaで作るServerless Architectureとっかかり</a></li>
+      
         <li><a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html">BluemixにPlayframeworkアプリケーションをデプロイする</a></li>
       
         <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
@@ -534,8 +540,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
       
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
-      
-        <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
       
     </ul>
     <h3>Recent Books:</h3>

@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Androidプログラミング入門してみた-アクティビティ編-</title>
-  <meta name="description" content="前回のつづきです。">
+  <title>OpenWhisk+Scalaで作るServerless Architectureとっかかり</title>
+  <meta name="description" content="最近マイクロサービスやサーバーレスアーキテクチャが気になるので、手習いにOpenWhiskを使って、以前作ったモノリシックなサービスをマイクロサービスっぽく分割してみようと思う。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html">
+  <link rel="canonical" href="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="Androidプログラミング入門してみた-アクティビティ編-">
+  <meta property="og:title" content="OpenWhisk+Scalaで作るServerless Architectureとっかかり">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html">
+<meta property="og:url" content="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
+<meta property="og:image" content="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true">
 
 
   <div id="fb-root"></div>
@@ -331,139 +331,156 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-04-04T00:00:00+09:00" itemprop="datePublished">Apr 4, 2012</time>
-      <h1 class="post-title" itemprop="name headline">Androidプログラミング入門してみた-アクティビティ編-</h1>
+      <time datetime="2017-01-24T20:00:00+09:00" itemprop="datePublished">Jan 24, 2017</time>
+      <h1 class="post-title" itemprop="name headline">OpenWhisk+Scalaで作るServerless Architectureとっかかり</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/programing" class="label label-default">Programing</a>
+          <a href="/programming" class="label label-default">programming</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/android" class="label label-default">Android</a>
+          <a href="/tag/scala" class="label label-default">Scala</a>
+        
+          <a href="/tag/openwhisk" class="label label-default">OpenWhisk</a>
+        
+          <a href="/tag/bluemix" class="label label-default">Bluemix</a>
+        
+          <a href="/tag/serverless" class="label label-default">Serverless</a>
         
       </div>
     </header>
     
+      <div  class="thumbnail">
+        
+          <a href="https://developer.ibm.com/openwhisk/" target="_blank">
+            <img src="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true" class="post-thumbnail"/>
+          </a>
+        
+      </div>
+    
 
     <div class="post-content" itemprop="articleBody">
-      <p><a href="/Programing/2012/04/02/start-android-application-architecture">前回</a>のつづきです。</p>
+      <p>最近マイクロサービスやサーバーレスアーキテクチャが気になるので、手習いにOpenWhiskを使って、<a href="http://my-invoice-maker.herokuapp.com/">以前作ったモノリシックなサービス</a>をマイクロサービスっぽく分割してみようと思う。</p>
 
-<p>今回も主に書籍（ <a href="http://www.amazon.co.jp/gp/product/4844331272/ref=as_li_ss_il?ie=UTF8&amp;tag=modalsoul-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4844331272">本格アプリを作ろう！ Androidプログラミングレシピ</a>）を参考にして進めます。</p>
+<p>とりあえずOpenWhiskでHelloWorld。</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/4844331272/ref=as_li_ss_il?ie=UTF8&amp;tag=modalsoul-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4844331272">
-<img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&amp;Format=_SL160_&amp;ASIN=4844331272&amp;MarketPlace=JP&amp;ID=AsinImage&amp;WS=1&amp;tag=modalsoul-22&amp;ServiceVersion=20070822" />
-</a>
-<img src="http://www.assoc-amazon.jp/e/ir?t=modalsoul-22&amp;l=as2&amp;o=9&amp;a=4844331272" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
-
-<h2 id="section">アクティビティについて</h2>
-<p>アクティビティは、<b>android.appp.Activity</b>クラスのサブクラスによって記述される。
-<b>Activity</b>のサブクラスでは、アクティビティが存続する間Androidが呼び出す、<b>ライフサイクルコールバックメソッド</b>をオーバーライドします。</p>
-
-<h4 id="section-1">７つのライフサイクルコールバックメソッド</h4>
+<h1 id="section">準備</h1>
+<p>今回はBluemix上のOpenWhiskを対象に進める。</p>
 
 <ul>
-  <li>onCreate(Bundle)</li>
+  <li>
+    <p>Bluemixアカウント
+  ※ 現在、OpenWhiskは米国南部リージョンでしか使えないっぽい。</p>
+  </li>
+  <li>Scala 2.11.6</li>
+  <li>sbt 0.13.13</li>
 </ul>
 
-<p>最初にアクティビティが作成されたときに呼び出されるメソッド。このメソッドは、アクティビティのユーザインタフェースを作り、その他のグローバルな初期化（バックグラウンドスレッドの作成など）を必要に応じて実行する。<b>onCreate(Bundle)</b>が呼び出された後に、<b>onStart()</b>が呼び出される。このアクティビティの前の状態が保存されていたら、<b>onCreate()</b>に<b>android.os.Bundle</b>が渡される。（無ければnull参照が渡される）</p>
+<h1 id="openwhisk-cli">OpenWhisk CLIインストール</h1>
+<p>ggって出てくるブログだとインストールにはpipが必要と記載してあるものもあるけど、今はpipは不要になったようです。</p>
 
-<ul>
-  <li>onStart()</li>
-</ul>
+<p><a href="https://console.ng.bluemix.net/openwhisk/learn/cli">Download OpenWhisk CLI</a>から、実行可能なwskファイルを落とします。</p>
 
-<p>アクティビティをユーザに見せる直前に呼び出される。<b>onStart()</b>を呼び出した後、アクティビティがフォアグラウンドに出たときに<b>onResume()</b>を呼び出し、アクティビティが隠されるときに<b>onStop()</b>を呼び出す。</p>
+<p>あとは↑の記載の通りに進めればOK</p>
 
-<ul>
-  <li>onRestart()</li>
-</ul>
+<p>echoアクションを実行して、</p>
 
-<p>停止されていたアクティビティが再スタートされる直前に呼び出される。名前の通り。<b>onRestart()</b>の後に<b>onStart()</b>が呼び出される。</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke /whisk.system/utils/echo -p message hello --blocking --result
+</code></pre>
+</div>
 
-<ul>
-  <li>onResume()</li>
-</ul>
+<p>↓のように帰ってくればインストールは完了</p>
 
-<p>アクティビティがユーザと対話処理を始める直前に呼び出される。このアクティビティがフォーカスを得て、ユーザの入力を受けつける。<b>onResume()</b>の呼び出し後に、そのアクティビティを中断する必要がある場合のみ<b>onPause()</b>を呼び出す。</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<ul>
-  <li>onPause()</li>
-</ul>
+<h1 id="section-1">アプリケーションの作成</h1>
+<p><a href="https://github.com/google/gson">GoogleのGson</a>を使うので、build.sbtに依存関係を追加。</p>
 
-<p>別のアクティビティを再開しようとするときに呼び出される。このメソッドがリターンするまで次のアクティビティが再開されないことに注意。<b>onPause()</b>を呼び出した後、ユーザがそのアクティビティとの対話処理を再開したら<b>onResume()</b>を呼び出し、アクティビティがユーザから見えなくなったら<b>onStop()</b>を呼び出す。</p>
+<p>基本的に、JsonObjectを受け取って、JsonObjectを返すエントリーポイントを作るだけです。</p>
 
-<ul>
-  <li>onStop()</li>
-</ul>
+<p>こんな感じ。</p>
 
-<p>アクティビティがユーザから見えなくなったときに呼び出される。アクティビティが破棄されたか、他のアクティビティが再開されて隠されたかのどちらかの理由で発生する。<b>onStop()</b>を呼び出した後、再びユーザとの対話処理に戻る場合は<b>onRestart()</b>を呼び出し、破棄される場合は<b>onDestroy()</b>が呼び出される。</p>
+<pre><code class="language-SampleAction.scala">package com.github.modalsoul.sampleaction
 
-<ul>
-  <li>onDestroy()</li>
-</ul>
+import com.google.gson.JsonObject
 
-<p>アクティビティが破棄される前に呼び出される。ただし、メモリ不足により強制終了される場合は例外で、<b>onDestroy()</b>は呼び出されない。</p>
+object SampleAction {
+  def main(args:JsonObject):JsonObject = {
+    val obj = new JsonObject()
+    val name = if(args.has("name")) {
+      args.getAsJsonPrimitive("name").getAsString()
+    } else "World"
+    obj.addProperty("greeting", s"Hello ${name}!")
+    obj
+  }
+}
+</code></pre>
 
-<p>これらの７つのメソッドによって、アクティビティのライフサイクル全体が定義され、３つのネストしたループが記述される。</p>
+<h1 id="section-2">アプリケーションのビルド</h1>
+<p>デプロイするjarファイルを作成します。</p>
 
-<h3 id="section-2">３つのネストしたループ</h3>
+<p><code class="highlighter-rouge">sbt package</code>だと依存するライブラリ（今回だとgson）を取り込んでくれないので、<a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a>を使う。</p>
 
-<ul>
-  <li>ライフタイム全体</li>
-</ul>
+<pre><code class="language-project/assembly.sbt">addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
+</code></pre>
 
-<p>最初にメソッド<b>onCreate(Bundle)</b>が呼び出されたときから、<b>onDestroy()</b>が呼び出されるまでの全ての期間。</p>
+<p><code class="highlighter-rouge">sbt assembly</code>を実行すると、<code class="highlighter-rouge">./target/scala-2.11/</code>配下にjarが生成されます。</p>
 
-<ul>
-  <li>可視ライフタイム</li>
-</ul>
+<h1 id="openwhisk">OpenWhiskアクションの登録</h1>
+<p><strong>[ACTION_NAME]</strong> , <strong>[APPLICATION]</strong> , <strong>[MAIN_CLASS_FULLNAME]</strong> は適宜読み替え。</p>
 
-<p>メソッド<b>onStart()</b>の呼び出しから、それに対応する<b>onStop()</b>の呼び出しまでの期間。この間、ユーザはアクティビティを画面で見られるが、アクティビティがフォアグラウンドで対話処理をしているとは限らない。</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>wsk action update <span class="o">[</span>ACTION_NAME] target/scala-2.11/[APPLICATION].jar --main <span class="o">[</span>MAIN_CLASS_FULLNAME]
 
-<ul>
-  <li>フォアグラウンドタイム</li>
-</ul>
 
-<p>メソッド<b>onResume()</b>の呼び出しから、それに対応する<b>onPause()</b>の呼び出しまでの期間。この間、他の全てのアクティビティより手前にあり、ユーザとの対話処理を行っている。</p>
+ok: created action <span class="o">[</span>ACTION_NAME]
+</code></pre>
+</div>
 
-<p>上記のライフサイクルを図にしたものがこれ</p>
+<h1 id="section-3">動作確認</h1>
 
-<p><img src="http://codezine.jp/static/images/article/4657/01.gif" alt="アクティビティのライフサイクル" /></p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke --blocking --result <span class="o">[</span>ACTION_NAME]  
 
-<p>これを見てわかるように、<b>onDestroy()</b>は呼び出されない場合があるので、データ保存の処理を書いてもあてにはならない。<b>onPause()</b>の中でコミットするのが一般的。<b>onDestroy()</b>の実装では、アクティビティに割り当てられていたリソースの解放をするのが一般的。</p>
+</code></pre>
+</div>
 
-<h2 id="section-3">タスク、アクティビティスタック</h2>
+<p>↓のように帰ってくれば成功です。</p>
 
-<ul>
-  <li>タスク</li>
-</ul>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<p>相関するアクティビティのシーケンスのこと。アクティビティスタックを提供する。</p>
+<p>↓のようにするとパラメータを渡すことができます。</p>
 
-<ul>
-  <li>アクティビティスタック</li>
-</ul>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke --blocking --result <span class="o">[</span>ACTION_NAME] --param name HOGE
+</code></pre>
+</div>
 
-<p>相関するアクティビティのシーケンスを記録する。「ヒストリースタック」「バックスタック」とも呼ばれる。</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello HOGE!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<p>このスタックに最初にプッシュされるアクティビティは、タスクを開始したアクティビティであり、<b>ルートアクティビティ</b>と呼ぶ。実行中のアクティビティは、スタックの一番上に位置する。</p>
-
-<p>実行中のアクティビティが別のアクティビティを起動すると、新しいアクティビティがスタックにプッシュされてフォーカスを得る。前のアクティビティがスタックに残り、停止状態になる。
-ユーザが端末のバックボタンを押すと、現在のアクティビティがポップされて、その前のアクティビティが実行中になる。ポップされたアクティビティは破棄される。このときアクティビティが停止したときのユーザインターフェースの状態がレストアされる。</p>
-
-<p>スタック内のアクティビティの順序は変わることがなく、プッシュもしくはポップされるだけ。アクティビティがスタックにプッシュされるのは、現在のアクティビティによって起動された場合のみ。スタックからポップされるのはバックボタンが押され、アクティビティの使用が終わったとき。</p>
-
+<h1 id="section-4">おわり</h1>
+<p>これでなんとなくOpenWhisk使えるようにはなったので、モノリシックをマイクロにするぞ。</p>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Androidプログラミング入門してみた-アクティビティ編-" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" class="hatena-bookmark-button" data-hatena-bookmark-title="OpenWhisk+Scalaで作るServerless Architectureとっかかり" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/programing/2012/04/04/start-android-application-activitie.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -473,16 +490,10 @@
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/05/11/scrumdo-full-boost.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;スクラム道 Full Boost 「青物横丁制圧作戦」#scrumdoに参加しました。</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/programing/2012/04/02/start-android-application-architecture.html" aria-label="Previous">
-          <span aria-hidden="true">Androidプログラミング入門してみた-アーキテクチャ編-&raquo;</span>
+        <a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html" aria-label="Previous">
+          <span aria-hidden="true">BluemixにPlayframeworkアプリケーションをデプロイする&raquo;</span>
         </a>
       </span>
       

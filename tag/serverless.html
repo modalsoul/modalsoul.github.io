@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/tag/playframework.html">
+  <link rel="canonical" href="http://modalsoul.github.io/tag/serverless.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
   <meta property="og:title" content="modal_soul debriefing">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/tag/playframework.html">
+<meta property="og:url" content="http://modalsoul.github.io/tag/serverless.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
 <meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
@@ -327,10 +327,10 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <h2>PlayFramework</h2>
+        <h2>Serverless</h2>
 <ul>
 
-  <li><a href="/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html">【意訳】Heroku上でPlayFramework + Scalaアプリケーションを実行する</a> (12 Aug 2012 | Tags: <!DOCTYPE html>
+  <li><a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">OpenWhisk+Scalaで作るServerless Architectureとっかかり</a> (24 Jan 2017 | Tags: <!DOCTYPE html>
 <html>
 
   <head>
@@ -338,25 +338,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>【意訳】Heroku上でPlayFramework + Scalaアプリケーションを実行する</title>
-  <meta name="description" content="誤訳・誤植等ありましたら、@modal_soulまでリプライいただけるとありがたいです。">
+  <title>OpenWhisk+Scalaで作るServerless Architectureとっかかり</title>
+  <meta name="description" content="最近マイクロサービスやサーバーレスアーキテクチャが気になるので、手習いにOpenWhiskを使って、以前作ったモノリシックなサービスをマイクロサービスっぽく分割してみようと思う。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html">
+  <link rel="canonical" href="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="【意訳】Heroku上でPlayFramework + Scalaアプリケーションを実行する">
+  <meta property="og:title" content="OpenWhisk+Scalaで作るServerless Architectureとっかかり">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html">
+<meta property="og:url" content="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
+<meta property="og:image" content="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true">
 
 
   <div id="fb-root"></div>
@@ -663,175 +663,156 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-08-12T00:00:00+09:00" itemprop="datePublished">Aug 12, 2012</time>
-      <h1 class="post-title" itemprop="name headline">【意訳】Heroku上でPlayFramework + Scalaアプリケーションを実行する</h1>
+      <time datetime="2017-01-24T20:00:00+09:00" itemprop="datePublished">Jan 24, 2017</time>
+      <h1 class="post-title" itemprop="name headline">OpenWhisk+Scalaで作るServerless Architectureとっかかり</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/programing" class="label label-default">Programing</a>
+          <a href="/programming" class="label label-default">programming</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
           <a href="/tag/scala" class="label label-default">Scala</a>
         
-          <a href="/tag/playframework" class="label label-default">PlayFramework</a>
+          <a href="/tag/openwhisk" class="label label-default">OpenWhisk</a>
         
-          <a href="/tag/heroku" class="label label-default">Heroku</a>
+          <a href="/tag/bluemix" class="label label-default">Bluemix</a>
+        
+          <a href="/tag/serverless" class="label label-default">Serverless</a>
         
       </div>
     </header>
     
       <div  class="thumbnail">
-        <img src="http://capture.heartrails.com/200x150?http://www.jamesward.com/2011/10/19/running-play-framework-scala-apps-on-heroku" class="post-thumbnail"/>
+        
+          <a href="https://developer.ibm.com/openwhisk/" target="_blank">
+            <img src="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true" class="post-thumbnail"/>
+          </a>
+        
       </div>
     
 
     <div class="post-content" itemprop="articleBody">
-      <p>誤訳・誤植等ありましたら、<a href="https://twitter.com/modal_soul">@modal_soulまで</a>リプライいただけるとありがたいです。</p>
+      <p>最近マイクロサービスやサーバーレスアーキテクチャが気になるので、手習いにOpenWhiskを使って、<a href="http://my-invoice-maker.herokuapp.com/">以前作ったモノリシックなサービス</a>をマイクロサービスっぽく分割してみようと思う。</p>
 
-<hr />
+<p>とりあえずOpenWhiskでHelloWorld。</p>
 
-<p><a href="http://scala.playframework.org/">ScalaでPlay Frameworkアプリを構築</a>するのが最近流行っているようです。理由としては、これまでのJVMベースのWebアプリよりも簡単に構築、デプロイできることです。ScalaでPlayアプリの構築とHerokuへのデプロイをやってみましょう。</p>
+<h1 id="section">準備</h1>
+<p>今回はBluemix上のOpenWhiskを対象に進める。</p>
 
-<hr />
+<ul>
+  <li>
+    <p>Bluemixアカウント
+  ※ 現在、OpenWhiskは米国南部リージョンでしか使えないっぽい。</p>
+  </li>
+  <li>Scala 2.11.6</li>
+  <li>sbt 0.13.13</li>
+</ul>
 
-<p><em>Step1) <a href="http://www.playframework.org/download">Play Framework</a>をインストールします（バージョン1.2.3以上をインストールしてください)。</em></p>
+<h1 id="openwhisk-cli">OpenWhisk CLIインストール</h1>
+<p>ggって出てくるブログだとインストールにはpipが必要と記載してあるものもあるけど、今はpipは不要になったようです。</p>
 
-<hr />
+<p><a href="https://console.ng.bluemix.net/openwhisk/learn/cli">Download OpenWhisk CLI</a>から、実行可能なwskファイルを落とします。</p>
 
-<p><em>Step2) Play Scalaモジュールをインストールします。</em></p>
+<p>あとは↑の記載の通りに進めればOK</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">play install scala</code></pre></figure>
+<p>echoアクションを実行して、</p>
 
-<hr />
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke /whisk.system/utils/echo -p message hello --blocking --result
+</code></pre>
+</div>
 
-<p><em>Step3) ScalaサポートしたPlayアプリを作成します。</em></p>
+<p>↓のように帰ってくればインストールは完了</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">play new playwithscala --with scala</code></pre></figure>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<hr />
+<h1 id="section-1">アプリケーションの作成</h1>
+<p><a href="https://github.com/google/gson">GoogleのGson</a>を使うので、build.sbtに依存関係を追加。</p>
 
-<p><em>Step4) アプリケーションをスタートします。</em></p>
+<p>基本的に、JsonObjectを受け取って、JsonObjectを返すエントリーポイントを作るだけです。</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd </span>playwithscala
-play run</code></pre></figure>
+<p>こんな感じ。</p>
 
-<hr />
+<pre><code class="language-SampleAction.scala">package com.github.modalsoul.sampleaction
 
-<p><em>Step5) ブラウザでアプリケーションを開きます。</em></p>
+import com.google.gson.JsonObject
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">http://localhost:9000</code></pre></figure>
+object SampleAction {
+  def main(args:JsonObject):JsonObject = {
+    val obj = new JsonObject()
+    val name = if(args.has("name")) {
+      args.getAsJsonPrimitive("name").getAsString()
+    } else "World"
+    obj.addProperty("greeting", s"Hello ${name}!")
+    obj
+  }
+}
+</code></pre>
 
-<p>とても簡単ですね。Heroku上にデプロイする前に、カスタムmodel, view, controllerを追加してもう少し味付けしてみましょう。</p>
+<h1 id="section-2">アプリケーションのビルド</h1>
+<p>デプロイするjarファイルを作成します。</p>
 
-<hr />
+<p><code class="highlighter-rouge">sbt package</code>だと依存するライブラリ（今回だとgson）を取り込んでくれないので、<a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a>を使う。</p>
 
-<p><em>Step1) app/models/Widget.scalaを新規作成して、以下を記述します。</em></p>
+<pre><code class="language-project/assembly.sbt">addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
+</code></pre>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">package models
- 
-<span class="k">case</span> class Widget<span class="o">(</span>id: Int, name: String<span class="p">)</span></code></pre></figure>
+<p><code class="highlighter-rouge">sbt assembly</code>を実行すると、<code class="highlighter-rouge">./target/scala-2.11/</code>配下にjarが生成されます。</p>
 
-<hr />
+<h1 id="openwhisk">OpenWhiskアクションの登録</h1>
+<p><strong>[ACTION_NAME]</strong> , <strong>[APPLICATION]</strong> , <strong>[MAIN_CLASS_FULLNAME]</strong> は適宜読み替え。</p>
 
-<p><em>Step2) app/views/Widget/list.scala.htmlファイルを新規作成して、以下を記述します。</em></p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>wsk action update <span class="o">[</span>ACTION_NAME] target/scala-2.11/[APPLICATION].jar --main <span class="o">[</span>MAIN_CLASS_FULLNAME]
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"> ＠<span class="o">(</span>widgets: Vector[models.Widget]<span class="o">)</span>
- 
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;body&gt;
-        @widgets.map <span class="o">{</span> widget <span class="o">=</span>&gt; 
-            Widget @widget.id <span class="o">=</span> @widget.name&lt;/br&gt;
-        <span class="o">}</span>
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre></figure>
 
-<hr />
+ok: created action <span class="o">[</span>ACTION_NAME]
+</code></pre>
+</div>
 
-<p><em>Step3) app/controllers/WidgetController.scalaを新規作成して、以下を記述します。</em></p>
+<h1 id="section-3">動作確認</h1>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">package controllers
- 
-import play._
-import play.mvc._
- 
-object WidgetController extends Controller <span class="o">{</span>
- 
-    import views.Widget._
-    import models.Widget
- 
-    def list <span class="o">=</span> <span class="o">{</span>
-        val widget1 <span class="o">=</span> Widget<span class="o">(</span>1, <span class="s2">"The first Widget"</span><span class="o">)</span>
-        val widget2 <span class="o">=</span> Widget<span class="o">(</span>2, <span class="s2">"A really special Widget"</span><span class="o">)</span>
-        val widget3 <span class="o">=</span> Widget<span class="o">(</span>3, <span class="s2">"Just another Widget"</span><span class="o">)</span>
-        html.list<span class="o">(</span>Vector<span class="o">(</span>widget1, widget2, widget3<span class="o">))</span>
-    <span class="o">}</span>
- 
-<span class="o">}</span></code></pre></figure>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke --blocking --result <span class="o">[</span>ACTION_NAME]  
 
-<p><em>Step4) 以下のURLを表示して、動きを確認しましょう。</em></p>
+</code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">http://localhost:9000/WidgetController/list</code></pre></figure>
+<p>↓のように帰ってくれば成功です。</p>
 
-<p>動きましたね。それにサーバーのリロードも不要でした。URLを少しきれいにしましょう。conf/routeファイルを修正して、”Application.index”を”WidgetController.list”へ変更します。</p>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">GET     /                                       WidgetController.list</code></pre></figure>
+<p>↓のようにするとパラメータを渡すことができます。</p>
 
-<p>簡単にできましたが、ついでに友達にも見せたいですね。Herokuへデプロイしましょう。</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wsk action invoke --blocking --result <span class="o">[</span>ACTION_NAME] --param name HOGE
+</code></pre>
+</div>
 
-<hr />
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello HOGE!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<p><em>Step1) Linux, MacもしくはWindowsに、Herokuコマンドクライアントをインストールします。</em></p>
-
-<p><em>Step2) コマンドラインからHerokuへログインします。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">heroku auth:login</code></pre></figure>
-
-<p><em>Step3) Herokuは、アプリケーションのデプロイにgitを使うので、.gitignoreファイルを作成して、以下を記述します。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">/modules
-/tmp</code></pre></figure>
-
-<p><em>Step4) gitリポジトリを作成して、ファイルを追加し、コミットします。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git init
-git add .
-git commit -m init</code></pre></figure>
-
-<p><em>Step5) Herokuにアプリケーションを新規作成します。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">heroku create -s cedar</code></pre></figure>
-
-<p>これで、Heroku上に新しいアプリケーションを規定し、アプリケーションへのランダムな名前/のURLを割り当てます。</p>
-
-<p><em>Step6) アプリケーションをデプロイします。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git push heroku master</code></pre></figure>
-
-<p>アプリケーションがアセンブルされ、Heroku上にデプロイされます。</p>
-
-<p><em>Step7) ブラウザでアプリケーションを開きます。</em></p>
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">heroku open</code></pre></figure>
-
-<p>ジャジャーン！これでPlay + Scala アプリがクラウド上で実行されました。</p>
-
-<p>JavaOneで、これをBill Venners(ScalaTestの作者)に見せたら、scalatest.orgのWebサイト（Play + Scalaのアプリ)をHerokuへ移行してくれました。クール！</p>
-
-<p>何か質問あれば、教えてください。</p>
-
+<h1 id="section-4">おわり</h1>
+<p>これでなんとなくOpenWhisk使えるようにはなったので、モノリシックをマイクロにするぞ。</p>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html" class="hatena-bookmark-button" data-hatena-bookmark-title="【意訳】Heroku上でPlayFramework + Scalaアプリケーションを実行する" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" class="hatena-bookmark-button" data-hatena-bookmark-title="OpenWhisk+Scalaで作るServerless Architectureとっかかり" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/programing/2012/08/12/Running-PlayFramework-Scala-Apps-on-Heroku.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -841,16 +822,10 @@ git commit -m init</code></pre></figure>
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/test/programing/2012/08/30/android-ui-test-touchutils-performclick.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;TouchUtilsを使ったAndroidテストでjava.lang.SecurityException:PermissionDenialが起きたときの回避方法</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/programing/2012/08/10/Sign-in-with-Facebook-Scala.html" aria-label="Previous">
-          <span aria-hidden="true">【意訳】Scala on LiftでのFacebookサインイン&raquo;</span>
+        <a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html" aria-label="Previous">
+          <span aria-hidden="true">BluemixにPlayframeworkアプリケーションをデプロイする&raquo;</span>
         </a>
       </span>
       

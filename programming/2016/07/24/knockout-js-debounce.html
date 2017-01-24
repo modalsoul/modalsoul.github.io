@@ -310,6 +310,8 @@
           
         
           
+        
+          
          -->
         <a class="page-link" href="/books/">Book</a>
         <a class="page-link" href="/categories/">Category</a>
@@ -364,7 +366,7 @@
 <p>rateLimit拡張を使うことで、同じことができるようだ。
 通常<code class="highlighter-rouge">observable</code>は変更されるとただちに通知を行うのだけれど、rateLimit拡張を使うことで変更の通知を遅らせることができる。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ko</span><span class="p">.</span><span class="na">observable</span><span class="p">().</span><span class="na">extend</span><span class="p">({</span><span class="na">rateLimit</span><span class="o">:</span><span class="p">{</span><span class="na">timeout</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span> <span class="na">method</span><span class="o">:</span> <span class="s">"notifyAtFixedRate"</span><span class="p">}})</span>
+<div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="nx">ko</span><span class="p">.</span><span class="na">observable</span><span class="p">().</span><span class="na">extend</span><span class="p">({</span><span class="na">rateLimit</span><span class="o">:</span><span class="p">{</span><span class="na">timeout</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span> <span class="na">method</span><span class="o">:</span> <span class="s">"notifyAtFixedRate"</span><span class="p">}})</span>
 </code></pre>
 </div>
 
@@ -372,7 +374,7 @@
 
 <p>このrateLimit拡張は、methodのデフォルトが<code class="highlighter-rouge">notifyAtFixedRate</code>なので、省略して↓の形式の呼び出しもできる。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ko</span><span class="p">.</span><span class="na">observable</span><span class="p">().</span><span class="na">extend</span><span class="p">({</span><span class="na">rateLimit</span><span class="o">:</span><span class="mi">500</span><span class="p">})</span>
+<div class="language-coffeescript highlighter-rouge"><pre class="highlight"><code><span class="nx">ko</span><span class="p">.</span><span class="na">observable</span><span class="p">().</span><span class="na">extend</span><span class="p">({</span><span class="na">rateLimit</span><span class="o">:</span><span class="mi">500</span><span class="p">})</span>
 </code></pre>
 </div>
 
@@ -456,6 +458,8 @@ s.setAttribute('data-timestamp', +new Date());
     <h3>Latest post:</h3>
     <ul class="post-list">
       
+        <li><a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html">OpenWhisk+Scalaで作るServerless Architectureとっかかり</a></li>
+      
         <li><a href="/programming/2017/01/22/deploy-playframework-application-to-bluemix.html">BluemixにPlayframeworkアプリケーションをデプロイする</a></li>
       
         <li><a href="/programming/2017/01/20/giter8-sbt-new-integration.html">sbt、Giter8を統合するってよ</a></li>
@@ -463,8 +467,6 @@ s.setAttribute('data-timestamp', +new Date());
         <li><a href="/programming/2016/11/10/scala-sam-type.html">Scala 2.12.0でSAM型</a></li>
       
         <li><a href="/environment/2016/10/27/ammonite-repl.html">Ammonite-REPLを使う</a></li>
-      
-        <li><a href="/booklog/2016/10/24/cup-book-3rd.html">コップ本第3版と第2版の差分をメモっとく。第11~20章</a></li>
       
     </ul>
     <h3>Recent Books:</h3>
