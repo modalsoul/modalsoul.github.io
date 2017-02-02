@@ -5,9 +5,36 @@
     <description>I guess you could call it a failure, but I prefer the term learning experience.</description>
     <link>http://modalsoul.github.io/</link>
     <atom:link href="http://modalsoul.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 20:34:55 +0900</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 20:34:55 +0900</lastBuildDate>
+    <pubDate>Fri, 03 Feb 2017 00:48:40 +0900</pubDate>
+    <lastBuildDate>Fri, 03 Feb 2017 00:48:40 +0900</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>OpenWhiskのScala sbtプロジェクトのgiter8テンプレートを作った</title>
+        <description>&lt;p&gt;OpenWhiskのScala sbtプロジェクトのgiter8テンプレートと作った。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/modalsoul/openwhisk-sbt.g8&quot;&gt;modalsoul/openwhisk-sbt.g8&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;sbt new modalsoul/openwhisk-sbt.g8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 02 Feb 2017 23:00:00 +0900</pubDate>
+        <link>http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html</link>
+        <guid isPermaLink="true">http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html</guid>
+        
+        <category>Scala</category>
+        
+        <category>OpenWhisk</category>
+        
+        <category>sbt</category>
+        
+        <category>giter8</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>OpenWhisk+Scalaで作るServerless Architectureとっかかり</title>
@@ -903,48 +930,6 @@ debounceという新しい単語を知ることで、連鎖的に知識が広が
         
         
         <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>第１部 魔法のSQL 1-6 相関サブクエリで行と行を比較する｜達人に学ぶSQL徹底指南書</title>
-        <description>&lt;h1 id=&quot;section&quot;&gt;1-6 相関サブクエリで行と行を比較する&lt;/h1&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;成長・後退・現状維持&lt;/h2&gt;
-&lt;p&gt;相関サブクエリと自己結合は同値変換可能な場合が多い。&lt;/p&gt;
-
-&lt;p&gt;パフォーマンスは、環境によりけり。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;前年の比較結果を一覧表示する&lt;/h2&gt;
-&lt;p&gt;相関サブクエリをSELECT句に移して、前年と今年の比較をする。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;時系列の歯抜けがある場合：直近と比較&lt;/h2&gt;
-&lt;p&gt;内部結合だと、比較対象のない最初の年度が除外される。
-除外しない場合、自己外部結合を使う。&lt;/p&gt;
-
-&lt;p&gt;極地関数はソートを発生させるので、パフォーマンスが落ちる。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;移動累計と移動平均&lt;/h2&gt;
-&lt;p&gt;相関サブクエリでは、スカラ・サブクエリで行数のカウントを取れる。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;オーバーラップする期間を調べる&lt;/h2&gt;
-
-&lt;h2 id=&quot;section-6&quot;&gt;おわりに&lt;/h2&gt;
-&lt;p&gt;相関サブクエリを使うと、&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;可読性が低くなりやすい&lt;/li&gt;
-  &lt;li&gt;パフォーマンスがよくない&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 21 Jul 2016 23:00:00 +0900</pubDate>
-        <link>http://modalsoul.github.io/booklog/2016/07/21/sql-orientation-by-expert-1-6.html</link>
-        <guid isPermaLink="true">http://modalsoul.github.io/booklog/2016/07/21/sql-orientation-by-expert-1-6.html</guid>
-        
-        <category>SQL</category>
-        
-        
-        <category>booklog</category>
         
       </item>
     

@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>【意訳】Play Framework 2.0とJsTestDriverによるJavaScriptテスト。</title>
-  <meta name="description" content="">
+  <title>OpenWhiskのScala sbtプロジェクトのgiter8テンプレートを作った</title>
+  <meta name="description" content="OpenWhiskのScala sbtプロジェクトのgiter8テンプレートと作った。">
   
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://modalsoul.github.io/test/2012/02/21/jstd-with-play2.html">
+  <link rel="canonical" href="http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html">
   <link rel="alternate" type="application/rss+xml" title="modal_soul debriefing" href="http://modalsoul.github.io/feed.xml">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Bootstrap CDN JS -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <meta property="og:title" content="【意訳】Play Framework 2.0とJsTestDriverによるJavaScriptテスト。">
+  <meta property="og:title" content="OpenWhiskのScala sbtプロジェクトのgiter8テンプレートを作った">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://modalsoul.github.io/test/2012/02/21/jstd-with-play2.html">
+<meta property="og:url" content="http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html">
 <meta property="og:site_name" content="modal_soul debriefing">
 <meta property="og:description" content="I guess you could call it a failure, but I prefer the term learning experience.">
-<meta property="og:image" content="http://c1.staticflickr.com/5/4033/4654970063_80a0bfe2c8_n.jpg">
+<meta property="og:image" content="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true">
 
 
   <div id="fb-root"></div>
@@ -335,79 +335,54 @@
 
   <span class="col-md-9 col-lg-9">
     <header class="post-header">
-      <time datetime="2012-02-21T00:00:00+09:00" itemprop="datePublished">Feb 21, 2012</time>
-      <h1 class="post-title" itemprop="name headline">【意訳】Play Framework 2.0とJsTestDriverによるJavaScriptテスト。</h1>
+      <time datetime="2017-02-02T23:00:00+09:00" itemprop="datePublished">Feb 2, 2017</time>
+      <h1 class="post-title" itemprop="name headline">OpenWhiskのScala sbtプロジェクトのgiter8テンプレートを作った</h1>
       <div class="post-meta">
         <span class="tags-icon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
         
-          <a href="/test" class="label label-default">Test</a>
+          <a href="/programming" class="label label-default">programming</a>
         
         <span class="tags-icon glyphicon glyphicon-tags" aria-hidden="true"></span>
         
-          <a href="/tag/play2" class="label label-default">Play2</a>
+          <a href="/tag/scala" class="label label-default">Scala</a>
         
-          <a href="/tag/jstestdriver" class="label label-default">JsTestDriver</a>
+          <a href="/tag/openwhisk" class="label label-default">OpenWhisk</a>
         
-          <a href="/tag/javascript" class="label label-default">JavaScript</a>
+          <a href="/tag/sbt" class="label label-default">sbt</a>
         
-          <a href="/tag/test" class="label label-default">Test</a>
+          <a href="/tag/giter8" class="label label-default">giter8</a>
         
       </div>
     </header>
     
+      <div  class="thumbnail">
+        
+          <a href="https://developer.ibm.com/openwhisk/" target="_blank">
+            <img src="https://github.com/openwhisk/openwhisk.github.io/blob/master/docs/OpenWhisk_sticker.png?raw=true" class="post-thumbnail"/>
+          </a>
+        
+      </div>
+    
 
     <div class="post-content" itemprop="articleBody">
-      <p><img src="http://capture.heartrails.com/300x200/cool?http://www.eishay.com/2012/02/testing-javascript-with-play-framework.html" alt="Testing javascript with Play Framework 2.0 and JsTestDriver" /></p>
+      <p>OpenWhiskのScala sbtプロジェクトのgiter8テンプレートと作った。</p>
 
-<p><a href="http://www.eishay.com/2012/02/testing-javascript-with-play-framework.html">Testing javascript with Play Framework 2.0 and JsTestDriver</a>を適当翻訳でご紹介します。</p>
+<p><a href="https://github.com/modalsoul/openwhisk-sbt.g8">modalsoul/openwhisk-sbt.g8</a></p>
 
-<p>元記事は<a href="http://www.eishay.com/2012/02/testing-javascript-with-play-framework.html">こちら</a></p>
-
-<hr />
-
-<p>qwallet.comでは、バックエンドにScala on Play2.0を使った広大なjavascriptアプリケーションを構築しています。</p>
-
-<p>Scalaの開発にIntelliJ IDEAを使うようになってからは、JavaScriptでも同じように使っています。</p>
-
-<p>これにより、IntelliJとJsTestDriverの統合による恩恵を受けています。</p>
-
-<p>JavaScriptアプリでは、常に3つのブラウザを対象にテストをしています。
-<img src="http://3.bp.blogspot.com/-IYdsLWKTgmA/Tzy0yd1OVUI/AAAAAAAABK4/2u5mI8xOwu4/s1600/server.jpg" width="80%" height="80%" /></p>
-
-<p>テストコンソールにはテスト結果と、ブラウザからフェッチされたコンソール出力を確認できます。
-<img src="http://4.bp.blogspot.com/-CDyQpVkCRhU/Tzy1FNhDTiI/AAAAAAAABLA/ZYSJTpS4iXw/s1600/test_rez.jpg" width="80%" height="80%" /></p>
-
-<p>上の試験例では、FireFox, Chromeのテストは通っていますが、Safariでは失敗しています。
-サンプルでは３つのテストケースがあり、拡張した1つは2つのテストメソッドを持っています。
-もしエラーが発生した場合、スタックトレースがクリッカブルになり、IntelliJはエラーの行右側に飛びます。</p>
-
-<p>テストはとても速いですが、この小さなサブセットのためにChromeでは6msかかっていますが、まだ改善の余地があります。</p>
-
-<p>Play2.0の親切なところは、JavaScriptファイルの自動コンパイルです。
-JsTestDriverのdevモードでは、ライブラリファイルとテストケースをブラウザに送り、アプリケーションファイルはPlay2.0アプリケーションによって送られます。
-Playは、ファイルの変更を検知して自動でリコンパイルします。
-テストを書くときに見逃しているかもしれないものをコンパイラがキャッチしてくれ、結果としてカバレッジが向上します。
-<script src="https://gist.github.com/1843026.js?file=gistfile1.txt">
-</script></p>
-
-<p>CIモードでは、JavaScriptファイルは1度コンパイルされておりPlayを経由して送られる必要がない。
-この方法はとても早く、Playがバックグラウンドで実行されている必要性を低減してくれます。</p>
-
-<p>qwallet.comの継続的デプロイの運用では、アプリケーションの全ての部分をテストします。
-JsTestDriverはクロージャーコンパイラーとバンドルされ、fast devモードユニットテストとテスティングストラテジーのコンポーネントとして提供されています。</p>
-
-<p>ところで、もし興味があったら、jobs@qwalletにメールを送ってくれ。</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt; </span>sbt new modalsoul/openwhisk-sbt.g8
+</code></pre>
+</div>
 
     </div>
     <div class="footer">
       <span class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/test/2012/02/21/jstd-with-play2.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html/" data-via="modal_soul" data-lang="ja">ツイート</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/test/2012/02/21/jstd-with-play2.html" class="hatena-bookmark-button" data-hatena-bookmark-title="【意訳】Play Framework 2.0とJsTestDriverによるJavaScriptテスト。" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
+  <a href="http://b.hatena.ne.jp/entry/modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html" class="hatena-bookmark-button" data-hatena-bookmark-title="OpenWhiskのScala sbtプロジェクトのgiter8テンプレートを作った" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加">
     <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
   </a>
-  <div class="fb-like" data-href="http://modalsoul.github.io/test/2012/02/21/jstd-with-play2.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="fb-like" data-href="http://modalsoul.github.io/programming/2017/02/02/openwhisk-scala-sbt-giter8-template.html" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
   <!-- このタグを +1 ボタンを表示する場所に挿入してください -->
   <g:plusone size="medium"></g:plusone>
@@ -417,16 +392,10 @@ JsTestDriverはクロージャーコンパイラーとバンドルされ、fast 
     </div>
     <div class="post-paginator">
       
-      <span class="next label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/test/2012/02/26/jstd-handson.html" aria-label="Next">
-          <span aria-hidden="true">&laquo;横浜JSTDDハンズオンに参加しました。#JSTDD</span>
-        </a>
-      </span>
-      
       
       <span class="previous label label-default col-lg-5 col-md-5 col-sm-5">
-        <a href="/report/2012/02/17/developers-summit-2012.html" aria-label="Previous">
-          <span aria-hidden="true">Developers Summit 2012 2日目ツイートまとめ。#devsumi&raquo;</span>
+        <a href="/programming/2017/01/24/serverless-architecture-starting-with-openwhisk-and-scala.html" aria-label="Previous">
+          <span aria-hidden="true">OpenWhisk+Scalaで作るServerless Architectureとっかかり&raquo;</span>
         </a>
       </span>
       
