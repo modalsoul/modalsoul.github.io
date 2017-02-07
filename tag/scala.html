@@ -1293,10 +1293,7 @@ s.setAttribute('data-timestamp', +new Date());
 <p>今回はBluemix上のOpenWhiskを対象に進める。</p>
 
 <ul>
-  <li>
-    <p>Bluemixアカウント
-  ※ 現在、OpenWhiskは米国南部リージョンでしか使えないっぽい。</p>
-  </li>
+  <li>Bluemixアカウント<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
   <li>Scala 2.11.6</li>
   <li>sbt 0.13.13</li>
 </ul>
@@ -1329,21 +1326,22 @@ s.setAttribute('data-timestamp', +new Date());
 
 <p>こんな感じ。</p>
 
-<pre><code class="language-SampleAction.scala">package com.github.modalsoul.sampleaction
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com.github.modalsoul.sampleaction</span>
 
-import com.google.gson.JsonObject
+<span class="k">import</span> <span class="nn">com.google.gson.JsonObject</span>
 
-object SampleAction {
-  def main(args:JsonObject):JsonObject = {
-    val obj = new JsonObject()
-    val name = if(args.has("name")) {
-      args.getAsJsonPrimitive("name").getAsString()
-    } else "World"
-    obj.addProperty("greeting", s"Hello ${name}!")
-    obj
-  }
-}
+<span class="k">object</span> <span class="nc">SampleAction</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">JsonObject</span><span class="o">)</span><span class="k">:</span><span class="kt">JsonObject</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">obj</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">JsonObject</span><span class="o">()</span>
+    <span class="k">val</span> <span class="n">name</span> <span class="k">=</span> <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="n">has</span><span class="o">(</span><span class="s">"name"</span><span class="o">))</span> <span class="o">{</span>
+      <span class="n">args</span><span class="o">.</span><span class="n">getAsJsonPrimitive</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="n">getAsString</span><span class="o">()</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="s">"World"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">addProperty</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">,</span> <span class="n">s</span><span class="s">"Hello ${name}!"</span><span class="o">)</span>
+    <span class="n">obj</span>
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
+</div>
 
 <h1 id="section-2">アプリケーションのビルド</h1>
 <p>デプロイするjarファイルを作成します。</p>
@@ -1396,6 +1394,13 @@ ok: created action <span class="o">[</span>ACTION_NAME]
 <p>作ったサンプルのプロジェクトは<a href="https://github.com/modalsoul/OpenWhiskSampleAction">こちら</a>。</p>
 
 <p>これでなんとなくOpenWhisk使えるようにはなったので、モノリシックをマイクロにするぞ。</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>現在、OpenWhiskは米国南部リージョンでしか使えないので注意。 <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     </div>
     <div class="footer">
